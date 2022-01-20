@@ -1,13 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
-import Auth from './components/Auth'
+import 'bootstrap/dist/css/bootstrap.css';
+import {BrowserRouter} from "react-router-dom";
+
 
 
 ReactDOM.render(

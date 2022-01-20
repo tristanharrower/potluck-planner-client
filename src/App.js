@@ -1,17 +1,31 @@
-import './App.css';
 import {
-  BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
-import Auth from './components/Auth'
-import HomePage from './components/HomePage';
+import Auth from './components/authorization/Auth'
+import HomePage from './components/homepage/HomePage';
+import { useState } from 'react';
+
 
 function App() {
+  
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
   return (
     <Routes>
-      <Route path="/" element={<HomePage />}/>
-      <Route path="auth" element={<Auth />} />
+
+      <Route path="/" 
+      element={<HomePage 
+      isLoggedIn={isLoggedIn} 
+      setIsLoggedIn={setIsLoggedIn}/>}/>
+
+      <Route path="auth" 
+      element={<Auth 
+      isLoggedIn={isLoggedIn} 
+      setIsLoggedIn={setIsLoggedIn}/>} />
+      <Route path="*" element={<Auth />} />
+
   </Routes>
   );
 }
