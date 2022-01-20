@@ -16,7 +16,7 @@ interface userReqs{
 function App() {
   const [user, setUser] = useState<userReqs>({person_id:0, username:''})
   
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 
   return (
     <Routes>
