@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Routes,
   Route
@@ -7,8 +8,13 @@ import HomePage from './components/homepage/HomePage';
 import { useState } from 'react';
 
 
+interface userReqs{
+  person_id:number,
+  username:string
+}
+
 function App() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState<userReqs>({person_id:0, username:''})
   
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -19,15 +25,14 @@ function App() {
       element={<HomePage 
       isLoggedIn={isLoggedIn} 
       setIsLoggedIn={setIsLoggedIn}
-      user={user}/>}/>
+      user={user}
+      setUser={setUser}/>}/>
 
       <Route path="auth" 
       element={<Auth 
-      isLoggedIn={isLoggedIn} 
       setIsLoggedIn={setIsLoggedIn}
       setUser={setUser}
-      user={user}/>} />
-      <Route path="*" element={<Auth />} />
+      />} />
 
   </Routes>
   );

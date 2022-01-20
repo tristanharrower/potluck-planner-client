@@ -1,15 +1,19 @@
 import React from 'react';
+interface LoginProps {
+    submitForm:Function,
+    update:Function,
+    errorText:string
+}
 
-const Login = (props) => {
-    const {submitForm, update, errorText} = props
+const Login = ({submitForm, update, errorText}:LoginProps) => {
     
-    const onSubmit = evt => {
+    const onSubmit = (evt:any) => {
         evt.preventDefault();
         
         submitForm()
       }
 
-      const onChange = evt => {
+      const onChange = (evt:any) => {
         const name = evt.target.name;
       
         const value = evt.target.value;
@@ -37,7 +41,7 @@ const Login = (props) => {
             <button type="submit" className="btn btn-primary">Submit</button>
         </div>
         <div className='text-center'>
-            <p type="text" className='error'>{errorText}</p>
+            <p className='error'>{errorText}</p>
         </div>
     </form> 
 </div>;

@@ -1,9 +1,18 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const HomePage = (props) => {
+interface HomePageProps{
+  isLoggedIn:boolean,
+  setIsLoggedIn:Function,
+  setUser:Function,
+  user:{
+    person_id:number,
+    username:string
+  }
+}
 
-  const {isLoggedIn, user} = props
+const HomePage = ({isLoggedIn, setIsLoggedIn, setUser, user}: HomePageProps) => {
+
 
   const navigate = useNavigate()
 
