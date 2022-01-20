@@ -24,7 +24,7 @@ const Login = ({submitForm, update, errorText}:LoginProps) => {
 
   return <div className='container'>
       <div className="mb-3 w-50 mx-auto">
-        <h2>Login</h2>
+        <h2>Login (Made with TypeScript)</h2>
       </div>
   <form onSubmit={onSubmit}>
         <div className="mb-3 w-50 mx-auto">

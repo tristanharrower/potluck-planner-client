@@ -49,7 +49,12 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
           navigate('/')
         })
         .catch((err:any) => {
-          console.log(err)
+          if(err.request.status === 401){
+            setErrorText('Please input a valid username and password or register a new account')
+          } else {
+            setErrorText('Oops, something went wrong on the server')
+          }
+          
         })
       }
   }
