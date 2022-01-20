@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 
 function App() {
-  
+  const [user, setUser] = useState({})
   
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -18,12 +18,15 @@ function App() {
       <Route path="/" 
       element={<HomePage 
       isLoggedIn={isLoggedIn} 
-      setIsLoggedIn={setIsLoggedIn}/>}/>
+      setIsLoggedIn={setIsLoggedIn}
+      user={user}/>}/>
 
       <Route path="auth" 
       element={<Auth 
       isLoggedIn={isLoggedIn} 
-      setIsLoggedIn={setIsLoggedIn}/>} />
+      setIsLoggedIn={setIsLoggedIn}
+      setUser={setUser}
+      user={user}/>} />
       <Route path="*" element={<Auth />} />
 
   </Routes>
