@@ -11,7 +11,7 @@ interface AuthProps {
   setUser:Function,
 }
 
-interface initialFormValues {
+interface IFormValues {
   username:string,
   password:string
 }
@@ -21,7 +21,7 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
 
   const navigate = useNavigate()
 
-  const [formValues, setFormValues] = useState<initialFormValues>({username:'',password:''})
+  const [formValues, setFormValues] = useState<IFormValues>({username:'',password:''})
   const [errorText, setErrorText] = useState<string>('')
 
   const updateForm = (inputName:string, inputValue:string) => {

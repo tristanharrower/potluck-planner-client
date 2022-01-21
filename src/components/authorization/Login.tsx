@@ -26,7 +26,7 @@ const Login = ({submitForm, update, errorText}:LoginProps) => {
       <div className="mb-3 w-50 mx-auto">
         <h2>Login (Made with TypeScript)</h2>
       </div>
-  <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit}>
         <div className="mb-3 w-50 mx-auto">
             <label htmlFor="exampleInputEmail1" className="form-label">Username</label>
             <input type="text" name='username' className="form-control" 

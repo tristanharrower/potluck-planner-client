@@ -8,14 +8,14 @@ import HomePage from './components/homepage/HomePage';
 import { useState } from 'react';
 
 
-interface userReqs{
+interface IUser{
   person_id:number,
   username:string,
   token:string
 }
 
 function App() {
-  const [user, setUser] = useState<userReqs>({person_id:NaN, username:'', token:''})
+  const [user, setUser] = useState<IUser>({person_id:NaN, username:'', token:''})
   
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 
