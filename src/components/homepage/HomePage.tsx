@@ -57,9 +57,9 @@ const navigate = useNavigate()
       <h3>Potlucks: </h3>
       {
         potlucks.map(potluck => 
-          <div>
-        <p key={potluck.potluck_id}>{potluck.event_name}</p>
-        <p key={potluck.potluck_id}>{potluck.event_date}</p>
+        <div key={potluck.potluck_id}>
+          <p>{potluck.event_name}</p>
+          <p>{potluck.event_date}</p>
         </div>)
       }
       
