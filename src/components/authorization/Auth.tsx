@@ -42,7 +42,8 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
           
           const loggedUser = {
             person_id:resp.data.person_id,
-            username:resp.data.username
+            username:resp.data.username,
+            token:resp.data.token
           }
           setUser(loggedUser)
           setIsLoggedIn(true)

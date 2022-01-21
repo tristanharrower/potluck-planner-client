@@ -10,11 +10,12 @@ import { useState } from 'react';
 
 interface userReqs{
   person_id:number,
-  username:string
+  username:string,
+  token:string
 }
 
 function App() {
-  const [user, setUser] = useState<userReqs>({person_id:NaN, username:''})
+  const [user, setUser] = useState<userReqs>({person_id:NaN, username:'', token:''})
   
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 
