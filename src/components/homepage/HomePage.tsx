@@ -52,14 +52,20 @@ const navigate = useNavigate()
 
   return <div>
       <h1>Home Page Content</h1>
+      <hr></hr>
+      <h2>Profile</h2>
       <p>Username: {user.username}</p>
       <p>ID: {user.person_id}</p>
+      <hr></hr>
       <h3>Potlucks: </h3>
+      <hr></hr>
       {
         potlucks.map(potluck => 
         <div key={potluck.potluck_id}>
-          <p>{potluck.event_name}</p>
-          <p>{potluck.event_date}</p>
+          <p>{potluck.role}: {potluck.username}</p>
+          <p>Event Name: {potluck.event_name}</p>
+          <p>Event Date: {potluck.event_date}</p>
+          <hr></hr>
         </div>)
       }
       
