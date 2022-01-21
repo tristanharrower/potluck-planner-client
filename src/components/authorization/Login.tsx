@@ -23,16 +23,16 @@ const Login = ({submitForm, update, errorText}:LoginProps) => {
 
 
   return <div className='container'>
-      <div className="mb-3 w-50 mx-auto">
+      <div >
         <h2>Login (Made with TypeScript)</h2>
       </div>
     <form onSubmit={onSubmit}>
-        <div className="mb-3 w-50 mx-auto">
+        <div >
             <label htmlFor="exampleInputEmail1" className="form-label">Username</label>
             <input type="text" name='username' className="form-control" 
             id="exampleInputEmail1" aria-describedby="emailHelp" onChange={onChange}/>
         </div>
-        <div className="mb-3 w-50 mx-auto">
+        <div>
             <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
             <input type="password" name='password' className="form-control" 
             id="exampleInputPassword1" onChange={onChange}/>

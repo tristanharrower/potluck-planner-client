@@ -4,6 +4,7 @@ import Login from './Login';
 import { useNavigate } from 'react-router-dom';
 
 import request from '../../../src/api';
+import Register from './Register';
 
 
 interface AuthProps {
@@ -17,12 +18,14 @@ interface IFormValues {
 }
 
 
+
 const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
 
   const navigate = useNavigate()
 
   const [formValues, setFormValues] = useState<IFormValues>({username:'',password:''})
   const [errorText, setErrorText] = useState<string>('')
+  const [login, setLogin] = useState<boolean>(true)
 
   const updateForm = (inputName:string, inputValue:string) => {
     setFormValues({...formValues, [inputName]:inputValue})
@@ -34,20 +37,31 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
   
         setErrorText('Please input Username and Password')
       } else {
-        request.post('/authorization/login', {
+        let authType = '';
+        if(login){
+          authType = 'login'
+        } else {
+          authType = 'register'
+        }
+       
+        request.post(`/authorization/${authType}`, {
           username:formValues.username,
           password:formValues.password
         })
         .then((resp:any)=> {
-          
-          const loggedUser = {
-            person_id:resp.data.person_id,
-            username:resp.data.username,
-            token:resp.data.token
+          if(authType==='login'){
+            const loggedUser = {
+              person_id:resp.data.person_id,
+              username:resp.data.username,
+              token:resp.data.token
+            }
+            setUser(loggedUser)
+            setIsLoggedIn(true)
+            navigate('/')
+          }else {
+            navigate('/auth')
+            setLogin(true)
           }
-          setUser(loggedUser)
-          setIsLoggedIn(true)
-          navigate('/')
         })
         .catch((err:any) => {
           if(err.request.status === 401){
@@ -60,12 +74,32 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
       }
   }
  
-  return  <div>
-    <Login 
-    update={updateForm} 
-    submitForm={submitForm}
-    errorText={errorText}/>
-  </div>
+  return  <div className="mb-3 w-50 mx-auto">
+   {
+     login ? 
+
+     <Login 
+     update={updateForm} 
+     submitForm={submitForm}
+     errorText={errorText}/>
+     : 
+     <Register 
+     update={updateForm} 
+     submitForm={submitForm}
+     errorText={errorText}/>
+   }
+   {
+     login ?
+     <p>Don't have an account yet? Register here! 
+      <button onClick={()=>setLogin(false)}>Register</button>
+    </p>
+    :
+    <p>Already have an account? Login here! 
+      <button onClick={()=>setLogin(true)}>Register</button>
+    </p>
+   }
+   </div>
+  
 };
 
 export default Auth;
