@@ -6,8 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import request from '../../../src/api';
 import Register from './Register';
 
-import food from '../../images/food2.jpg'
-
 interface AuthProps {
   setIsLoggedIn:Function,
   setUser:Function,
