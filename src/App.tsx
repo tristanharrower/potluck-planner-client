@@ -6,7 +6,7 @@ import {
 import Auth from './components/authorization/Auth'
 import HomePage from './components/homepage/HomePage';
 import { useState } from 'react';
-
+import './_app.css'
 
 interface IUser{
   person_id:number,

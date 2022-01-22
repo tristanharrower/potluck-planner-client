@@ -22,9 +22,6 @@ const Register = ({submitForm, update, errorText}:RegisterProps) => {
       }
 
   return <div className='container'>
-  <div >
-    <h2>Register (Made with TypeScript)</h2>
-  </div>
 <form onSubmit={onSubmit}>
     <div >
         <label htmlFor="exampleInputEmail1" className="form-label">Username</label>
@@ -37,7 +34,7 @@ const Register = ({submitForm, update, errorText}:RegisterProps) => {
         id="exampleInputPassword1" onChange={onChange}/>
     </div>
     <div className='text-center'>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Register</button>
     </div>
     <div className='text-center'>
         <p className='error'>{errorText}</p>

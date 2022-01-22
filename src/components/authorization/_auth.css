@@ -1,7 +1,16 @@
 *{
-    background-color: rgb(37, 36, 36);
-    color:rgb(245, 230, 230)
+    margin:0;
+    padding:0;
+    background-color: #272b2a;
+    color:rgb(245, 233, 233)
 }
 .error{
     color:rgb(184, 26, 26)
 }
+.btn {
+    background-color:#6a6f6e !important;
+    border-color: #272b2a !important;
+    margin: 5% !important;
+}
+
+

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import request from '../../../src/api';
 import Register from './Register';
 
+import food from '../../images/food2.jpg'
 
 interface AuthProps {
   setIsLoggedIn:Function,
@@ -69,36 +70,39 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
           } else {
             setErrorText('Oops, something went wrong on the server')
           }
-          
         })
       }
   }
  
-  return  <div className="mb-3 w-50 mx-auto">
-   {
-     login ? 
+  return  <div className='container'>
+    <h1 className='text-center'>Potluck Planner</h1>
+      
+      <div className="auth mb-3 w-50 mx-auto">
+      {
+        login ? 
 
-     <Login 
-     update={updateForm} 
-     submitForm={submitForm}
-     errorText={errorText}/>
-     : 
-     <Register 
-     update={updateForm} 
-     submitForm={submitForm}
-     errorText={errorText}/>
-   }
-   {
-     login ?
-     <p>Don't have an account yet? Register here! 
-      <button onClick={()=>setLogin(false)}>Register</button>
-    </p>
-    :
-    <p>Already have an account? Login here! 
-      <button onClick={()=>setLogin(true)}>Register</button>
-    </p>
-   }
-   </div>
+        <Login 
+        update={updateForm} 
+        submitForm={submitForm}
+        errorText={errorText}/>
+        : 
+        <Register 
+        update={updateForm} 
+        submitForm={submitForm}
+        errorText={errorText}/>
+      }
+      {
+        login ?
+        <p>Don't have an account yet? Register here! 
+          <button className="btn btn-primary " onClick={()=>setLogin(false)}>Register</button>
+        </p>
+        :
+        <p>Already have an account? Login here! 
+          <button className="btn btn-primary" onClick={()=>setLogin(true)}>Login</button>
+        </p>
+      }
+      </div>
+    </div>
   
 };
 
