@@ -72,10 +72,10 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
       }
   }
  
-  return  <div className='container wrapper'>
+  return  <div className='auth-wrapper'>
     <h1 className='text-center'>Potluck Planner</h1>
       
-      <div className="auth mb-3 w-50 mx-auto">
+      <div className="mb-3 w-50 mx-auto auth">
       {
         login ? 
 
