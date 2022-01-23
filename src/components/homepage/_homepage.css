@@ -7,9 +7,12 @@
 .home_header{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    background-color: #222222;
+    height:10vh;
 }
 [data-initials]:before {
-    background: #6a6f6e;
+    background: #45bba3;
     color: white;
     opacity: 1; 
     content: attr(data-initials); 
@@ -23,8 +26,11 @@
     line-height: 50px; 
     text-align: center; 
     }
-.settings{
-    margin-top: .25em;
-}
+    .settings{
+        margin-right: 1em;
+    }
+    .user_icon{
+        margin-left: 1em;
+    }
 
 

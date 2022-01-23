@@ -54,13 +54,12 @@ const navigate = useNavigate()
   }, [isLoggedIn, navigate, user.token])
 
   return <div className='home-wrapper'>
-    <div className='home_header m-3'>
-      <div data-initials={user.username.charAt(0).toUpperCase()}></div>
-        <h3>Potluck Planner</h3>
-        <FontAwesome className='fas fa-cog settings' size='2x'/>
+    <div className='home_header'>
+      <div data-initials={user.username.charAt(0).toUpperCase()} 
+      className='user_icon'></div>
+      <h3>Potluck Planner</h3>
+      <FontAwesome className='fas fa-cog settings' size='2x'/>
     </div>
-
-      <hr></hr>
       <h2>Profile</h2>
       <p>Username: {user.username}</p>
       <p>ID: {user.person_id}</p>
