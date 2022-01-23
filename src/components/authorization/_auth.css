@@ -1,7 +1,7 @@
-*{
-    margin:0;
-    padding:0;
-    color:rgb(245, 233, 233)
+.container {
+    background-color: #121212;
+    margin-top: 0;
+    color:rgb(243, 235, 238);
 }
 .error{
     color:rgb(184, 26, 26)
@@ -11,5 +11,3 @@
     border-color: #272b2a !important;
     margin: 5% !important;
 }
-
-

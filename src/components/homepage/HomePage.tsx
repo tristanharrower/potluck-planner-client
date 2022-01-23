@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import request from '../../../src/api';
+import './_homepage.css'
+var FontAwesome = require('react-fontawesome')
+
 
 interface HomePageProps{
   isLoggedIn:boolean,
@@ -50,8 +53,13 @@ const navigate = useNavigate()
 
   }, [isLoggedIn, navigate, user.token])
 
-  return <div>
-      <h1>Home Page Content</h1>
+  return <div className='home-wrapper'>
+    <div className='home_header m-3'>
+      <div data-initials={user.username.charAt(0).toUpperCase()}></div>
+        <h3>Potluck Planner</h3>
+        <FontAwesome className='fas fa-cog settings' size='2x'/>
+    </div>
+
       <hr></hr>
       <h2>Profile</h2>
       <p>Username: {user.username}</p>
