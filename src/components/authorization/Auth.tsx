@@ -7,10 +7,11 @@ import SignUp from './SignUp';
 
 interface AuthProps {
   setIsLoggedIn:Function,
-  setUser:Function,
+  setUser:Function 
 }
 
 interface IFormValues {
+  email:string,
   username:string,
   password:string
 }
@@ -19,7 +20,7 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
 
   const navigate = useNavigate()
 
-  const [formValues, setFormValues] = useState<IFormValues>({username:'',password:''})
+  const [formValues, setFormValues] = useState<IFormValues>({email:'', username:'',password:''})
   const [errorText, setErrorText] = useState<string>('')
   const [login, setLogin] = useState<boolean>(true)
 
@@ -29,9 +30,9 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
 
   const submitForm = () => {
   
-      if(!formValues.username || !formValues.password){
+      if(!formValues.email || !formValues.password){
   
-        setErrorText('Please input Username and Password')
+        setErrorText('Please input email and password')
       } else {
         let authType = '';
         if(login){
@@ -41,6 +42,7 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
         }
        
         request.post(`/authorization/${authType}`, {
+          email:formValues.email,
           username:formValues.username,
           password:formValues.password
         })
@@ -48,6 +50,7 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
           if(authType==='login'){
             const loggedUser = {
               person_id:resp.data.person_id,
+              email:resp.data.email,
               username:resp.data.username,
               token:resp.data.token
             }

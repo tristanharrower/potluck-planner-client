@@ -76,10 +76,10 @@ export default function SignIn({submitForm, update, errorText, setLogin}: SignIn
               margin="normal"
               required
               fullWidth
-              id="username"
-              label="Username"
-              name="username"
-              autoComplete="Username"
+              id="email"
+              label="email"
+              name="email"
+              autoComplete="email"
               autoFocus
               onChange={onChange}
             />

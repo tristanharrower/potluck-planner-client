@@ -51,8 +51,8 @@ const navigate = useNavigate()
 
   }, [isLoggedIn, navigate, user.token])
 
-  return <div className='home-wrapper'>
-    <div className='home_header'>
+  return <div>
+    <div>
       <div data-initials={user.username.charAt(0).toUpperCase()} 
       className='user_icon'></div>
       <h3>Potluck Planner</h3>
