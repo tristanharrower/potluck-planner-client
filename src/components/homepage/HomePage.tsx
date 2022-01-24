@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import request from '../../../src/api';
-import './_homepage.css'
-var FontAwesome = require('react-fontawesome')
 
 
 interface HomePageProps{
@@ -58,7 +56,6 @@ const navigate = useNavigate()
       <div data-initials={user.username.charAt(0).toUpperCase()} 
       className='user_icon'></div>
       <h3>Potluck Planner</h3>
-      <FontAwesome className='fas fa-cog settings' size='2x'/>
     </div>
       <h2>Profile</h2>
       <p>Username: {user.username}</p>

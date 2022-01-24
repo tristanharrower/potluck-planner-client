@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import './_auth.css'
-import Login from './Login';
 import { useNavigate } from 'react-router-dom';
 
 import request from '../../../src/api';
-import Register from './Register';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 
 interface AuthProps {
   setIsLoggedIn:Function,
@@ -15,8 +14,6 @@ interface IFormValues {
   username:string,
   password:string
 }
-
-
 
 const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
 
@@ -72,36 +69,24 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
       }
   }
  
-  return  <div className='auth-wrapper'>
-    <h1 className='text-center'>Potluck Planner</h1>
-      
-      <div className="mb-3 w-50 mx-auto auth">
+  return  <div>
       {
         login ? 
 
-        <Login 
+        <SignIn
         update={updateForm} 
         submitForm={submitForm}
-        errorText={errorText}/>
+        errorText={errorText}
+        setLogin={setLogin}
+        />
         : 
-        <Register 
+        <SignUp 
         update={updateForm} 
         submitForm={submitForm}
-        errorText={errorText}/>
+        errorText={errorText}
+        setLogin={setLogin}/>
       }
-      {
-        login ?
-        <p>Don't have an account yet? Register here! 
-          <button className="btn btn-primary " onClick={()=>setLogin(false)}>Register</button>
-        </p>
-        :
-        <p>Already have an account? Login here! 
-          <button className="btn btn-primary" onClick={()=>setLogin(true)}>Login</button>
-        </p>
-      }
-      </div>
     </div>
-  
 };
 
 export default Auth;
