@@ -47,7 +47,6 @@ export default function SignIn({submitForm, update, errorText, setLogin}: SignIn
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     submitForm()
     

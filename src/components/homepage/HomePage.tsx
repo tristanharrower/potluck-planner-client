@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import request from '../../../src/api';
+import Header from './Header'
 
 
 interface HomePageProps{
@@ -52,17 +53,7 @@ const navigate = useNavigate()
   }, [isLoggedIn, navigate, user.token])
 
   return <div>
-    <div>
-      <div data-initials={user.username.charAt(0).toUpperCase()} 
-      className='user_icon'></div>
-      <h3>Potluck Planner</h3>
-    </div>
-      <h2>Profile</h2>
-      <p>Username: {user.username}</p>
-      <p>ID: {user.person_id}</p>
-      <hr></hr>
-      <h3>Potlucks: </h3>
-      <hr></hr>
+      <Header user={user}/>
       {
         potlucks.map(potluck => 
         <div key={potluck.potluck_id}>
