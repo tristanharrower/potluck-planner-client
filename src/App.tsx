@@ -10,12 +10,13 @@ import './_app.css'
 
 interface IUser{
   person_id:number,
+  email:string,
   username:string,
   token:string
 }
 
 function App() {
-  const [user, setUser] = useState<IUser>({person_id:NaN, username:'', token:''})
+  const [user, setUser] = useState<IUser>({person_id:NaN, email:'', username:'', token:''})
   
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 

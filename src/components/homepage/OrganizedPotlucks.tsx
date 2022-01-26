@@ -11,13 +11,22 @@ interface OrganizedPotlucksProps{
         potluck_id: number,
         role: string,
         username: string,
-    }
+    },
+    user:{
+      person_id:number,
+      email:string,
+      username:string,
+      token:string
+    },
+    setIsLoggedIn:Function
 }
 
-const OrganizedPotlucks = ({potluck}:OrganizedPotlucksProps) => {
-
+const OrganizedPotlucks = ({potluck, user, setIsLoggedIn}:OrganizedPotlucksProps) => {
     
-  return <div>{potluck.username}</div>;
+  return <div>
+    <p>{potluck.event_name}</p>
+    <p>{user.username}</p>
+    </div>;
 };
 
 export default OrganizedPotlucks;

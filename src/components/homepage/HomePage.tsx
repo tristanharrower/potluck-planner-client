@@ -11,6 +11,7 @@ interface HomePageProps{
   setUser:Function,
   user:{
     person_id:number,
+    email:string,
     username:string,
     token:string
   }
@@ -41,11 +42,13 @@ const navigate = useNavigate()
       navigate('/auth')
     }
     
-      request.get(`/user/${user.person_id}/potlucks`,{
-        headers: { Authorization: `${user.token}` }
+      request.get(`potlucks`,{
+        headers: { Authorization: `${user.token}` },
+        params: {
+          person_id:user.person_id
+        }
       })
       .then((resp) => {
-        console.log(resp.data)
         setPotlucks(resp.data)
       })
       .catch(err => {
@@ -58,7 +61,11 @@ const navigate = useNavigate()
       <Header user={user}/>
       {
         potlucks.map(potluck => 
-          <OrganizedPotlucks potluck={potluck}/>
+          <OrganizedPotlucks 
+          key={potluck.potluck_id}
+          potluck={potluck} 
+          user={user}
+          setIsLoggedIn={setIsLoggedIn}/>
         )
       }
       
