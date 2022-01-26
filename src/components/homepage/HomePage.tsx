@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import request from '../../../src/api';
 import Header from './Header'
+import OrganizedPotlucks from './OrganizedPotlucks';
 
 
 interface HomePageProps{
@@ -40,28 +41,25 @@ const navigate = useNavigate()
       navigate('/auth')
     }
     
-      request.get('/potlucks',{
+      request.get(`/user/${user.person_id}/potlucks`,{
         headers: { Authorization: `${user.token}` }
       })
       .then((resp) => {
+        console.log(resp.data)
         setPotlucks(resp.data)
       })
       .catch(err => {
         console.log(err.request)
       })
 
-  }, [isLoggedIn, navigate, user.token])
+  }, [isLoggedIn, navigate, user.token, user.person_id])
 
   return <div>
       <Header user={user}/>
       {
         potlucks.map(potluck => 
-        <div key={potluck.potluck_id}>
-          <p>{potluck.role}: {potluck.username}</p>
-          <p>Event Name: {potluck.event_name}</p>
-          <p>Event Date: {potluck.event_date}</p>
-          <hr></hr>
-        </div>)
+          <OrganizedPotlucks potluck={potluck}/>
+        )
       }
       
   </div>;
