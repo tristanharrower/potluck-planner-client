@@ -8,6 +8,7 @@ import HomePage from './components/homepage/HomePage';
 import { useState } from 'react';
 import './_app.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import AttendingPotlucks from './components/attending-potlucks/AttendingPotlucks';
 
 interface IUser{
   person_id:number,
@@ -29,22 +30,30 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-    <Routes>
+      <Routes>
 
-      <Route path="/" 
-      element={<HomePage 
-      isLoggedIn={isLoggedIn} 
-      setIsLoggedIn={setIsLoggedIn}
-      user={user}
-      setUser={setUser}/>}/>
+        <Route path="/" 
+        element={<HomePage 
+        isLoggedIn={isLoggedIn} 
+        setIsLoggedIn={setIsLoggedIn}
+        user={user}
+        setUser={setUser}/>}/>
 
-      <Route path="auth" 
-      element={<Auth 
-      setIsLoggedIn={setIsLoggedIn}
-      setUser={setUser}
-      />} />
+        <Route path="/attend" 
+        element={<AttendingPotlucks
+          isLoggedIn={isLoggedIn} 
+          setIsLoggedIn={setIsLoggedIn}
+          user={user}
+          setUser={setUser}
+        />}/>
 
-  </Routes>
+        <Route path="auth" 
+        element={<Auth 
+        setIsLoggedIn={setIsLoggedIn}
+        setUser={setUser}
+        />} />
+
+    </Routes>
   </ThemeProvider>
   );
 }

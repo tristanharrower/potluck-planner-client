@@ -58,7 +58,6 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
             setIsLoggedIn(true)
             navigate('/')
           }else {
-            navigate('/auth')
             setLogin(true)
           }
         })
@@ -72,7 +71,7 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
       }
   }
  
-  return  <div className='auth'>
+  return  <div>
       {
         login ? 
 

@@ -13,6 +13,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import EventIcon from '@mui/icons-material/Event';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+import { useNavigate } from 'react-router-dom';
 
 type Anchor = 'left';
 
@@ -43,6 +44,14 @@ export default function AvatarIcon({user}:AvatarIconProps) {
       setState({ ...state, [anchor]: open });
     };
 
+    const navigate = useNavigate()
+    const navigateAttend = () => {
+        navigate('/attend')
+    }
+    const navigateOrganize = () => {
+      navigate('/')
+  }
+
   const list = (anchor: Anchor) => (
     <Box
       
@@ -57,13 +66,13 @@ export default function AvatarIcon({user}:AvatarIconProps) {
             </ListItemIcon>
             <ListItemText primary={'Profile'} />
       </ListItem>
-      <ListItem button key={'Organized Potlucks'} >
+      <ListItem button key={'Organized Potlucks'} onClick={navigateOrganize} >
             <ListItemIcon>
                 <EventIcon/>
               </ListItemIcon>
             <ListItemText primary={'Organized Potlucks'} />
       </ListItem>
-      <ListItem button key={'Attending Potlucks'} >
+      <ListItem button key={'Attending Potlucks'} onClick={navigateAttend}>
             <ListItemIcon>
                 <DirectionsRunIcon/>
             </ListItemIcon>
