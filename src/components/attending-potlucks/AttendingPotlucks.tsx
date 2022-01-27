@@ -1,6 +1,8 @@
 import { Container } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import request from '../../api';
 import Header from '../header/Header';
+import Potlucks from '../homepage/Potlucks';
 
 interface AttendingProps{
     isLoggedIn:boolean,
@@ -14,13 +16,55 @@ interface AttendingProps{
     }
   }
 
+  interface IAttendingPotlucks{
+      potluck_id:number,
+      person_id: number,
+      username: string,
+      description: string,
+      event_date: string,
+      event_name: string,
+      event_time: string,
+      location: string,
+      role: string,
+      
+  }
+
 const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user}: AttendingProps) => {
+
+  const [attendingPotlucks, setAttendingPotlucks] = useState<Array<IAttendingPotlucks>>([])
+
+  useEffect(()=> {
+
+    request.get('attending-potlucks', {
+      headers: { Authorization: `${user.token}` },
+        params: {
+          person_id:user.person_id
+        }
+    })
+    .then(resp => {
+        setAttendingPotlucks(resp.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+    
+  }, [user.token, user.person_id])
+      
 
   return <div>
    <Header user={user}/>
       
       <Container maxWidth='lg' >
-      <p>Potlucks</p>
+      {
+        attendingPotlucks.map(attendingPotluck => 
+          <Potlucks 
+          key={attendingPotluck.potluck_id}
+          potluck={attendingPotluck} 
+          user={user}
+          setIsLoggedIn={setIsLoggedIn}/>
+        )
+      }
       </Container>
   
   </div>;
