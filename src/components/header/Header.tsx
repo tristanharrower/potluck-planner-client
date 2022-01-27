@@ -6,18 +6,6 @@ import Typography from '@mui/material/Typography';
 import AvatarIcon from './AvatarIcon';
 import { Button } from '@mui/material';
 
-/**
- * <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
- */
-
 interface IHeader{
     user:{
         person_id:number,
