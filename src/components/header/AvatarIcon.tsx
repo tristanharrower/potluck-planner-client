@@ -22,10 +22,11 @@ interface AvatarIconProps{
     person_id:number,
     username:string,
     token:string
-  }
+  },
+  setIsLoggedIn:Function
 }
 
-export default function AvatarIcon({user}:AvatarIconProps) {
+export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
   const [state, setState] = React.useState({
     left: false,
   });
@@ -49,6 +50,10 @@ export default function AvatarIcon({user}:AvatarIconProps) {
         navigate('/attend')
     }
     const navigateOrganize = () => {
+      navigate('/')
+  }
+  const navigateLogout = () => {
+      setIsLoggedIn(false)
       navigate('/')
   }
 
@@ -82,7 +87,7 @@ export default function AvatarIcon({user}:AvatarIconProps) {
       <Divider />
       <List>
         {['Logout'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem button key={text} onClick={navigateLogout}>
            <LogoutIcon sx={{}}/>
             <ListItemText primary={text} />
           </ListItem>

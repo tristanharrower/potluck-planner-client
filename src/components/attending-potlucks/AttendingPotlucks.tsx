@@ -51,9 +51,8 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user}: Attending
     
   }, [user.token, user.person_id])
       
-
   return <div>
-   <Header user={user}/>
+   <Header user={user} setIsLoggedIn={setIsLoggedIn}/>
       
       <Container maxWidth='lg' >
       {

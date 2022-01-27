@@ -23,15 +23,16 @@ interface IHeader{
         person_id:number,
         username:string,
         token:string
-      }
+      },
+      setIsLoggedIn:Function
 }
 
-export default function Header({user}:IHeader) {
+export default function Header({user, setIsLoggedIn}:IHeader) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <AvatarIcon user={user}/>
+          <AvatarIcon user={user} setIsLoggedIn={setIsLoggedIn}/>
           <Typography align='center' variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Potluck Planner
           </Typography>

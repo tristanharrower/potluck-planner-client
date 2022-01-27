@@ -59,7 +59,7 @@ const navigate = useNavigate()
   }, [isLoggedIn, navigate, user.token, user.person_id])
 
   return <div>
-      <Header user={user}/>
+      <Header user={user} setIsLoggedIn={setIsLoggedIn}/>
       
       <Container maxWidth='lg' >
       {
