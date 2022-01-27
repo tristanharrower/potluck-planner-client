@@ -56,6 +56,9 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
       setIsLoggedIn(false)
       navigate('/')
   }
+  const navigateProfile = () => {
+    navigate('/profile')
+  }
 
   const list = (anchor: Anchor) => (
     <Box
@@ -65,7 +68,7 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-      <ListItem button key={'Profile'} >
+      <ListItem button key={'Profile'} onClick={navigateProfile} >
             <ListItemIcon>
                 <PersonIcon/>
             </ListItemIcon>

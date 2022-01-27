@@ -9,6 +9,7 @@ import { useState } from 'react';
 import './_app.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AttendingPotlucks from './components/attending-potlucks/AttendingPotlucks';
+import Profile from './components/profile/Profile';
 
 interface IUser{
   person_id:number,
@@ -39,8 +40,16 @@ function App() {
         user={user}
         setUser={setUser}/>}/>
 
-        <Route path="/attend" 
+        <Route path="attend" 
         element={<AttendingPotlucks
+          isLoggedIn={isLoggedIn} 
+          setIsLoggedIn={setIsLoggedIn}
+          user={user}
+          setUser={setUser}
+        />}/>
+
+        <Route path="profile" 
+        element={<Profile
           isLoggedIn={isLoggedIn} 
           setIsLoggedIn={setIsLoggedIn}
           user={user}

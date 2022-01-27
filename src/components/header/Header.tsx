@@ -15,7 +15,11 @@ interface IHeader{
       setIsLoggedIn:Function
 }
 
+
+
 export default function Header({user, setIsLoggedIn}:IHeader) {
+  const path = window.location.pathname
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -24,7 +28,9 @@ export default function Header({user, setIsLoggedIn}:IHeader) {
           <Typography align='center' variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Potluck Planner
           </Typography>
-          <Button variant="contained" size="small">Create Event</Button>
+          <Button variant="contained" size="small">
+            {(path==='/attend') ? 'Attend Potluck' : 'Create Event'}
+            </Button>
         </Toolbar>
       </AppBar>
     </Box>
