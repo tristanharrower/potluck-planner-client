@@ -6,6 +6,19 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import AvatarIcon from './AvatarIcon';
+import { Button } from '@mui/material';
+
+/**
+ * <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+ */
 
 interface IHeader{
     user:{
@@ -24,15 +37,7 @@ export default function Header({user}:IHeader) {
           <Typography align='center' variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Potluck Planner
           </Typography>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <Button variant="contained" size="small">Create Event</Button>
         </Toolbar>
       </AppBar>
     </Box>
