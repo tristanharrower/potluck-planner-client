@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import request from '../../../src/api';
 import Header from './Header'
-import OrganizedPotlucks from './OrganizedPotlucks';
+import Potlucks from './Potlucks';
 
 
 interface HomePageProps{
@@ -59,9 +59,10 @@ const navigate = useNavigate()
 
   return <div>
       <Header user={user}/>
+      
       {
         potlucks.map(potluck => 
-          <OrganizedPotlucks 
+         <Potlucks 
           key={potluck.potluck_id}
           potluck={potluck} 
           user={user}
