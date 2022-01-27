@@ -17,7 +17,6 @@ interface HomePageProps{
     token:string
   }
 }
-
 interface IPotlucks{
   description: string,
   event_date: string,
@@ -29,7 +28,6 @@ interface IPotlucks{
   role: string,
   username: string,
 }
-
 
 const HomePage = ({isLoggedIn, setIsLoggedIn, setUser, user}: HomePageProps) => {
 
