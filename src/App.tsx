@@ -8,7 +8,7 @@ import HomePage from './components/homepage/HomePage';
 import { useState } from 'react';
 import './_app.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AttendingPotlucks from './components/attending-potlucks/AttendingPotlucks';
+import AttendingPotlucks from './components/attending-potlucks/AttendingPotlucksPage';
 import Profile from './components/profile/Profile';
 
 interface IUser{

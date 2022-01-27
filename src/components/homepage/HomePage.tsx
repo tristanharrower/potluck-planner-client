@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import request from '../../../src/api';
 import Header from '../header/Header'
-import Potlucks from './Potlucks';
+import Potlucks from '../potlucks/Potlucks';
 
 
 interface HomePageProps{
