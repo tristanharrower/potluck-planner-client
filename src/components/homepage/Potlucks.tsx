@@ -61,7 +61,7 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
   //border:'red solid 2px',
 
   return (
-      <Card sx={{ maxWidth: 1, m:1, height:'auto'}}>
+      <Card sx={{ maxWidth: 1, m:1, height:'auto', flexGrow:1}}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

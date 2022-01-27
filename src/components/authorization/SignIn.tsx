@@ -33,8 +33,6 @@ function Copyright(props: any) {
   );
 }
 
-const theme = createTheme();
-
 export default function SignIn({submitForm, update, errorText, setLogin}: SignInProps) {
 
     const onChange = (evt:any) => {

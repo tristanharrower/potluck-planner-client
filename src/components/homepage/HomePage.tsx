@@ -1,3 +1,4 @@
+import { Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import request from '../../../src/api';
@@ -60,6 +61,7 @@ const navigate = useNavigate()
   return <div>
       <Header user={user}/>
       
+      <Container maxWidth='lg' >
       {
         potlucks.map(potluck => 
          <Potlucks 
@@ -69,6 +71,7 @@ const navigate = useNavigate()
           setIsLoggedIn={setIsLoggedIn}/>
         )
       }
+      </Container>
       
   </div>;
 };
