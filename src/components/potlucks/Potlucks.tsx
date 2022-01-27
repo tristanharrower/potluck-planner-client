@@ -51,7 +51,6 @@ interface OrganizedPotlucksProps{
   setIsLoggedIn:Function
 }
 
-
 export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotlucksProps) {
   const [expanded, setExpanded] = React.useState(false);
 
