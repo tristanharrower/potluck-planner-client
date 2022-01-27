@@ -2,7 +2,7 @@ import { Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import request from '../../../src/api';
-import Header from './Header'
+import Header from './header/Header'
 import Potlucks from './Potlucks';
 
 

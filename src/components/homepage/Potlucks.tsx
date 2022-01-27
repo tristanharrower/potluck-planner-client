@@ -65,7 +65,7 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              R
+              {user.username.charAt(0).toUpperCase()}
             </Avatar>
           }
           action={
