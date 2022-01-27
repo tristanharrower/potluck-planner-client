@@ -50,9 +50,13 @@ export default function SignUp({submitForm, update, errorText, setLogin}: SignIn
     
     submitForm()
   };
-
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

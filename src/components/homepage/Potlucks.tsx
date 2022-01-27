@@ -58,9 +58,10 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  //border:'red solid 2px',
 
   return (
-      <Card sx={{ maxWidth: 1, border:'red solid 2px', m:1, height:'auto'}}>
+      <Card sx={{ maxWidth: 1, m:1, height:'auto'}}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

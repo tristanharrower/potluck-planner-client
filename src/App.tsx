@@ -7,6 +7,7 @@ import Auth from './components/authorization/Auth'
 import HomePage from './components/homepage/HomePage';
 import { useState } from 'react';
 import './_app.css'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 interface IUser{
   person_id:number,
@@ -20,7 +21,14 @@ function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
+
   return (
+    <ThemeProvider theme={darkTheme}>
     <Routes>
 
       <Route path="/" 
@@ -37,6 +45,7 @@ function App() {
       />} />
 
   </Routes>
+  </ThemeProvider>
   );
 }
 
