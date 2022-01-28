@@ -135,7 +135,6 @@ export default function SignUp({submitForm, update, errorText, setLogin}: SignIn
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

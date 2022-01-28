@@ -13,7 +13,7 @@ interface ProfileProps{
   }
 
 const Profile = ({isLoggedIn, setIsLoggedIn, setUser, user}: ProfileProps) => {
-    console.log(user)
+    
   return <div style={{color:'white'}}>{user.username}</div>;
 };
 
