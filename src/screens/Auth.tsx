@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import request from '../../../src/api';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
+import request from '../api';
+import SignIn from '../components/authorization/SignIn';
+import SignUp from '../components/authorization/SignUp';
 
 interface AuthProps {
   setIsLoggedIn:Function,

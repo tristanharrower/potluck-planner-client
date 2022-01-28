@@ -1,9 +1,9 @@
 import { Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import request from '../../../src/api';
-import Header from '../header/Header'
-import Potlucks from '../potlucks/Potlucks';
+import request from '../api';
+import Header from '../components/header/Header'
+import Potlucks from '../components/potlucks/Potlucks';
 
 
 interface HomePageProps{

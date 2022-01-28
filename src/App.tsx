@@ -3,8 +3,8 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Auth from './components/authorization/Auth'
-import HomePage from './components/homepage/HomePage';
+import Auth from './screens/Auth'
+import HomePage from './screens/HomePage';
 import { useState } from 'react';
 import './_app.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
