@@ -66,6 +66,9 @@ export default function SignUp({submitForm, update, errorText, setLogin}: SignIn
             alignItems: 'center',
           }}
         >
+           <Typography variant='h3'>
+              Potluck Planner
+           </Typography>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
@@ -135,6 +138,7 @@ export default function SignUp({submitForm, update, errorText, setLogin}: SignIn
             </Grid>
           </Box>
         </Box>
+        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

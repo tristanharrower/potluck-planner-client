@@ -3,6 +3,9 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import request from '../../api';
 import Grid from '@material-ui/core/Grid'
+import PeopleIcon from '@mui/icons-material/People';
+import FastfoodIcon from '@mui/icons-material/Fastfood';
+import Tooltip from '@mui/material/Tooltip';
 
 
 //food_id,potluck_id,username,food_wanted
@@ -61,26 +64,34 @@ const CardContentDropDown = ({potluckid, token}: DropDownProps) => {
 
 
   return  <CardContent>
-    <Grid container spacing={2} direction="column"
-  justifyContent="space-around"
-  alignItems="flex-start">
-      <Grid item>
-      <Typography>Guests:</Typography>
-      {
-        guests && guests.map(guest => {
-          return <Typography key={guest.username}>{guest.username}</Typography>
-        })
-      }  
+    <Grid container spacing={2}>
+      <Grid item xs={2}>
+        <Tooltip title="Guests">
+         <PeopleIcon/>
+         </Tooltip>
       </Grid>
-      <Grid item>
-      <Typography>Food: </Typography>
+      <Grid container xs={10} direction="row"
+  justifyContent="flex-start"
+  alignItems="center">
       {
-        food && food.map(res => {
-          return <Typography key={res.food_id}>{res.food_wanted}</Typography>
-        })
-      }
+            guests && guests.map(guest => {
+              return <Typography key={guest.username}>{guest.username},</Typography>
+            })
+          }
+      </Grid>
+      <Grid item xs={2}>
+        <Tooltip title="Food">
+          <FastfoodIcon/>
+        </Tooltip>
+      </Grid>
+      <Grid item xs={10}>
+      {
+            food && food.map(res => {
+              return <Typography key={res.food_id}>{res.food_wanted}</Typography>
+            })
+          }
+      </Grid>
     </Grid>
-  </Grid>
 </CardContent>;
 };
 

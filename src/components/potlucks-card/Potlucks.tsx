@@ -13,6 +13,7 @@ import { red } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CardContentDropDown from './CardContentDropDown';
 import EditIcon from '@mui/icons-material/Edit';
+import { Tooltip } from '@material-ui/core';
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -58,12 +59,14 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
   };
   //border:'red solid 2px',
 
+  const path = window.location.pathname
+
   return (
       <Card sx={{ maxWidth: 1, m:1, height:'auto', flexGrow:1}}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              {user.username.charAt(0).toUpperCase()}
+              {(path==='/attend') ? null : user.username.charAt(0).toUpperCase()}
             </Avatar>
           }
           title={potluck.event_name.toUpperCase()}
@@ -87,7 +90,9 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
         <hr></hr>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
-            <EditIcon />
+            {(path==='/attend') ? null : <Tooltip title="Edit Potluck">
+                <EditIcon />
+              </Tooltip>}
           </IconButton>
           <ExpandMore
             expand={expanded}
