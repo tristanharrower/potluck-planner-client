@@ -84,6 +84,7 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
           {potluck.description}
           </Typography>
         </CardContent>
+        <hr></hr>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
             <EditIcon />
@@ -97,6 +98,7 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
             <ExpandMoreIcon />
           </ExpandMore>
         </CardActions>
+       
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContentDropDown potluckid={potluck.potluck_id} token={user.token}/>
         </Collapse>
