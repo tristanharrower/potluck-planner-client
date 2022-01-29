@@ -1,8 +1,8 @@
 import { Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import request from '../../api';
-import Header from '../header/Header';
-import Potlucks from '../potlucks-card/Potlucks';
+import request from '../api';
+import Header from '../components/header/Header';
+import Potlucks from '../components/potlucks-card/Potlucks';
 
 interface AttendingProps{
     isLoggedIn:boolean,
