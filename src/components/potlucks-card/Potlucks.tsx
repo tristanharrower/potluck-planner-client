@@ -98,7 +98,7 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
           </ExpandMore>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContentDropDown/>
+          <CardContentDropDown potluckid={potluck.potluck_id} token={user.token}/>
         </Collapse>
       </Card>
   );
