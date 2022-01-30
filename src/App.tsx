@@ -10,6 +10,7 @@ import './_app.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AttendingPotlucks from './screens/AttendingPotlucksPage';
 import Profile from './components/profile/Profile';
+import CreatePotluck from './screens/CreatePotluck';
 
 interface IUser{
   person_id:number,
@@ -47,6 +48,14 @@ function App() {
           user={user}
           setUser={setUser}
         />}/>
+
+        <Route path="create" 
+          element={<CreatePotluck
+            isLoggedIn={isLoggedIn} 
+            setIsLoggedIn={setIsLoggedIn}
+            user={user}
+            setUser={setUser}
+          />}/>
 
         <Route path="profile" 
         element={<Profile
