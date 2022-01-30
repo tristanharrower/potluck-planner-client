@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import AvatarIcon from './AvatarIcon';
 import { Button } from '@mui/material';
+import CreatePotluck from '../create-potluck/CreatePotluck';
 
 interface IHeader{
     user:{
@@ -28,9 +29,7 @@ export default function Header({user, setIsLoggedIn}:IHeader) {
           <Typography align='center' variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Potluck Planner
           </Typography>
-          <Button variant="contained" size="small">
-            {(path==='/attend') ? 'Attend Potluck' : 'Create Event'}
-            </Button>
+            {(path==='/attend') ? 'Attend Potluck' : <CreatePotluck/>}
         </Toolbar>
       </AppBar>
     </Box>
