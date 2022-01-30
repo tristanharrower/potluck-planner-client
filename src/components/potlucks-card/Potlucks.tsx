@@ -14,6 +14,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CardContentDropDown from './CardContentDropDown';
 import EditIcon from '@mui/icons-material/Edit';
 import { Tooltip } from '@material-ui/core';
+import AddIcon from '@mui/icons-material/Add';
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -90,9 +91,24 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
         <hr></hr>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
-            {(path==='/attend') ? null : <Tooltip title="Edit Potluck">
+            {(path==='/attend') ?
+            <Tooltip title="Bring Food">
+                <AddIcon />
+            </Tooltip> 
+            : 
+            <Tooltip title="Edit Potluck">
                 <EditIcon />
-              </Tooltip>}
+            </Tooltip>
+          }
+          </IconButton>
+          <IconButton aria-label="add to favorites">
+            {(path==='/attend') ?
+            null
+            : 
+            <Tooltip title="Bring Food">
+                <AddIcon />
+            </Tooltip> 
+          }
           </IconButton>
           <ExpandMore
             expand={expanded}
