@@ -4,7 +4,6 @@ import {
   Route
 } from "react-router-dom";
 import Auth from './screens/Auth'
-import HomePage from './screens/OrganizedPotlucks';
 import { useState } from 'react';
 import './_app.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
