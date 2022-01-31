@@ -156,15 +156,19 @@ export default function CreatePotluckForm({update, submit}:CreatePotluckFormProp
             onChange={onChange}
           />
         </Grid>
-        <form onSubmit={handleSubmit}>
-        <Button
+        <Grid container xs={12} 
+        alignItems="center"
+        justifyContent="center">
+          <form onSubmit={handleSubmit}>
+            <Button
               type="submit"
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
               Submit
             </Button>
-            </form>
+          </form>
+        </Grid>
       </Grid>
     </React.Fragment>
         </Paper>
