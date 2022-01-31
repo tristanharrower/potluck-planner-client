@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import Header from '../components/header/Header';
 import CreatePotluckForm from '../components/create-potluck/CreatePotluckForm'
+import request from '../api'
+import { useNavigate } from 'react-router-dom';
+
+
 
 interface CreatePotluckProps{
     isLoggedIn:boolean,
@@ -14,16 +18,6 @@ interface CreatePotluckProps{
     }
   }
 
-  /**
-   * "person_id": 1,
-        "username": "tristan-harrower",
-        "event_name": "tristans second party",
-        "description": "party description",
-        "event_date": "january 10, 2022",
-        "event_time": "6:00pm",
-        "location": "columbus",
-        "role": "organizer"
-   */
     interface IFormValues{
         event_name: string,
         description: string,
@@ -36,6 +30,7 @@ interface CreatePotluckProps{
     }
 
 const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user}: CreatePotluckProps) => {
+    const navigate = useNavigate()
     const [formValues, setFormValues] = useState<IFormValues>({
         event_name: '',
         description: '',
@@ -51,7 +46,31 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user}: CreatePotluck
     }
 
     const submitForm = () => {
-      console.log(formValues)
+      const newPotluck = {
+        person_id:user.person_id,
+        username:user.username,
+        description:formValues.description,
+        event_name:formValues.event_name,
+        event_date:formValues.event_date,
+        event_time:formValues.event_time,
+        location:`${formValues.address} ${formValues.city} ${formValues.state} ${formValues.zip}`,
+        role:'organizer'
+      }
+
+      let data = JSON.stringify(newPotluck)
+      request.post('/potlucks', data, {
+        headers: { 
+          'Content-Type': 'application/json',
+          Authorization: `${user.token}`
+        },
+        
+      })
+      .then(resp => {
+        navigate('/')
+      })
+      .catch(err => {
+        console.log(err.request.response)
+      })
     }
   return <div>
      <Header user={user} setIsLoggedIn={setIsLoggedIn}/>

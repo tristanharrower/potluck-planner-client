@@ -12,5 +12,3 @@ document.getElementById('root')
 
 );
 
-//https://www.youtube.com/watch?v=vyJU9efvUtQ&ab_channel=TraversyMedia
-

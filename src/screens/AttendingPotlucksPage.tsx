@@ -37,9 +37,9 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user}: Attending
 
     request.get('attending-potlucks', {
       headers: { Authorization: `${user.token}` },
-        params: {
-          person_id:user.person_id
-        }
+      params: {
+        person_id:user.person_id
+      }
     })
     .then(resp => {
         setAttendingPotlucks(resp.data)
