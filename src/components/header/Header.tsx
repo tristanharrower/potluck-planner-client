@@ -28,7 +28,6 @@ export default function Header({user, setIsLoggedIn}:IHeader) {
     }
   }
 
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
