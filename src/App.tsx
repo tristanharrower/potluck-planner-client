@@ -4,13 +4,14 @@ import {
   Route
 } from "react-router-dom";
 import Auth from './screens/Auth'
-import HomePage from './screens/HomePage';
+import HomePage from './screens/OrganizedPotlucks';
 import { useState } from 'react';
 import './_app.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AttendingPotlucks from './screens/AttendingPotlucksPage';
 import Profile from './components/profile/Profile';
 import CreatePotluck from './screens/CreatePotluck';
+import OrganizedPotlucks from './screens/OrganizedPotlucks';
 
 interface IUser{
   person_id:number,
@@ -35,7 +36,7 @@ function App() {
       <Routes>
 
         <Route path="/" 
-        element={<HomePage 
+        element={<OrganizedPotlucks 
         isLoggedIn={isLoggedIn} 
         setIsLoggedIn={setIsLoggedIn}
         user={user}

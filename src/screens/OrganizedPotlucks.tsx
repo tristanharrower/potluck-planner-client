@@ -29,7 +29,7 @@ interface IPotlucks{
   username: string,
 }
 
-const HomePage = ({isLoggedIn, setIsLoggedIn, setUser, user}: HomePageProps) => {
+const OrganizedPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user}: HomePageProps) => {
 
 const [potlucks, setPotlucks] = useState<Array<IPotlucks>>([])
 
@@ -74,4 +74,4 @@ const navigate = useNavigate()
   </div>;
 };
 
-export default HomePage;
+export default OrganizedPotlucks;
