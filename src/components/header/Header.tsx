@@ -21,8 +21,8 @@ export default function Header({user, setIsLoggedIn}:IHeader) {
   const navigate = useNavigate()
   
   const handleClick = () => {
-    if(path==='/attend'){
-        navigate('/profile')
+    if(path==='/attending'){
+        navigate('/attend-potluck')
     } else {
       navigate('/create')
     }
@@ -37,7 +37,7 @@ export default function Header({user, setIsLoggedIn}:IHeader) {
             Potluck Planner
           </Typography>
           <Button variant="contained" onClick={handleClick}>
-            {(path==='/attend') ? 'Attend Potluck' : 'Create Potluck'}
+            {(path==='/attending') ? 'Attend Potluck' : 'Create Potluck'}
             </Button>
         </Toolbar>
       </AppBar>

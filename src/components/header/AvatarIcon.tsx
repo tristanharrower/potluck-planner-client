@@ -47,7 +47,7 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
 
     const navigate = useNavigate()
     const navigateAttend = () => {
-        navigate('/attend')
+        navigate('/attending')
     }
     const navigateOrganize = () => {
       navigate('/')

@@ -3,14 +3,15 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Auth from './screens/Auth'
+import Auth from './screens/AuthScreen'
 import { useState } from 'react';
 import './_app.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AttendingPotlucks from './screens/AttendingPotlucksPage';
+import AttendingPotlucks from './screens/AttendingScreen';
 import Profile from './components/profile/Profile';
-import CreatePotluck from './screens/CreatePotluck';
-import OrganizedPotlucks from './screens/OrganizedPotlucks';
+import CreatePotluck from './screens/CreatePotluckScreen';
+import OrganizedPotlucks from './screens/OrganizedPotlucksScreen';
+import AttendPotluck from './screens/AttendPotluckScreen'
 
 interface IUser{
   person_id:number,
@@ -41,8 +42,16 @@ function App() {
         user={user}
         setUser={setUser}/>}/>
 
-        <Route path="attend" 
+        <Route path="attending" 
         element={<AttendingPotlucks
+          isLoggedIn={isLoggedIn} 
+          setIsLoggedIn={setIsLoggedIn}
+          user={user}
+          setUser={setUser}
+        />}/>
+
+      <Route path="attend-potluck" 
+        element={<AttendPotluck
           isLoggedIn={isLoggedIn} 
           setIsLoggedIn={setIsLoggedIn}
           user={user}
