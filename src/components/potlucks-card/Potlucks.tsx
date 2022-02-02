@@ -14,7 +14,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CardContentDropDown from './CardContentDropDown';
 import EditIcon from '@mui/icons-material/Edit';
 import { Tooltip } from '@material-ui/core';
-import AddIcon from '@mui/icons-material/Add';
+import BringFood from '../food/BringFood'
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -67,7 +67,7 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              {(path==='/attend') ? null : user.username.charAt(0).toUpperCase()}
+              {(path==='/attending') ? null : user.username.charAt(0).toUpperCase()}
             </Avatar>
           }
           title={potluck.event_name.toUpperCase()}
@@ -81,6 +81,12 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
           sx = {{}}
         />
         <CardContent>
+          {
+            (path==='/') ? <Typography variant="body2" color="text.secondary">
+            Potluck ID: {potluck.potluck_id}
+            </Typography> : null
+          }
+      
           <Typography variant="body2" color="text.secondary">
           {potluck.location.toUpperCase()}
           </Typography>
@@ -91,10 +97,8 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
         <hr></hr>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
-            {(path==='/attend') ?
-            <Tooltip title="Bring Food">
-                <AddIcon />
-            </Tooltip> 
+            {(path==='/attending') ?
+            null
             : 
             <Tooltip title="Edit Potluck">
                 <EditIcon />
@@ -102,13 +106,7 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
           }
           </IconButton>
           <IconButton aria-label="add to favorites">
-            {(path==='/attend') ?
-            null
-            : 
-            <Tooltip title="Bring Food">
-                <AddIcon />
-            </Tooltip> 
-          }
+                <BringFood user={user} potluck={potluck} setExpanded={setExpanded}/>
           </IconButton>
           <ExpandMore
             expand={expanded}
@@ -121,7 +119,8 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
         </CardActions>
        
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContentDropDown potluckid={potluck.potluck_id} token={user.token}/>
+          <CardContentDropDown potluckid={potluck.potluck_id} 
+          token={user.token}/>
         </Collapse>
       </Card>
   );

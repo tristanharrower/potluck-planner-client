@@ -84,7 +84,7 @@ const CardContentDropDown = ({potluckid, token}: DropDownProps) => {
           <FastfoodIcon/>
         </Tooltip>
       </Grid>
-      <Grid item xs={10}>
+      <Grid container xs={10} direction="column">
       {
             food && food.map(res => {
               return <Typography key={res.food_id}>{res.food_wanted}</Typography>
