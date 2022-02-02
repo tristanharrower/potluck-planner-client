@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Routes,
-  Route
+  Route,
+  useNavigate
 } from "react-router-dom";
 import Auth from './screens/AuthScreen'
 import { useState } from 'react';
@@ -31,10 +32,21 @@ function App() {
     },
   });
 
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    
+    if(!isLoggedIn){
+      navigate('/auth')
+    }
+  },[isLoggedIn, navigate])
+
+
   return (
+    
     <ThemeProvider theme={darkTheme}>
       <Routes>
-
+    
         <Route path="/" 
         element={<OrganizedPotlucks 
         isLoggedIn={isLoggedIn} 
@@ -75,6 +87,12 @@ function App() {
         />}/>
 
         <Route path="auth" 
+        element={<Auth 
+        setIsLoggedIn={setIsLoggedIn}
+        setUser={setUser}
+        />} />
+
+        <Route path="*" 
         element={<Auth 
         setIsLoggedIn={setIsLoggedIn}
         setUser={setUser}

@@ -101,7 +101,7 @@ export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
 
   return (
     <div>
-     <Tooltip title="Bring Food">
+     <Tooltip title="Add Food">
         <AddIcon onClick={handleOpen}/>
     </Tooltip>
      

@@ -36,10 +36,6 @@ const [potlucks, setPotlucks] = useState<Array<IPotlucks>>([])
 const navigate = useNavigate()
 
   useEffect(()=> {
-
-    if(!isLoggedIn){
-      navigate('/auth')
-    }
     
       request.get(`potlucks`,{
         headers: { Authorization: `${user.token}` },
