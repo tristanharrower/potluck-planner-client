@@ -68,7 +68,7 @@ export default function CreatePotluckForm({update, submit}:CreatePotluckFormProp
             required
             id="potluck_id"
             name="potluck_id"
-            label="Unique Potluck ID"
+            label="Potluck ID"
             fullWidth
             autoComplete="given-name"
             variant="outlined"

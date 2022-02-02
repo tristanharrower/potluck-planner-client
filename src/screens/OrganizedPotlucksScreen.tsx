@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import request from '../api';
@@ -57,6 +57,7 @@ const navigate = useNavigate()
       
       <Container maxWidth='lg' >
       {
+        (potlucks.length!==0) ?
         potlucks.map(potluck => 
          <Potlucks 
           key={potluck.potluck_id}
@@ -64,6 +65,8 @@ const navigate = useNavigate()
           user={user}
           setIsLoggedIn={setIsLoggedIn}/>
         )
+        : 
+        <Typography sx={{color:'white'}}>Help</Typography>
       }
       </Container>
       

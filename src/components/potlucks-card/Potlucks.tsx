@@ -81,10 +81,10 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
           sx = {{}}
         />
         <CardContent>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.primary">
           {potluck.location.toUpperCase()}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.primary">
           {potluck.description}
           </Typography>
         </CardContent>

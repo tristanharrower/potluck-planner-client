@@ -4,7 +4,7 @@ import Modal from '@mui/material/Modal';
 import AddIcon from '@mui/icons-material/Add';
 import { Tooltip } from '@material-ui/core';
 import TextField from '@mui/material/TextField';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import request from '../../api';
 
 interface BringFoodProps{
@@ -88,7 +88,6 @@ export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
       },
     })
     .then(res =>   {
-      console.log(res)
       handleClose()
       setExpanded(false)
     })
@@ -114,6 +113,8 @@ export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
       >
         <form onSubmit={handleSubmit}>
         <Box sx={style}>
+          <Typography>{potluck.event_name.toUpperCase()}</Typography>
+          <Typography>{`${potluck.event_date} : ${potluck.event_time}`}</Typography>
           <TextField id="outlined-basic" label="Add Food" variant="outlined" onChange={onChange} sx={{m:2}}/>
           <Button variant="outlined" type='submit'>
            Submit
