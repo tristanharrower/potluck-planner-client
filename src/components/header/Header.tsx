@@ -36,9 +36,13 @@ export default function Header({user, setIsLoggedIn}:IHeader) {
           <Typography align='center' variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Potluck Planner
           </Typography>
-          <Button variant="contained" onClick={handleClick}>
+          {
+            (path==='/create' || path==='/attend-potluck') ? null :
+            <Button variant="contained" onClick={handleClick}>
             {(path==='/attending') ? 'Attend Potluck' : 'Create Potluck'}
-            </Button>
+            </Button> 
+          }
+          
         </Toolbar>
       </AppBar>
     </Box>

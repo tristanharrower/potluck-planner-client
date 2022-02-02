@@ -63,7 +63,6 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user}: CreatePotluck
           'Content-Type': 'application/json',
           Authorization: `${user.token}`
         },
-        
       })
       .then(resp => {
         navigate('/')

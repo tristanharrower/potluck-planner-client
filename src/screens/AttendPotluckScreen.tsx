@@ -1,10 +1,12 @@
-import { Container } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import request from '../api';
+import React, { useState } from 'react';
 import Header from '../components/header/Header';
-import Potlucks from '../components/potlucks-card/Potlucks';
+import AttendPotluckForm from '../components/attend-potluck/AttendPotluckForm'
+import request from '../api'
+import { useNavigate } from 'react-router-dom';
 
-interface AttendingProps{
+
+
+interface CreatePotluckProps{
     isLoggedIn:boolean,
     setIsLoggedIn:Function,
     setUser:Function,
@@ -16,56 +18,49 @@ interface AttendingProps{
     }
   }
 
-  interface IAttendingPotlucks{
+    interface IFormValues{
       potluck_id:number,
-      person_id: number,
-      username: string,
-      description: string,
-      event_date: string,
-      event_name: string,
-      event_time: string,
-      location: string,
-      role: string,
-      
-  }
+      person_id:number,
+      username:string,
+      role:string
+    }
 
-const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user}: AttendingProps) => {
-
-  const [attendingPotlucks, setAttendingPotlucks] = useState<Array<IAttendingPotlucks>>([])
-
-  useEffect(()=> {
-
-    request.get('potlucks', {
-      headers: { Authorization: `${user.token}` },
-      params: {
-      }
+const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user}: CreatePotluckProps) => {
+    const navigate = useNavigate()
+    const [formValues, setFormValues] = useState<IFormValues>({
+      potluck_id:NaN,
+      person_id:user.person_id,
+      username:user.username,
+      role:'guest' 
     })
-    .then(resp => {
-        setAttendingPotlucks(resp.data)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    const updateForm = (inputName:string, inputValue:string) => {
+      setFormValues({...formValues, [inputName]:inputValue})
+      console.log(formValues)
+    }
 
-    
-  }, [user.token, user.person_id])
-      
+    const submitForm = () => {
+
+      let data = JSON.stringify(formValues)
+      request.post('/attending-potlucks', data, {
+        headers: { 
+          'Content-Type': 'application/json',
+          Authorization: `${user.token}`
+        },
+      })
+      .then(resp => {
+        navigate('/attending')
+      })
+      .catch(err => {
+        console.log(err.request.response)
+      })
+    }
   return <div>
-   <Header user={user} setIsLoggedIn={setIsLoggedIn}/>
-      
-      <Container maxWidth='lg' >
-      {
-        attendingPotlucks.map(attendingPotluck => 
-          <Potlucks 
-          key={attendingPotluck.potluck_id}
-          potluck={attendingPotluck} 
-          user={user}
-          setIsLoggedIn={setIsLoggedIn}/>
-        )
-      }
-      </Container>
-  
+     <Header user={user} setIsLoggedIn={setIsLoggedIn}/>
+
+     <AttendPotluckForm 
+     update={updateForm} 
+     submit={submitForm}/>
   </div>;
 };
 
-export default AttendingPotlucks;
+export default CreatePotluck;
