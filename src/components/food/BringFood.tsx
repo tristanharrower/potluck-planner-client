@@ -88,6 +88,7 @@ export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
       },
     })
     .then(res =>   {
+      console.log(res)
       handleClose()
       setExpanded(false)
     })

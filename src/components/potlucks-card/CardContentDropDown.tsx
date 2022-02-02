@@ -37,6 +37,7 @@ const CardContentDropDown = ({potluckid, token}: DropDownProps) => {
       }
     })
     .then(resp => {
+      console.log(resp.data)
       setFood(resp.data)
     })
     .catch(err => {
@@ -87,7 +88,7 @@ const CardContentDropDown = ({potluckid, token}: DropDownProps) => {
       <Grid container xs={10} direction="column">
       {
             food && food.map(res => {
-              return <Typography key={res.food_id}>{res.food_wanted}</Typography>
+              return <Typography key={res.food_id}>{res.food_wanted} : {res.username}</Typography>
             })
           }
       </Grid>
