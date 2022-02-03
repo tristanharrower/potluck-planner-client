@@ -115,7 +115,7 @@ export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
         <Box sx={style}>
           <Typography>{potluck.event_name.toUpperCase()}</Typography>
           <Typography>{`${potluck.event_date} : ${potluck.event_time}`}</Typography>
-          <TextField id="outlined-basic" label="Add Food" variant="outlined" onChange={onChange} sx={{m:2}}/>
+          <TextField id="outlined-basic" label="Add Food:" variant="outlined" onChange={onChange} sx={{m:2}}/>
           <Button variant="outlined" type='submit'>
            Submit
         </Button>

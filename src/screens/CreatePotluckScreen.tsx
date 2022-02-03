@@ -56,6 +56,7 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user}: CreatePotluck
         location:`${formValues.address} ${formValues.city} ${formValues.state} ${formValues.zip}`,
         role:'organizer'
       }
+      console.log(newPotluck)
 
       let data = JSON.stringify(newPotluck)
       request.post('/potlucks', data, {
@@ -76,7 +77,9 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user}: CreatePotluck
 
      <CreatePotluckForm 
      update={updateForm} 
-     submit={submitForm}/>
+     submit={submitForm}
+     setFormValues={setFormValues}
+     formValues={formValues}/>
   </div>;
 };
 

@@ -8,11 +8,23 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import { Button, Grid } from '@mui/material';
+import  DatePicker from './DatePicker'
 
 
 interface CreatePotluckFormProps{
    update:Function,
    submit:Function,
+   setFormValues:Function,
+   formValues:{
+        event_name: string,
+        description: string,
+        event_date: string,
+        event_time: string,
+        address:string,
+        city:string,
+        state:string,
+        zip:string, 
+   }
 }
 
 const darkTheme = createTheme({
@@ -21,7 +33,7 @@ const darkTheme = createTheme({
   },
 });
 
-export default function CreatePotluckForm({update, submit}:CreatePotluckFormProps) {
+export default function CreatePotluckForm({update, submit, setFormValues, formValues}:CreatePotluckFormProps) {
 
   const onChange = (evt:any) => {
     const name = evt.target.name;
@@ -59,10 +71,13 @@ export default function CreatePotluckForm({update, submit}:CreatePotluckFormProp
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
         <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6">
         Potluck Information
       </Typography>
       <Grid container spacing={3}>
+        <Grid item xs={12}>
+        <DatePicker setFormValues={setFormValues} formValues={formValues}/>
+        </Grid>
         <Grid item xs={12}>
           <TextField
             required
@@ -71,28 +86,6 @@ export default function CreatePotluckForm({update, submit}:CreatePotluckFormProp
             label="Event Name"
             fullWidth
             autoComplete="given-name"
-            variant="outlined"
-            onChange={onChange}
-          />
-        </Grid>
-        <Grid item xs={12}>
-        <TextField
-            required
-            id="event_date"
-            name="event_date"
-            label="Event Date"
-            fullWidth
-            variant="outlined"
-            onChange={onChange}
-          />
-        </Grid>
-        <Grid item xs={12}>
-        <TextField
-            required
-            id="event_time"
-            name="event_time"
-            label="Event Time"
-            fullWidth
             variant="outlined"
             onChange={onChange}
           />
@@ -165,7 +158,7 @@ export default function CreatePotluckForm({update, submit}:CreatePotluckFormProp
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Submit
+              Create
             </Button>
           </form>
         </Grid>
