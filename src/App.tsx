@@ -26,11 +26,7 @@ function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 
-  const darkTheme = createTheme({
-    palette: {
-      mode: 'dark',
-    },
-  });
+ 
 
   const navigate = useNavigate()
 
@@ -41,10 +37,27 @@ function App() {
     }
   },[isLoggedIn, navigate])
 
+  const theme = createTheme({
+    palette: {
+      primary: {
+        light: '#757ce8',
+        main: '#3f50b5',
+        dark: '#002884',
+        contrastText: '#fff',
+      },
+      secondary: {
+        light: '#ff7961',
+        main: '#f44336',
+        dark: '#ba000d',
+        contrastText: '#000',
+      },
+    },
+  });
+
 
   return (
     
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <Routes>
     
         <Route path="/" 

@@ -49,14 +49,8 @@ export default function SignIn({submitForm, update, errorText, setLogin}: SignIn
     submitForm()
     
   }
-  const darkTheme = createTheme({
-    palette: {
-      mode: 'dark',
-    },
-  });
-
   return (
-    <ThemeProvider theme={darkTheme}>
+    
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -130,6 +124,6 @@ export default function SignIn({submitForm, update, errorText, setLogin}: SignIn
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
-    </ThemeProvider>
+   
   );
 }

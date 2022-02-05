@@ -27,12 +27,6 @@ interface CreatePotluckFormProps{
    }
 }
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
-
 export default function CreatePotluckForm({update, submit, setFormValues, formValues}:CreatePotluckFormProps) {
 
   const onChange = (evt:any) => {
@@ -51,7 +45,7 @@ export default function CreatePotluckForm({update, submit, setFormValues, formVa
 
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <div>
       <CssBaseline />
       <AppBar
         position="absolute"
@@ -62,7 +56,7 @@ export default function CreatePotluckForm({update, submit, setFormValues, formVa
           borderBottom: (t) => `1px solid ${t.palette.divider}`,
         }}
       >
-        <Toolbar>
+        <Toolbar >
           <Typography variant="h6" color="inherit" noWrap>
             Create Potluck
           </Typography>
@@ -71,7 +65,7 @@ export default function CreatePotluckForm({update, submit, setFormValues, formVa
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
         <React.Fragment>
-      <Typography variant="h6">
+      <Typography variant="h6" sx={{mb:1}}>
         Potluck Information
       </Typography>
       <Grid container spacing={3}>
@@ -166,6 +160,6 @@ export default function CreatePotluckForm({update, submit, setFormValues, formVa
     </React.Fragment>
         </Paper>
       </Container>
-    </ThemeProvider>
+      </div>
   );
 }
