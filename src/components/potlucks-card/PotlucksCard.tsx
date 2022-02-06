@@ -63,7 +63,7 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
   const path = window.location.pathname
 
   return (
-      <Card sx={{ width: 1, m:1, height:'auto', flexGrow:1, bgcolor:'secondary.light'}}>
+      <Card sx={{ width: '515px', m:1, height:'auto', flexGrow:1, bgcolor:'secondary.light'}}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -78,7 +78,7 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
           component="img"
           height="300px"
           width='300px'
-          image={require('../../images/food3.jpg')}
+          image={require('../../images/food.jpg')}
           alt="Paella dish"
           sx = {{backgroundPosition:'center center', 
           textAlign:'center', m:"auto", backgroundRepeat:'no-repeat', backgroundSize:'cover'}}
