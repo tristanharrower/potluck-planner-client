@@ -14,7 +14,7 @@ interface ProfileProps{
 
 const Profile = ({isLoggedIn, setIsLoggedIn, setUser, user}: ProfileProps) => {
     
-  return <div>{user.username}</div>;
+  return <div>To-Do</div>;
 };
 
 export default Profile;

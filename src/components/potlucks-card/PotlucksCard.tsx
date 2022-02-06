@@ -73,11 +73,11 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
           title={potluck.event_name.toUpperCase()}
           subheader={`${potluck.event_date} : ${potluck.event_time}`}
         />
+
         <CardMedia
           component="img"
           height="300px"
-          width="100px"
-          image={require('../../images/food3.jpg')}
+          image={require('../../images/food.jpg')}
           alt="Paella dish"
           sx = {{backgroundPosition:'center center', 
           textAlign:'center', m:"auto", backgroundRepeat:'no-repeat', backgroundSize:'cover'}}

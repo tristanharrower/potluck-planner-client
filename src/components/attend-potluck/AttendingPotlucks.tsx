@@ -1,8 +1,7 @@
 import { Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import request from '../api';
-import Header from '../components/header/Header';
-import Potlucks from '../components/potlucks-card/Potlucks';
+import request from '../../api';
+import Potlucks from '../potlucks-card/PotlucksCard';
 
 interface AttendingProps{
     isLoggedIn:boolean,
@@ -52,7 +51,6 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user}: Attending
   }, [user.token, user.person_id])
       
   return <div>
-   <Header user={user} setIsLoggedIn={setIsLoggedIn}/>
       
       <Container maxWidth='sm' >
       {

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Header from '../components/header/Header';
 import AttendPotluckForm from '../components/attend-potluck/AttendPotluckForm'
 import request from '../api'
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/header/Header';
 
 
 
@@ -48,15 +48,14 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user}: CreatePotluck
         },
       })
       .then(resp => {
-        navigate('/attending')
+        navigate('/')
       })
       .catch(err => {
         console.log(err.request.response)
       })
     }
   return <div>
-     <Header user={user} setIsLoggedIn={setIsLoggedIn}/>
-
+    <Header user={user} setIsLoggedIn={setIsLoggedIn}/>
      <AttendPotluckForm 
      update={updateForm} 
      submit={submitForm}/>

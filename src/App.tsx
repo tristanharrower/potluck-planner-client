@@ -8,11 +8,9 @@ import Auth from './screens/AuthScreen'
 import { useState } from 'react';
 import './_app.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AttendingPotlucks from './screens/AttendingScreen';
-import Profile from './components/profile/Profile';
 import CreatePotluck from './screens/CreatePotluckScreen';
-import OrganizedPotlucks from './screens/OrganizedPotlucksScreen';
 import AttendPotluck from './screens/AttendPotluckScreen'
+import HomeScreen from './screens/HomeScreen';
 
 interface IUser{
   person_id:number,
@@ -59,21 +57,15 @@ function App() {
     
     <ThemeProvider theme={theme}>
       <Routes>
-    
-        <Route path="/" 
-        element={<OrganizedPotlucks 
-        isLoggedIn={isLoggedIn} 
-        setIsLoggedIn={setIsLoggedIn}
-        user={user}
-        setUser={setUser}/>}/>
 
-        <Route path="attending" 
-        element={<AttendingPotlucks
+        <Route path="/" 
+        element={<HomeScreen
           isLoggedIn={isLoggedIn} 
           setIsLoggedIn={setIsLoggedIn}
           user={user}
           setUser={setUser}
         />}/>
+
 
       <Route path="attend-potluck" 
         element={<AttendPotluck
@@ -91,13 +83,6 @@ function App() {
             setUser={setUser}
           />}/>
 
-        <Route path="profile" 
-        element={<Profile
-          isLoggedIn={isLoggedIn} 
-          setIsLoggedIn={setIsLoggedIn}
-          user={user}
-          setUser={setUser}
-        />}/>
 
         <Route path="auth" 
         element={<Auth 

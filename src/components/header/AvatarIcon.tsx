@@ -47,17 +47,17 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
 
     const navigate = useNavigate()
     const navigateAttend = () => {
-        navigate('/attending')
+        navigate('/attend-potluck')
     }
     const navigateOrganize = () => {
-      navigate('/')
+      navigate('/create')
   }
   const navigateLogout = () => {
       setIsLoggedIn(false)
-      navigate('/')
+      navigate('/auth')
   }
   const navigateProfile = () => {
-    navigate('/profile')
+    navigate('/')
   }
 
   const list = (anchor: Anchor) => (
@@ -78,13 +78,13 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
             <ListItemIcon>
                 <EventIcon/>
               </ListItemIcon>
-            <ListItemText primary={'Organized Potlucks'} />
+            <ListItemText primary={'Organize Potlucks'} />
       </ListItem>
       <ListItem button key={'Attending Potlucks'} onClick={navigateAttend}>
             <ListItemIcon>
                 <DirectionsRunIcon/>
             </ListItemIcon>
-            <ListItemText primary={'Attending Potlucks'} />
+            <ListItemText primary={'Attend Potluck'} />
       </ListItem>
       </List>
       <Divider />
