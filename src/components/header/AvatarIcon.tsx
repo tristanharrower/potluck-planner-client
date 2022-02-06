@@ -53,6 +53,8 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
       navigate('/create')
   }
   const navigateLogout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('personid')
       setIsLoggedIn(false)
       navigate('/auth')
   }

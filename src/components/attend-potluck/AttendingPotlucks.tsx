@@ -29,14 +29,14 @@ interface AttendingProps{
       
   }
 
-const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user}: AttendingProps) => {
+const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: AttendingProps) => {
 
   const [attendingPotlucks, setAttendingPotlucks] = useState<Array<IAttendingPotlucks>>([])
 
   useEffect(()=> {
 
     request.get('attending-potlucks', {
-      headers: { Authorization: `${user.token}` },
+      headers: { Authorization: `${token}` },
       params: {
         person_id:user.person_id
       }
