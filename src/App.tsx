@@ -70,7 +70,7 @@ function App() {
     })
 
     
-  },[isLoggedIn, navigate])
+  },[isLoggedIn, navigate, potentialId, potentialToken])
 
 
 
