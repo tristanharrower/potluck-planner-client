@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/header/Header';
 import OrganizedPotlucks from '../components/organized-potlucks/OrganizedPotlucks';
 import AttendingPotlucks from '../components/attend-potluck/AttendingPotlucks';
+import { Box } from '@mui/material';
 
 interface ProfileProps{
     isLoggedIn:boolean,
@@ -20,7 +21,8 @@ const HomeScreen = ({isLoggedIn, setIsLoggedIn, setUser, user}: ProfileProps) =>
   return <div>
        <Header user={user} setIsLoggedIn={setIsLoggedIn}/>
 
-       <OrganizedPotlucks 
+      <Box sx={{display:'flex', justifyContent: 'space-evenly',width:1, flexFlow:'row wrap'}}>
+      <OrganizedPotlucks 
         isLoggedIn={isLoggedIn} 
         setIsLoggedIn={setIsLoggedIn}
         user={user}
@@ -32,6 +34,9 @@ const HomeScreen = ({isLoggedIn, setIsLoggedIn, setUser, user}: ProfileProps) =>
           user={user}
           setUser={setUser}
         />
+      </Box>
+
+      
       
       </div>;
 };

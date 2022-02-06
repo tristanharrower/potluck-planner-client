@@ -77,7 +77,8 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
         <CardMedia
           component="img"
           height="300px"
-          image={require('../../images/food.jpg')}
+          width='300px'
+          image={require('../../images/food3.jpg')}
           alt="Paella dish"
           sx = {{backgroundPosition:'center center', 
           textAlign:'center', m:"auto", backgroundRepeat:'no-repeat', backgroundSize:'cover'}}

@@ -52,7 +52,7 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user}: Attending
       
   return <div>
       
-      <Container maxWidth='sm' >
+      <Container maxWidth='md' >
       {
         attendingPotlucks.map(attendingPotluck => 
           <Potlucks 

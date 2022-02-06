@@ -74,13 +74,13 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
             </ListItemIcon>
             <ListItemText primary={'Profile'} />
       </ListItem>
-      <ListItem button key={'Organized Potlucks'} onClick={navigateOrganize} >
+      <ListItem button key={'Organiz Potluck'} onClick={navigateOrganize} >
             <ListItemIcon>
                 <EventIcon/>
               </ListItemIcon>
-            <ListItemText primary={'Organize Potlucks'} />
+            <ListItemText primary={'Organize Potluck'} />
       </ListItem>
-      <ListItem button key={'Attending Potlucks'} onClick={navigateAttend}>
+      <ListItem button key={'Attend Potluck'} onClick={navigateAttend}>
             <ListItemIcon>
                 <DirectionsRunIcon/>
             </ListItemIcon>
