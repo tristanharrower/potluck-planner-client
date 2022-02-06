@@ -55,7 +55,7 @@ const navigate = useNavigate()
   return <div>
       <Header user={user} setIsLoggedIn={setIsLoggedIn}/>
       
-      <Container maxWidth='lg' >
+      <Container maxWidth='sm' >
       {
         (potlucks.length!==0) ?
         potlucks.map(potluck => 

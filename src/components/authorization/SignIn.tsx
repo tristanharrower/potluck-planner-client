@@ -51,7 +51,7 @@ export default function SignIn({submitForm, update, errorText, setLogin}: SignIn
   }
   return (
     
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" sx={{bgcolor:'secondary.main'}}>
         <CssBaseline />
         <Box
           sx={{
@@ -64,7 +64,7 @@ export default function SignIn({submitForm, update, errorText, setLogin}: SignIn
           <Typography variant='h3'>
               Potluck Planner
           </Typography>
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.dark' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -81,6 +81,7 @@ export default function SignIn({submitForm, update, errorText, setLogin}: SignIn
               autoComplete="email"
               autoFocus
               onChange={onChange}
+              sx={{bgcolor:'secondary.light', borderRadius:1}}
             />
             <TextField
               margin="normal"
@@ -92,6 +93,7 @@ export default function SignIn({submitForm, update, errorText, setLogin}: SignIn
               id="password"
               autoComplete="current-password"
               onChange={onChange}
+              sx={{bgcolor:'secondary.light', borderRadius:1}}
             />
              <div className='text-center'>
                 <p className='error'>{errorText}</p>

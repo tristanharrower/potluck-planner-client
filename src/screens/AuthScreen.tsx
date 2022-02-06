@@ -71,7 +71,7 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
       }
   }
  
-  return  <div>
+  return  <div className='auth'>
       {
         login ? 
 

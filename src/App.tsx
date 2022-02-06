@@ -46,10 +46,10 @@ function App() {
         contrastText: '#fff',
       },
       secondary: {
-        light: '#ff7961',
-        main: '#f44336',
-        dark: '#ba000d',
-        contrastText: '#000',
+        light: '#f3fcff',
+        main: '#c0c9e8',
+        dark: '#8f98b6',
+        contrastText: '#000000',
       },
     },
   });

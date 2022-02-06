@@ -65,7 +65,7 @@ export default function SignUp({submitForm, update, errorText, setLogin}: SignIn
            <Typography variant='h3'>
               Potluck Planner
            </Typography>
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.dark' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -82,6 +82,7 @@ export default function SignUp({submitForm, update, errorText, setLogin}: SignIn
                   name="email"
                   autoComplete="email"
                   onChange={onChange}
+                  sx={{bgcolor:'secondary.light', borderRadius:1}}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -93,6 +94,7 @@ export default function SignUp({submitForm, update, errorText, setLogin}: SignIn
                   name="username"
                   autoComplete="Username"
                   onChange={onChange}
+                  sx={{bgcolor:'secondary.light', borderRadius:1}}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -105,6 +107,7 @@ export default function SignUp({submitForm, update, errorText, setLogin}: SignIn
                   id="password"
                   autoComplete="new-password"
                   onChange={onChange}
+                  sx={{bgcolor:'secondary.light', borderRadius:1}}
                 />
               </Grid>
               <div className='text-center'>

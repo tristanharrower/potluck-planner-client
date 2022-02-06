@@ -63,7 +63,7 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
   const path = window.location.pathname
 
   return (
-      <Card sx={{ maxWidth: 1, m:1, height:'auto', flexGrow:1}}>
+      <Card sx={{ width: 1, m:1, height:'auto', flexGrow:1, bgcolor:'secondary.light'}}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -75,16 +75,18 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
         />
         <CardMedia
           component="img"
-          height="194"
-          image={require('../../images/food2.jpg')}
+          height="300px"
+          width="100px"
+          image={require('../../images/food3.jpg')}
           alt="Paella dish"
-          sx = {{}}
+          sx = {{backgroundPosition:'center center', 
+          textAlign:'center', m:"auto", backgroundRepeat:'no-repeat', backgroundSize:'cover'}}
         />
         <CardContent>
-          <Typography variant="body2" color="text.primary">
+          <Typography variant="body2" >
           {potluck.location.toUpperCase()}
           </Typography>
-          <Typography variant="body2" color="text.primary">
+          <Typography variant="body2">
           {potluck.description}
           </Typography>
         </CardContent>

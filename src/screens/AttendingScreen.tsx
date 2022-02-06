@@ -54,7 +54,7 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user}: Attending
   return <div>
    <Header user={user} setIsLoggedIn={setIsLoggedIn}/>
       
-      <Container maxWidth='lg' >
+      <Container maxWidth='sm' >
       {
         attendingPotlucks.map(attendingPotluck => 
           <Potlucks 
