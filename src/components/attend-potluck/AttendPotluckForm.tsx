@@ -5,7 +5,6 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import { Button, Grid } from '@mui/material';
 
@@ -14,12 +13,6 @@ interface CreatePotluckFormProps{
    update:Function,
    submit:Function,
 }
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
 
 export default function CreatePotluckForm({update, submit}:CreatePotluckFormProps) {
 
