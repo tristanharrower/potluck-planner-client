@@ -46,8 +46,8 @@ const navigate = useNavigate()
       .then((resp) => {
         setPotlucks(resp.data)
       })
-      .catch(err => {
-        console.log(err.request)
+      .catch(err => {         
+
       })
 
   }, [isLoggedIn, navigate, user.person_id, token])

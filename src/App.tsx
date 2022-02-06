@@ -20,8 +20,7 @@ interface IUser{
   token:string
 }
 
-const potentialToken = localStorage.getItem('token')
-const potentialId = localStorage.getItem('personid')
+
 
 const theme = createTheme({
   palette: {
@@ -45,11 +44,12 @@ function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
  
-
+  const potentialToken = localStorage.getItem('token')
+  const potentialId = localStorage.getItem('personid')
   const navigate = useNavigate()
 
   useEffect(() => {
-
+    
     if(!potentialId || !potentialToken){
       navigate('/auth')
     }
@@ -59,10 +59,17 @@ function App() {
     .then(resp => {
       setUser(resp.data[0])
       setIsLoggedIn(true)
-    })
-    .catch(err => {
       
     })
+    .catch(err => {
+      if(Object.values(JSON.parse(err.request.response))[0] === 'token invalid'){
+        localStorage.removeItem('token')
+        localStorage.removeItem('personid')
+        navigate('/auth')
+      }
+    })
+
+    
   },[isLoggedIn, navigate])
 
 

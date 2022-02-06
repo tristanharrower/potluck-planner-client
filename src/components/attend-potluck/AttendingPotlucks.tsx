@@ -49,7 +49,7 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: At
     })
 
     
-  }, [user.token, user.person_id])
+  }, [token, user.person_id])
       
   return <div>
       
