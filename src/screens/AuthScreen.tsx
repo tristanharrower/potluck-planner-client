@@ -54,6 +54,8 @@ const Auth = ({setIsLoggedIn, setUser}: AuthProps) => {
               username:resp.data.username,
               token:resp.data.token
             }
+            localStorage.setItem('token', loggedUser.token)
+            localStorage.setItem('personid', loggedUser.person_id)
             setUser(loggedUser)
             setIsLoggedIn(true)
             navigate('/')

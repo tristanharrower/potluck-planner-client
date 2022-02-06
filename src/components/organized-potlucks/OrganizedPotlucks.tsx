@@ -14,7 +14,8 @@ interface HomePageProps{
     email:string,
     username:string,
     token:string
-  }
+  },
+  token:string | null
 }
 interface IPotlucks{
   description: string,
@@ -28,7 +29,7 @@ interface IPotlucks{
   username: string,
 }
 
-const OrganizedPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user}: HomePageProps) => {
+const OrganizedPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: HomePageProps) => {
 
 const [potlucks, setPotlucks] = useState<Array<IPotlucks>>([])
 
@@ -37,7 +38,7 @@ const navigate = useNavigate()
   useEffect(()=> {
     
       request.get(`potlucks`,{
-        headers: { Authorization: `${user.token}` },
+        headers: { Authorization: `${token}` },
         params: {
           person_id:user.person_id
         }
@@ -49,7 +50,7 @@ const navigate = useNavigate()
         console.log(err.request)
       })
 
-  }, [isLoggedIn, navigate, user.token, user.person_id])
+  }, [isLoggedIn, navigate, user.person_id, token])
 
   return <div>
       

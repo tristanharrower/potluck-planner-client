@@ -12,7 +12,8 @@ interface AttendingProps{
       email:string,
       username:string,
       token:string
-    }
+    },
+    token:string|null
   }
 
   interface IAttendingPotlucks{

@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CreatePotluck from './screens/CreatePotluckScreen';
 import AttendPotluck from './screens/AttendPotluckScreen'
 import HomeScreen from './screens/HomeScreen';
+import request from './api';
 
 interface IUser{
   person_id:number,
@@ -19,38 +20,51 @@ interface IUser{
   token:string
 }
 
+const potentialToken = localStorage.getItem('token')
+const potentialId = localStorage.getItem('personid')
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#f3fcff',
+      main: '#c0c9e8',
+      dark: '#8f98b6',
+      contrastText: '#000000',
+    },
+  },
+});
+
 function App() {
   const [user, setUser] = useState<IUser>({person_id:NaN, email:'', username:'', token:''})
   
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
-
  
 
   const navigate = useNavigate()
 
   useEffect(() => {
-    
-    if(!isLoggedIn){
+
+    if(!potentialId || !potentialToken){
       navigate('/auth')
     }
+    request.get(`/user/${potentialId}`, {
+      headers: { Authorization:`${potentialToken}` },
+    })
+    .then(resp => {
+      setUser(resp.data[0])
+      setIsLoggedIn(true)
+    })
+    .catch(err => {
+      
+    })
   },[isLoggedIn, navigate])
 
-  const theme = createTheme({
-    palette: {
-      primary: {
-        light: '#757ce8',
-        main: '#3f50b5',
-        dark: '#002884',
-        contrastText: '#fff',
-      },
-      secondary: {
-        light: '#f3fcff',
-        main: '#c0c9e8',
-        dark: '#8f98b6',
-        contrastText: '#000000',
-      },
-    },
-  });
 
 
   return (
@@ -64,6 +78,7 @@ function App() {
           setIsLoggedIn={setIsLoggedIn}
           user={user}
           setUser={setUser}
+          token={potentialToken}
         />}/>
 
 
