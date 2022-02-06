@@ -62,7 +62,8 @@ const navigate = useNavigate()
           key={potluck.potluck_id}
           potluck={potluck} 
           user={user}
-          setIsLoggedIn={setIsLoggedIn}/>
+          setIsLoggedIn={setIsLoggedIn}
+          token={token}/>
         )
         : 
         <Typography sx={{color:'white'}}>Help</Typography>

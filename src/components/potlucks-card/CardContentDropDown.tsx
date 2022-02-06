@@ -22,7 +22,7 @@ interface IGuests{
 
 interface DropDownProps{
     potluckid:number,
-    token:string
+    token:string | null
 }
 const CardContentDropDown = ({potluckid, token}: DropDownProps) => {
   const [food, setFood] = useState<Array<IFood>>()
@@ -37,7 +37,6 @@ const CardContentDropDown = ({potluckid, token}: DropDownProps) => {
       }
     })
     .then(resp => {
-      console.log(resp.data)
       setFood(resp.data)
     })
     .catch(err => {

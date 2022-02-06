@@ -49,6 +49,7 @@ interface OrganizedPotlucksProps{
     username:string,
     token:string
   },
+  token:string | null,
   setIsLoggedIn:Function
 }
 const Root = styled('div')(({ theme }) => ({
@@ -61,7 +62,7 @@ const Root = styled('div')(({ theme }) => ({
   },
 }));
 
-export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotlucksProps) {
+export default function Potlucks({potluck, user,token,setIsLoggedIn}:OrganizedPotlucksProps) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -126,7 +127,7 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
        
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContentDropDown potluckid={potluck.potluck_id} 
-          token={user.token}/>
+          token={token}/>
         </Collapse>
       </Card>
     </Root>

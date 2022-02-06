@@ -60,7 +60,8 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: At
           key={attendingPotluck.potluck_id}
           potluck={attendingPotluck} 
           user={user}
-          setIsLoggedIn={setIsLoggedIn}/>
+          setIsLoggedIn={setIsLoggedIn}
+          token={token}/>
         )
       }
       </Container>
