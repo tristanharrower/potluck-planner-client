@@ -55,11 +55,14 @@ interface OrganizedPotlucksProps{
 const Root = styled('div')(({ theme }) => ({
   padding: theme.spacing(1),
   [theme.breakpoints.down('sm')]: {
-    width: '480px',
+    width: '460px',
   },
   [theme.breakpoints.up('md')]: {
     width: '530px',
   },
+  [theme.breakpoints.up('lg')]: {
+    width: '600px',
+  }
 }));
 
 export default function Potlucks({potluck, user,token,setIsLoggedIn}:OrganizedPotlucksProps) {
