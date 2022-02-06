@@ -39,7 +39,7 @@ export default function CreatePotluckForm({update, submit}:CreatePotluckFormProp
 
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <div style={{height:'100vh'}}>
       <CssBaseline />
       <AppBar
         position="absolute"
@@ -92,6 +92,6 @@ export default function CreatePotluckForm({update, submit}:CreatePotluckFormProp
     </React.Fragment>
         </Paper>
       </Container>
-    </ThemeProvider>
+      </div>
   );
 }

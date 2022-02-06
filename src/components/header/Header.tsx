@@ -38,7 +38,13 @@ export default function Header({user, setIsLoggedIn}:IHeader) {
           </Typography>
           {
             (path==='/create' || path==='/attend-potluck') ? null :
-            <Button variant="contained" onClick={handleClick}>
+            <Button variant="contained" onClick={handleClick} 
+            sx={{bgcolor:'secondary.light', color:'primary.main',
+            ':hover': {
+              bgcolor: 'secondary.main', // theme.palette.primary.main
+              color: 'white',
+            }
+            }}>
             {(path==='/attending') ? 'Attend Potluck' : 'Create Potluck'}
             </Button> 
           }

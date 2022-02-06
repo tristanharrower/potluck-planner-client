@@ -72,7 +72,7 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user}: CreatePotluck
         console.log(err.request.response)
       })
     }
-  return <div>
+  return <div style={{height:'100vh'}}>
      <Header user={user} setIsLoggedIn={setIsLoggedIn}/>
 
      <CreatePotluckForm 
