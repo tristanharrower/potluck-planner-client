@@ -51,6 +51,15 @@ interface OrganizedPotlucksProps{
   },
   setIsLoggedIn:Function
 }
+const Root = styled('div')(({ theme }) => ({
+  padding: theme.spacing(1),
+  [theme.breakpoints.down('sm')]: {
+    width: '480px',
+  },
+  [theme.breakpoints.up('md')]: {
+    width: '530px',
+  },
+}));
 
 export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotlucksProps) {
   const [expanded, setExpanded] = React.useState(false);
@@ -63,7 +72,8 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
   const path = window.location.pathname
 
   return (
-      <Card sx={{ width: '515px', m:1, height:'auto', flexGrow:1, bgcolor:'secondary.light'}}>
+    <Root>
+      <Card sx={{ m:1, height:'auto', flexGrow:1, bgcolor:'secondary.light'}}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -76,9 +86,8 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
 
         <CardMedia
           component="img"
-          height="300px"
-          width='300px'
-          image={require('../../images/food.jpg')}
+          height="320px"
+          image={require('../../images/food3.jpg')}
           alt="Paella dish"
           sx = {{backgroundPosition:'center center', 
           textAlign:'center', m:"auto", backgroundRepeat:'no-repeat', backgroundSize:'cover'}}
@@ -120,5 +129,6 @@ export default function Potlucks({potluck, user, setIsLoggedIn}:OrganizedPotluck
           token={user.token}/>
         </Collapse>
       </Card>
+    </Root>
   );
 }

@@ -53,7 +53,7 @@ const navigate = useNavigate()
 
   return <div>
       
-      <Container maxWidth='md'>
+      <Container>
       {
         (potlucks.length!==0) ?
         potlucks.map(potluck => 
