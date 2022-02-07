@@ -33,7 +33,7 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
     left: false,
   });
 
-  const matches = useMediaQuery('(min-width:900px)')
+  const matches = useMediaQuery('(min-width:1200px)')
 
 
   const toggleDrawer =
