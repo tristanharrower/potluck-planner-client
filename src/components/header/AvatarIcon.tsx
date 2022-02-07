@@ -34,7 +34,7 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
   });
 
   const matches = useMediaQuery('(min-width:1200px)')
-
+  const path = window.location.pathname
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -46,7 +46,7 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
           (event as React.KeyboardEvent).key === 'Shift')
       ) {
         return;
-      } else if (!matches){
+      } else if (!matches || (path !== '/')){
         setState({ ...state, [anchor]: open });
       }
     };
