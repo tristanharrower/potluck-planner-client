@@ -14,6 +14,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import EventIcon from '@mui/icons-material/Event';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import { useNavigate } from 'react-router-dom';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 type Anchor = 'left';
 
@@ -31,18 +33,22 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
     left: false,
   });
 
+  const matches = useMediaQuery('(min-width:900px)')
+
+
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
+      console.log(matches)
       if (
         event.type === 'keydown' &&
         ((event as React.KeyboardEvent).key === 'Tab' ||
           (event as React.KeyboardEvent).key === 'Shift')
       ) {
         return;
+      } else if (!matches){
+        setState({ ...state, [anchor]: open });
       }
-
-      setState({ ...state, [anchor]: open });
     };
 
     const navigate = useNavigate()
@@ -62,9 +68,11 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
     navigate('/')
   }
 
+  
+
   const list = (anchor: Anchor) => (
+    
     <Box
-      
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -99,6 +107,7 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
         ))}
       </List>
     </Box>
+
   );
 
   return (
