@@ -55,13 +55,14 @@ interface OrganizedPotlucksProps{
 const Root = styled('div')(({ theme }) => ({
   padding: theme.spacing(1),
   [theme.breakpoints.down('sm')]: {
-    width: '460px',
+    width: '450px',
   },
   [theme.breakpoints.up('md')]: {
-    width: '530px',
+    width: '550px',
   },
   [theme.breakpoints.up('lg')]: {
     width: '600px',
+    
   }
 }));
 
