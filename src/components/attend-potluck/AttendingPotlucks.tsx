@@ -58,6 +58,7 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: At
           Attending Potlucks
       </Typography>
       {
+          (attendingPotlucks.length!==0) ?
         attendingPotlucks.map(attendingPotluck => 
           <Potlucks 
           key={attendingPotluck.potluck_id}
@@ -66,6 +67,8 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: At
           setIsLoggedIn={setIsLoggedIn}
           token={token}/>
         )
+        : 
+        <Typography sx={{color:'white'}}>Help</Typography>
       }
       </Container>
   

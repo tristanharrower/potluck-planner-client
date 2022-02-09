@@ -15,7 +15,8 @@ interface CreatePotluckProps{
       email:string,
       username:string,
       token:string
-    }
+    },
+    token:string | null
   }
 
     interface IFormValues{
@@ -29,7 +30,7 @@ interface CreatePotluckProps{
         zip:string,
     }
 
-const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user}: CreatePotluckProps) => {
+const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: CreatePotluckProps) => {
     const navigate = useNavigate()
     const [formValues, setFormValues] = useState<IFormValues>({
         event_name: '',
@@ -62,7 +63,7 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user}: CreatePotluck
       request.post('/potlucks', data, {
         headers: { 
           'Content-Type': 'application/json',
-          Authorization: `${user.token}`
+          Authorization: `${token}`
         },
       })
       .then(resp => {

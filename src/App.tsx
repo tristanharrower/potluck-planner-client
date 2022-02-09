@@ -95,6 +95,7 @@ function App() {
           setIsLoggedIn={setIsLoggedIn}
           user={user}
           setUser={setUser}
+          token={potentialToken}
         />}/>
 
         <Route path="create" 
@@ -103,6 +104,7 @@ function App() {
             setIsLoggedIn={setIsLoggedIn}
             user={user}
             setUser={setUser}
+            token={potentialToken}
           />}/>
 
 
