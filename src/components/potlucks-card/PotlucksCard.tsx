@@ -78,7 +78,7 @@ export default function Potlucks({potluck, user,token,setIsLoggedIn}:OrganizedPo
 
   return (
     <Root>
-      <Card sx={{ m:1, height:'auto', flexGrow:1, bgcolor:'secondary.light'}}>
+      <Card sx={{ m:1, height:'auto', flexGrow:1, bgcolor:'primary.dark'}}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

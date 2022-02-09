@@ -54,7 +54,10 @@ const navigate = useNavigate()
 
   return <div>
       
-      <Container>
+      <Container sx={{bgcolor:'secondary.light', borderRadius:5, mt:2}}>
+        <Typography align='center' variant="h5" sx={{m:1,  pt:2}}>
+          Organized Potlucks
+        </Typography>
       {
         (potlucks.length!==0) ?
         potlucks.map(potluck => 

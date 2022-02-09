@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import request from '../../api';
 import Potlucks from '../potlucks-card/PotlucksCard';
@@ -53,7 +53,10 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: At
       
   return <div>
       
-      <Container >
+      <Container sx={{bgcolor:'secondary.light', borderRadius:5, mt:2}}>
+      <Typography align='center' variant="h5" sx={{mt:1, pt:2}}>
+          Attending Potlucks
+      </Typography>
       {
         attendingPotlucks.map(attendingPotluck => 
           <Potlucks 

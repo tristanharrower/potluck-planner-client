@@ -33,7 +33,7 @@ export default function Header({user, setIsLoggedIn}:IHeader) {
       <AppBar position="static" sx={{ flexGrow: 1, bgcolor:'primary.main' }}>
         <Toolbar>
             <AvatarIcon user={user} setIsLoggedIn={setIsLoggedIn}/>
-          <Typography align='center' variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography align='center' variant="h5" component="div" sx={{ flexGrow: 1 }}>
             Potluck Planner
           </Typography>
           {
