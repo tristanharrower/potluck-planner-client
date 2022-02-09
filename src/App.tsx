@@ -126,3 +126,7 @@ function App() {
 }
 
 export default App;
+
+//To-Do, change create potluck button to mail(mui modal) 
+//badge to receive invites.
+// steppers components for initial login tutorial

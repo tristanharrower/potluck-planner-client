@@ -56,7 +56,7 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: Create
       })
     }
   return <div>
-    <Header user={user} setIsLoggedIn={setIsLoggedIn}/>
+    <Header user={user} setIsLoggedIn={setIsLoggedIn} token={token}/>
      <AttendPotluckForm 
      update={updateForm} 
      submit={submitForm}/>

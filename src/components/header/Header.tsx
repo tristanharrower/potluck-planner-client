@@ -13,7 +13,8 @@ interface IHeader{
         username:string,
         token:string
       },
-      setIsLoggedIn:Function
+      setIsLoggedIn:Function, 
+      token:string | null
 }
 
 export default function Header({user, setIsLoggedIn}:IHeader) {

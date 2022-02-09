@@ -23,7 +23,7 @@ interface ProfileProps{
 const HomeScreen = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: ProfileProps) => {
   
   return <div>
-       <Header user={user} setIsLoggedIn={setIsLoggedIn}/>
+       <Header user={user} setIsLoggedIn={setIsLoggedIn} token={token}/>
 
       <Box sx={{display:'flex', justifyContent: 'space-evenly',width:1,}}>
         <Sidebar setIsLoggedIn={setIsLoggedIn}/>
