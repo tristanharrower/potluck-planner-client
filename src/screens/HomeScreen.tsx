@@ -28,25 +28,22 @@ const HomeScreen = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: ProfilePr
       <Box sx={{display:'flex', justifyContent: 'space-evenly',width:1,}}>
         <Sidebar setIsLoggedIn={setIsLoggedIn}/>
         <Box sx={{display:'flex', justifyContent: 'space-evenly',width:1, flexFlow:'row wrap'}}>
-      <OrganizedPotlucks 
-        isLoggedIn={isLoggedIn} 
-        setIsLoggedIn={setIsLoggedIn}
-        user={user}
-        setUser={setUser}
-        token={token}/>
+          <OrganizedPotlucks 
+            isLoggedIn={isLoggedIn} 
+            setIsLoggedIn={setIsLoggedIn}
+            user={user}
+            setUser={setUser}
+            token={token}/>
 
-        <AttendingPotlucks
-          isLoggedIn={isLoggedIn} 
-          setIsLoggedIn={setIsLoggedIn}
-          user={user}
-          setUser={setUser}
-          token={token}
-        />
+          <AttendingPotlucks
+            isLoggedIn={isLoggedIn} 
+            setIsLoggedIn={setIsLoggedIn}
+            user={user}
+            setUser={setUser}
+            token={token}
+            />
         </Box>
       </Box>
-
-      
-      
       </div>;
 };
 

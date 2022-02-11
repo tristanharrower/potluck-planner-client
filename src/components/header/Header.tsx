@@ -4,8 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import AvatarIcon from './AvatarIcon';
-import { Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import Notifications from './Notifications';
 
 interface IHeader{
     user:{
@@ -17,17 +16,8 @@ interface IHeader{
       token:string | null
 }
 
-export default function Header({user, setIsLoggedIn}:IHeader) {
-  const path = window.location.pathname
-  const navigate = useNavigate()
-  
-  const handleClick = () => {
-    if(path==='/attending'){
-        navigate('/attend-potluck')
-    } else {
-      navigate('/create')
-    }
-  }
+export default function Header({user, setIsLoggedIn, token}:IHeader) {
+
 
   return (
     <Box sx={{ flexGrow: 1}}>
@@ -37,18 +27,7 @@ export default function Header({user, setIsLoggedIn}:IHeader) {
           <Typography align='center' variant="h5" component="div" sx={{ flexGrow: 1 }}>
             Potluck Planner
           </Typography>
-          {
-            (path==='/create' || path==='/attend-potluck') ? null :
-            <Button variant="contained" onClick={handleClick} 
-            sx={{bgcolor:'secondary.light', color:'primary.main',
-            ':hover': {
-              bgcolor: 'secondary.main', // theme.palette.primary.main
-              color: 'white',
-            }
-            }}>
-            {(path==='/attending') ? 'Attend Potluck' : 'Create Potluck'}
-            </Button> 
-          }
+          <Notifications user={user} token={token}/>
           
         </Toolbar>
       </AppBar>
