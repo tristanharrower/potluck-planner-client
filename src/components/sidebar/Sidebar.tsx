@@ -61,13 +61,12 @@ const Sidebar = ({setIsLoggedIn}:SidebarProps) => {
               <ListItemText primary={'Attend Potluck'} />
         </ListItem>
         <Divider />
-        <ListItem button key={'Attend Potluck'} onClick={navigateAttend}>
-          
+        <ListItem button key={'logout'} onClick={navigateAttend}>
           <List>
             {['Logout'].map((text, index) => (
               <ListItem button key={text} onClick={navigateLogout}>
               <LogoutIcon sx={{}}/>
-                <ListItemText primary={text} />
+                <ListItemText primary={text} key={text}/>
               </ListItem>
             ))}
           </List>

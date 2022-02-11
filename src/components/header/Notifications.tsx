@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MenuItem from '@mui/material/MenuItem';
 import Badge from '@mui/material/Badge';
-import { IconButton } from '@mui/material';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
+import request from '../../api';
+import MessageReq from './MessageReq';
+import MessageInv from './MessageInv'
 
 interface NotificationProps{
     user:{
@@ -50,7 +52,7 @@ interface IInvites{
 export default function Notifications({user,token}:NotificationProps) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [requests, setRequests] = React.useState<Array<IRequests>>([])
-  const [invites, setInvites] = React.useState<Array<IRequests>>([])
+  const [invites, setInvites] = React.useState<Array<IInvites>>([])
   const open = Boolean(anchorEl);
   const handleClick = (event:any) => {
     setAnchorEl(event.currentTarget);
@@ -60,8 +62,32 @@ export default function Notifications({user,token}:NotificationProps) {
   };
 
   useEffect(() => {
+    request.get(`messages`,{
+        headers: { Authorization: `${token}` },
+        params: {
+          organizer_id:user.person_id
+        }
+      })
+      .then((resp) => {
+        setRequests(resp.data)
+      })
+      .catch(err => {         
+            console.log(err)
+      })
 
-  }, [])
+      request.get(`messages`,{
+        headers: { Authorization: `${token}` },
+        params: {
+          attendee_id:user.person_id
+        }
+      })
+      .then((resp) => {
+        setInvites(resp.data)
+      })
+      .catch(err => {         
+        console.log(err)
+      })
+  }, [user.person_id, token, setInvites, setRequests])
 
 
 
@@ -74,17 +100,12 @@ export default function Notifications({user,token}:NotificationProps) {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        sx={{color:'secondary.light'}}
       >
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="secondary"
-          sx={{mr:2}}
-            >
-          <Badge badgeContent={16} color="error">
+          <Badge badgeContent={5} color="error">
         <NotificationsIcon />
       </Badge>
-    </IconButton>
+   
       </Button>
       <Menu
         id="basic-menu"
@@ -95,9 +116,30 @@ export default function Notifications({user,token}:NotificationProps) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Profiledhbchdbchdbchbdchdbchdcd</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+          {
+              requests && requests.map(req => {
+                  if(req.type==='request'){
+                    return <MenuItem key={req.potluck_id}onClick={handleClose}>
+                                <MessageReq req={req}/>
+                        </MenuItem> 
+                  } else {
+                      return null
+                  }
+              
+              })
+          }
+         {
+              invites && invites.map(inv => {
+                  if(inv.type==='invite'){
+                    return <MenuItem key={inv.potluck_id} onClick={handleClose}>
+                                <MessageInv inv={inv}/>
+                        </MenuItem> 
+                  } else {
+                      return null
+                  }
+              
+              })
+          }
       </Menu>
       </div>
   )

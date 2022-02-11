@@ -39,7 +39,6 @@ export default function AvatarIcon({user, setIsLoggedIn}:AvatarIconProps) {
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
-      console.log(matches)
       if (
         event.type === 'keydown' &&
         ((event as React.KeyboardEvent).key === 'Tab' ||
