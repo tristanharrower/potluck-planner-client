@@ -45,7 +45,7 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: At
         setAttendingPotlucks(resp.data)
     })
     .catch(err => {
-      console.log(err)
+      
     })
 
     

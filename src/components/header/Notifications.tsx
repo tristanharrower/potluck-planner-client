@@ -72,7 +72,7 @@ export default function Notifications({user,token}:NotificationProps) {
         setRequests(resp.data)
       })
       .catch(err => {         
-            console.log(err)
+            
       })
 
       request.get(`messages`,{
@@ -85,7 +85,7 @@ export default function Notifications({user,token}:NotificationProps) {
         setInvites(resp.data)
       })
       .catch(err => {         
-        console.log(err)
+        
       })
   }, [user.person_id, token, setInvites, setRequests])
 

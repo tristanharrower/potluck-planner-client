@@ -20,7 +20,7 @@ interface MessagesProps{
 }
 
 const MessageReq = ({req}: MessagesProps) => {
-    console.log('here')
+    
   return (
     <div>
         {req.attendee_username} wants to attend {req.event_name}

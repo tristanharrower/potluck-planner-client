@@ -107,7 +107,6 @@ function App() {
             token={potentialToken}
           />}/>
 
-
         <Route path="auth" 
         element={<Auth 
         setIsLoggedIn={setIsLoggedIn}
@@ -127,7 +126,7 @@ function App() {
 
 export default App;
 
-//To-Do, change create potluck button to mail(mui modal) 
-//badge to receive invites.
-// steppers components for initial login tutorial
-//mui appbar has messages icon
+//To-Do invites to accept and reject
+//invite person on card
+// request access on attend potluck page
+// style foods on potluck card
