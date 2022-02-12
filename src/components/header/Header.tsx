@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import AvatarIcon from './AvatarIcon';
-import Notifications from './Notifications';
+import Notifications from '../notifications/Notifications';
 
 interface IHeader{
     user:{

@@ -47,12 +47,9 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: At
     .catch(err => {
       
     })
-
-    
   }, [token, user.person_id])
       
   return <div>
-      
       <Container sx={{bgcolor:'secondary.light', borderRadius:5, mt:2}}>
       <Typography align='center' variant="h5" sx={{mt:1, pt:2}}>
           Attending Potlucks

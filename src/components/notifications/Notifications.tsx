@@ -7,6 +7,7 @@ import Menu from '@mui/material/Menu';
 import request from '../../api';
 import MessageReq from './MessageReq';
 import MessageInv from './MessageInv'
+import { Box } from '@mui/material';
 
 interface NotificationProps{
     user:{
@@ -102,7 +103,7 @@ export default function Notifications({user,token}:NotificationProps) {
         onClick={handleClick}
         sx={{color:'secondary.light'}}
       >
-          <Badge badgeContent={5} color="error">
+          <Badge badgeContent={requests.length + invites.length} color="error">
         <NotificationsIcon />
       </Badge>
    
@@ -116,23 +117,23 @@ export default function Notifications({user,token}:NotificationProps) {
           'aria-labelledby': 'basic-button',
         }}
       >
-          {
+        <Box   sx={{ display: 'flex', flexDirection:'column' }}>
+        {
               requests && requests.map(req => {
                   if(req.type==='request'){
                     return <MenuItem key={req.potluck_id}onClick={handleClose}>
-                                <MessageReq req={req}/>
+                                <MessageReq req={req} token={token}/>
                         </MenuItem> 
                   } else {
                       return null
                   }
-              
               })
           }
          {
               invites && invites.map(inv => {
                   if(inv.type==='invite'){
                     return <MenuItem key={inv.potluck_id} onClick={handleClose}>
-                                <MessageInv inv={inv}/>
+                                <MessageInv inv={inv} token={token}/>
                         </MenuItem> 
                   } else {
                       return null
@@ -140,6 +141,8 @@ export default function Notifications({user,token}:NotificationProps) {
               
               })
           }
+        </Box>
+          
       </Menu>
       </div>
   )
