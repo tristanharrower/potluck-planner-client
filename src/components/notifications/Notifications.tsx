@@ -104,7 +104,7 @@ export default function Notifications({user,token}:NotificationProps) {
         sx={{color:'secondary.light important!'}}
       >
           <Badge badgeContent={requests.length + invites.length} color="error">
-        <NotificationsIcon />
+        <NotificationsIcon sx={{color:'white'}}/>
       </Badge>
    
       </Button>
