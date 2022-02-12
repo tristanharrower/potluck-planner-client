@@ -5,7 +5,7 @@ import { Tooltip } from '@material-ui/core';
 import TextField from '@mui/material/TextField';
 import { Button, Typography } from '@mui/material';
 import request from '../../api';
-import FastfoodIcon from '@mui/icons-material/Fastfood';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 interface BringFoodProps{
     potluck:{
@@ -28,10 +28,12 @@ interface BringFoodProps{
     setExpanded:Function,
   }
 
-  interface IFood{
-    food_wanted:string,
-    username:string,
-    person_id:number
+  interface IMessage{
+    organizer_id:number,
+    attendee_id:number,
+    potluck_id:number,
+    attendee_username:string,
+    type:string
   }
 
 const style = {
@@ -56,20 +58,24 @@ export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [food, setFood] = React.useState<IFood>({
-    food_wanted:'string',
-    username:user.username,
-    person_id:user.person_id
+  const [message, setMessage] = React.useState<IMessage>({
+    organizer_id:potluck.person_id,
+    attendee_id:NaN,
+    potluck_id:potluck.potluck_id,
+    attendee_username:"",
+    type:'invite'
   })
 
 
   const onChange = (evt:any) => {
     const value = evt.target.value;
   
-    setFood({
-      food_wanted:value,
-      username:user.username,
-      person_id:user.person_id
+    setMessage({
+      organizer_id:potluck.person_id,
+      attendee_id:NaN,
+      potluck_id:potluck.potluck_id,
+      attendee_username:value,
+      type:'invite'
     });
   }
 
@@ -77,10 +83,12 @@ export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // eslint-disable-next-line no-console
-    
-    const data = JSON.stringify(food)
 
-    request.post(`/potlucks/${potluck.potluck_id}/foods`, data, {
+    
+    
+    const data = JSON.stringify(message)
+
+    request.post(`/messages`, data, {
       headers: { 
         'Content-Type': 'application/json',
         Authorization: `${user.token}`
@@ -100,8 +108,8 @@ export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
 
   return (
     <div>
-     <Tooltip title="Add Food">
-        <FastfoodIcon onClick={handleOpen}/>
+     <Tooltip title="Invite">
+        <PersonAddIcon onClick={handleOpen}/>
     </Tooltip>
      
       <Modal
@@ -114,7 +122,7 @@ export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
         <Box sx={style}>
           <Typography>{potluck.event_name.toUpperCase()}</Typography>
           <Typography>{`${potluck.event_date} : ${potluck.event_time}`}</Typography>
-          <TextField id="outlined-basic" label="Add Food:" variant="outlined" onChange={onChange} sx={{m:2}}/>
+          <TextField id="outlined-basic" label="Invite:" variant="outlined" onChange={onChange} sx={{m:2}}/>
           <Button variant="outlined" type='submit'>
            Submit
         </Button>

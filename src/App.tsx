@@ -126,7 +126,6 @@ function App() {
 
 export default App;
 
-//To-Do invites to accept and reject
 //invite person on card
 // request access on attend potluck page
 // style foods on potluck card

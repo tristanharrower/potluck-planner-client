@@ -1,4 +1,4 @@
-import { Container, Typography } from '@mui/material';
+import { Button, Container, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import request from '../../api';
@@ -69,7 +69,9 @@ const navigate = useNavigate()
           token={token}/>
         )
         : 
-        <Typography sx={{color:'white'}}>Help</Typography>
+        <Button variant='contained'>
+          Create Potluck
+        </Button>
       }
       </Container>
       

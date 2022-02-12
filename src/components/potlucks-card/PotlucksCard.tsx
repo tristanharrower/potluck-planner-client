@@ -16,6 +16,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Tooltip } from '@material-ui/core';
 import BringFood from '../food/BringFood'
 
+import AddPerson from './AddPerson'
+
+
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
@@ -74,7 +77,6 @@ export default function Potlucks({potluck, user,token,setIsLoggedIn}:OrganizedPo
   };
   //border:'red solid 2px',
 
-  const path = window.location.pathname
 
   return (
     <Root>
@@ -82,7 +84,7 @@ export default function Potlucks({potluck, user,token,setIsLoggedIn}:OrganizedPo
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              {(path==='/attending') ? null : user.username.charAt(0).toUpperCase()}
+              {(potluck.role==='guest') ? null : user.username.charAt(0).toUpperCase()}
             </Avatar>
           }
           title={potluck.event_name.toUpperCase()}
@@ -107,13 +109,20 @@ export default function Potlucks({potluck, user,token,setIsLoggedIn}:OrganizedPo
         </CardContent>
         <hr></hr>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            {(path==='/attending') ?
-            null
-            : 
-            <Tooltip title="Edit Potluck">
+        <IconButton aria-label="add to favorites">
+            {(potluck.role==='guest') ?
+            <div></div>
+            :  
+            <Tooltip title="Edit Potluck Information" >
                 <EditIcon />
             </Tooltip>
+          }
+          </IconButton>
+          <IconButton aria-label="add to favorites">
+            {(potluck.role==='guest') ?
+            <div></div>
+            :  
+              <AddPerson potluck={potluck} user={user} setExpanded={setExpanded}/>
           }
           </IconButton>
           <IconButton aria-label="add to favorites">

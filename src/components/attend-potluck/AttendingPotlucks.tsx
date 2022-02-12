@@ -1,4 +1,4 @@
-import { Container, Typography } from '@mui/material';
+import { Button, Container, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import request from '../../api';
 import Potlucks from '../potlucks-card/PotlucksCard';
@@ -65,7 +65,9 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: At
           token={token}/>
         )
         : 
-        <Typography sx={{color:'white'}}>Help</Typography>
+        <Button variant='contained'>
+          Create Potluck
+        </Button>
       }
       </Container>
   
