@@ -56,6 +56,10 @@ const MessageInv = ({inv, token}: MessagesProps) => {
     .catch(err => {
       console.log(err.request.response)
     })
+
+    setTimeout(() => {
+      window.location.reload()
+    }, 2000);
   }
   
   const handleDecline = () => {
@@ -71,6 +75,10 @@ const MessageInv = ({inv, token}: MessagesProps) => {
     .catch(err => {
       console.log(err.request.response)
     })
+
+    setTimeout(() => {
+      window.location.reload()
+    }, 2000);
   }
 
   return (
