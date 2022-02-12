@@ -122,11 +122,13 @@ export default function Potlucks({potluck, user,token,setIsLoggedIn}:OrganizedPo
             {(potluck.role==='guest') ?
             <div></div>
             :  
-              <AddPerson potluck={potluck} user={user} setExpanded={setExpanded}/>
+              <AddPerson potluck={potluck} user={user} 
+              setExpanded={setExpanded} token={token}/>
           }
           </IconButton>
           <IconButton aria-label="add to favorites">
-                <BringFood user={user} potluck={potluck} setExpanded={setExpanded}/>
+                <BringFood user={user} potluck={potluck} 
+                setExpanded={setExpanded} token={token}/>
           </IconButton>
           <ExpandMore
             expand={expanded}

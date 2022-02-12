@@ -26,6 +26,7 @@ interface BringFoodProps{
       token:string
     },
     setExpanded:Function,
+    token:string|null
   }
 
   interface IFood{
@@ -51,7 +52,7 @@ const style = {
   justifyContent: 'center'
 };
 
-export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
+export default function BasicModal({user,potluck, setExpanded,token}:BringFoodProps) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

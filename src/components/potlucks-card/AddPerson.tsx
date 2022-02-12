@@ -26,11 +26,11 @@ interface BringFoodProps{
       token:string
     },
     setExpanded:Function,
+    token:string | null
   }
 
   interface IMessage{
     organizer_id:number,
-    attendee_id:number,
     potluck_id:number,
     attendee_username:string,
     type:string
@@ -53,14 +53,25 @@ const style = {
   justifyContent: 'center'
 };
 
-export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
+interface IUser{
+  person_id:number,
+  email:string,
+  username:string,
+  token:string
+}
+
+export default function BasicModal({user,potluck, setExpanded, token}:BringFoodProps) {
   const [open, setOpen] = React.useState(false);
+  const [errorText, setErrorText] = React.useState('');
+  const [search, setSearch] = React.useState<Array<IUser>>([])
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () =>{
+    setOpen(false);
+    setSearch([])
+  } 
 
   const [message, setMessage] = React.useState<IMessage>({
     organizer_id:potluck.person_id,
-    attendee_id:NaN,
     potluck_id:potluck.potluck_id,
     attendee_username:"",
     type:'invite'
@@ -72,7 +83,6 @@ export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
   
     setMessage({
       organizer_id:potluck.person_id,
-      attendee_id:NaN,
       potluck_id:potluck.potluck_id,
       attendee_username:value,
       type:'invite'
@@ -84,14 +94,41 @@ export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
     event.preventDefault();
     // eslint-disable-next-line no-console
 
-    
-    
-    const data = JSON.stringify(message)
+    request.get(`user`,{
+      headers: { Authorization: `${token}` },
+      params: {
+        username:message.attendee_username
+      }
+    })
+    .then((resp) => {
+      if(resp.data.length > 0){
+        setSearch(resp.data)
+      } else {
+          setErrorText('User not found')
+      }
+    })
+    .catch(err => {         
+        console.log(err)
+    })
 
+  }
+
+ 
+const handleClick =(user:IUser) => {
+    const tempData = {
+      organizer_id:message.organizer_id,
+      potluck_id:message.potluck_id,
+      attendee_username:message.attendee_username,
+      attendee_id:user.person_id,
+      type:'invite'
+    }
+
+    const data = JSON.stringify(tempData)
+   
     request.post(`/messages`, data, {
       headers: { 
         'Content-Type': 'application/json',
-        Authorization: `${user.token}`
+        Authorization: `${token}`
       },
     })
     .then(res =>   {
@@ -99,11 +136,10 @@ export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
       setExpanded(false)
     })
     .catch(err => {
-      console.log(err)
-    })
     
-  }
-
+      console.log(err.request.response)
+    })
+}
 
 
   return (
@@ -123,9 +159,19 @@ export default function BasicModal({user,potluck, setExpanded}:BringFoodProps) {
           <Typography>{potluck.event_name.toUpperCase()}</Typography>
           <Typography>{`${potluck.event_date} : ${potluck.event_time}`}</Typography>
           <TextField id="outlined-basic" label="Invite:" variant="outlined" onChange={onChange} sx={{m:2}}/>
+          <Typography>{errorText}</Typography>
           <Button variant="outlined" type='submit'>
-           Submit
+           Search
         </Button>
+        {
+          search.map(sing => {
+            return <Box sx={{display:'flex'}}>
+              <Typography>{sing.username}{sing.email}{sing.person_id}</Typography>
+              <Button onClick={()=>handleClick(sing)}>Add</Button>
+            </Box>
+            
+          })
+        }
         </Box>
         </form>
       </Modal>
