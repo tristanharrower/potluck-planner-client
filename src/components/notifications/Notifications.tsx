@@ -98,7 +98,7 @@ export default function Notifications({user,token}:NotificationProps) {
       <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
+        aria-haspopup="menu"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         sx={{color:'secondary.light'}}

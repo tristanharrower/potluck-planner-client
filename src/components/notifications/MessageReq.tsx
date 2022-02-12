@@ -58,7 +58,10 @@ const MessageReq = ({req, token}: MessagesProps) => {
     .catch(err => {
       console.log(err.request.response)
     })
-    window.location.reload();
+
+    setTimeout(() => {
+      window.location.reload()
+    }, 2000);
   }
   
   const handleDecline = () => {
@@ -74,7 +77,9 @@ const MessageReq = ({req, token}: MessagesProps) => {
     .catch(err => {
       console.log(err.request.response)
     })
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload()
+    }, 2000);
   }
     
   return (
