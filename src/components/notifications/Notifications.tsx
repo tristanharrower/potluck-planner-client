@@ -101,7 +101,7 @@ export default function Notifications({user,token}:NotificationProps) {
         aria-haspopup="menu"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        sx={{color:'secondary.light'}}
+        sx={{color:'secondary.light important!'}}
       >
           <Badge badgeContent={requests.length + invites.length} color="error">
         <NotificationsIcon />

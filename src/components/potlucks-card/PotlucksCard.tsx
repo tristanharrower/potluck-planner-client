@@ -17,6 +17,7 @@ import { Tooltip } from '@material-ui/core';
 import BringFood from '../food/BringFood'
 
 import AddPerson from './AddPerson'
+import { Container } from '@mui/material';
 
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -109,6 +110,7 @@ export default function Potlucks({potluck, user,token,setIsLoggedIn}:OrganizedPo
         </CardContent>
         <hr></hr>
         <CardActions disableSpacing>
+          <Container>
         <IconButton aria-label="add to favorites">
             {(potluck.role==='guest') ?
             <div></div>
@@ -130,6 +132,7 @@ export default function Potlucks({potluck, user,token,setIsLoggedIn}:OrganizedPo
                 <BringFood user={user} potluck={potluck} 
                 setExpanded={setExpanded} token={token}/>
           </IconButton>
+          </Container>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}

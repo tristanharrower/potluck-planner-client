@@ -6,4 +6,9 @@ html, body, .auth{
     background-color: #c0c9e8;
 }
 
-
+.MuiButtonBase-root {
+padding:.5em !important;
+justify-content:flex-start !important;
+color:rgb(22, 21, 21) !important;
+margin:1 !important;
+}
