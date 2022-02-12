@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Tooltip } from '@material-ui/core';
 import TextField from '@mui/material/TextField';
-import { Button, Typography } from '@mui/material';
+import { Button, Card, Typography } from '@mui/material';
 import request from '../../api';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
@@ -68,6 +68,7 @@ export default function BasicModal({user,potluck, setExpanded, token}:BringFoodP
   const handleClose = () =>{
     setOpen(false);
     setSearch([])
+    setErrorText('')
   } 
 
   const [message, setMessage] = React.useState<IMessage>({
@@ -158,18 +159,18 @@ const handleClick =(user:IUser) => {
         <Box sx={style}>
           <Typography>{potluck.event_name.toUpperCase()}</Typography>
           <Typography>{`${potluck.event_date} : ${potluck.event_time}`}</Typography>
-          <TextField id="outlined-basic" label="Invite:" variant="outlined" onChange={onChange} sx={{m:2}}/>
+          <TextField id="outlined-basic" label="Username:" variant="outlined" onChange={onChange} sx={{m:2}}/>
           <Typography>{errorText}</Typography>
           <Button variant="outlined" type='submit'>
            Search
         </Button>
         {
           search.map(sing => {
-            return <Box sx={{display:'flex'}}>
-              <Typography>{sing.username}{sing.email}{sing.person_id}</Typography>
-              <Button onClick={()=>handleClick(sing)}>Add</Button>
-            </Box>
-            
+            return <Card sx={{display:'flex', flexDirection:'row', bgcolor:'secondary.light', m:2, p:3,}}>
+              <Typography>Username: {sing.username}</Typography>
+              <Typography>Email: {sing.email}</Typography>
+              <Button variant='contained' size='small' onClick={()=>handleClick(sing)}>+Invite</Button>
+            </Card>
           })
         }
         </Box>
