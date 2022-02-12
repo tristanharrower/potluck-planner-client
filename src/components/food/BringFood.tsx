@@ -84,7 +84,7 @@ export default function BasicModal({user,potluck, setExpanded,token}:BringFoodPr
     request.post(`/potlucks/${potluck.potluck_id}/foods`, data, {
       headers: { 
         'Content-Type': 'application/json',
-        Authorization: `${user.token}`
+        Authorization: `${token}`
       },
     })
     .then(res =>   {
