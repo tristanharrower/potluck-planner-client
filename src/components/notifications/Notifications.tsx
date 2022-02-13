@@ -15,7 +15,8 @@ interface NotificationProps{
         username:string,
         token:string
       },
-      token:string | null
+      token:string | null,
+
 }
 
 interface IRequests{
@@ -122,7 +123,11 @@ export default function Notifications({user,token}:NotificationProps) {
               requests && requests.map(req => {
                   if(req.type==='request'){
                     return <MenuItem key={req.potluck_id}onClick={handleClose}>
-                                <MessageReq req={req} token={token}/>
+                                <MessageReq 
+                                req={req} 
+                                token={token} 
+                                setRequests={setRequests}
+                                requests={requests}/>
                         </MenuItem> 
                   } else {
                       return null
@@ -133,7 +138,11 @@ export default function Notifications({user,token}:NotificationProps) {
               invites && invites.map(inv => {
                   if(inv.type==='invite'){
                     return <MenuItem key={inv.potluck_id} onClick={handleClose}>
-                                <MessageInv inv={inv} token={token}/>
+                                <MessageInv 
+                                inv={inv} 
+                                token={token} 
+                                setInvites={setInvites}
+                                invites={invites}/>
                         </MenuItem> 
                   } else {
                       return null

@@ -8,7 +8,11 @@ html, body, .auth{
 
 .MuiButtonBase-root {
 padding:.5em !important;
-justify-content:flex-start !important;
+justify-content:center !important;
 color:rgb(22, 21, 21) !important;
 margin:1 !important;
+}
+
+.auth-sign{
+    color:#c0c9e8 !important;
 }

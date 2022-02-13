@@ -1,6 +1,5 @@
 import { Grid, List, ListItem, ListItemIcon } from '@mui/material';
 import React from 'react';
-import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
@@ -60,16 +59,11 @@ const Sidebar = ({setIsLoggedIn}:SidebarProps) => {
               </ListItemIcon>
               <ListItemText primary={'Attend Potluck'} />
         </ListItem>
-        <Divider />
-        <ListItem button key={'logout'} onClick={navigateAttend}>
-          <List>
-            {['Logout'].map((text, index) => (
-              <ListItem button key={text} onClick={navigateLogout}>
-              <LogoutIcon sx={{}}/>
-                <ListItemText primary={text} key={text}/>
-              </ListItem>
-            ))}
-          </List>
+        <ListItem button key={'Logout'} onClick={navigateLogout}>
+          <ListItemIcon>
+              <LogoutIcon />
+          </ListItemIcon>   
+         <ListItemText primary={'Logout'} />
         </ListItem>
       </List>
     </Grid>

@@ -107,7 +107,9 @@ export default function SignIn({submitForm, update, errorText, setLogin}: SignIn
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              <Typography sx={{color:'#FFFF'}}>
+              Sign-In
+              </Typography>
             </Button>
             <Grid container>
               <Grid item xs>

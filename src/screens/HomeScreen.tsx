@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/header/Header';
 import OrganizedPotlucks from '../components/organized-potlucks/OrganizedPotlucks';
 import AttendingPotlucks from '../components/attend-potluck/AttendingPotlucks';
@@ -22,6 +22,7 @@ interface ProfileProps{
 
 const HomeScreen = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: ProfileProps) => {
   
+
   return <div>
        <Header user={user} setIsLoggedIn={setIsLoggedIn} token={token}/>
       <Box sx={{display:'flex', justifyContent: 'space-evenly',width:1,}}>
@@ -32,7 +33,8 @@ const HomeScreen = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: ProfilePr
             setIsLoggedIn={setIsLoggedIn}
             user={user}
             setUser={setUser}
-            token={token}/>
+            token={token}
+            />
 
           <AttendingPotlucks
             isLoggedIn={isLoggedIn} 

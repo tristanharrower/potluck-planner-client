@@ -123,9 +123,11 @@ export default function SignUp({submitForm, update, errorText, setLogin}: SignIn
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2,color:'#3f50b5'}}
             >
-              Sign Up
+              <Typography sx={{color:'#FFFF'}}>
+              Sign-Up
+              </Typography>
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
