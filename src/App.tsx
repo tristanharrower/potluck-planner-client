@@ -19,6 +19,17 @@ interface IUser{
   username:string,
   token:string
 }
+interface IPotlucks{
+  description: string,
+  event_date: string,
+  event_name: string,
+  event_time: string,
+  location: string,
+  person_id: number,
+  potluck_id: number,
+  role: string,
+  username: string,
+}
 
 
 
@@ -41,7 +52,7 @@ const theme = createTheme({
 
 function App() {
   const [user, setUser] = useState<IUser>({person_id:NaN, email:'', username:'', token:''})
-  
+  const [attendingPotlucks, setAttendingPotlucks] = useState<Array<IPotlucks>>([])
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
  
   const potentialToken = localStorage.getItem('token')
@@ -86,6 +97,8 @@ function App() {
           user={user}
           setUser={setUser}
           token={potentialToken}
+          potlucks={attendingPotlucks}
+          setPotlucks={setAttendingPotlucks}
         />}/>
 
 
@@ -96,6 +109,8 @@ function App() {
           user={user}
           setUser={setUser}
           token={potentialToken}
+          potlucks={attendingPotlucks}
+          setPotlucks={setAttendingPotlucks}
         />}/>
 
         <Route path="create" 
@@ -105,6 +120,8 @@ function App() {
             user={user}
             setUser={setUser}
             token={potentialToken}
+            potlucks={attendingPotlucks}
+            setPotlucks={setAttendingPotlucks}
           />}/>
 
         <Route path="auth" 

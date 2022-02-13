@@ -1,7 +1,19 @@
 import { Button, Container, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import request from '../../api';
 import Potlucks from '../potlucks-card/PotlucksCard';
+
+interface IPotlucks{
+  description: string,
+  event_date: string,
+  event_name: string,
+  event_time: string,
+  location: string,
+  person_id: number,
+  potluck_id: number,
+  role: string,
+  username: string,
+}
 
 interface AttendingProps{
     isLoggedIn:boolean,
@@ -13,25 +25,13 @@ interface AttendingProps{
       username:string,
       token:string
     },
-    token:string|null
+    token:string|null,
+    potlucks:Array<IPotlucks>,
+    setPotlucks:Function
   }
+const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,setPotlucks}: AttendingProps) => {
 
-  interface IAttendingPotlucks{
-      potluck_id:number,
-      person_id: number,
-      username: string,
-      description: string,
-      event_date: string,
-      event_name: string,
-      event_time: string,
-      location: string,
-      role: string,
-      
-  }
-
-const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: AttendingProps) => {
-
-  const [attendingPotlucks, setAttendingPotlucks] = useState<Array<IAttendingPotlucks>>([])
+  
 
   useEffect(()=> {
 
@@ -42,12 +42,12 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: At
       }
     })
     .then(resp => {
-        setAttendingPotlucks(resp.data)
+        setPotlucks(resp.data)
     })
     .catch(err => {
       
     })
-  }, [token, user.person_id])
+  }, [token, user.person_id,setPotlucks])
       
   return <div>
       <Container sx={{bgcolor:'secondary.light', borderRadius:5, mt:2}}>
@@ -55,11 +55,11 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: At
           Attending Potlucks
       </Typography>
       {
-          (attendingPotlucks.length!==0) ?
-        attendingPotlucks.map(attendingPotluck => 
+          (potlucks.length!==0) ?
+        potlucks.map(potluck => 
           <Potlucks 
-          key={attendingPotluck.potluck_id}
-          potluck={attendingPotluck} 
+          key={potluck.potluck_id}
+          potluck={potluck} 
           user={user}
           setIsLoggedIn={setIsLoggedIn}
           token={token}/>

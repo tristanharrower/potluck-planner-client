@@ -4,6 +4,17 @@ import request from '../api'
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/header/Header';
 
+interface IPotlucks{
+  description: string,
+  event_date: string,
+  event_name: string,
+  event_time: string,
+  location: string,
+  person_id: number,
+  potluck_id: number,
+  role: string,
+  username: string,
+}
 
 
 interface CreatePotluckProps{
@@ -16,7 +27,9 @@ interface CreatePotluckProps{
       username:string,
       token:string
     }
-    token:string | null
+    token:string | null,
+    potlucks:Array<IPotlucks>,
+    setPotlucks:Function
   }
 
     interface IFormValues{
@@ -26,7 +39,7 @@ interface CreatePotluckProps{
       role:string
     }
 
-const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: CreatePotluckProps) => {
+const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,setPotlucks}: CreatePotluckProps) => {
     const navigate = useNavigate()
     const [formValues, setFormValues] = useState<IFormValues>({
       potluck_id:NaN,
@@ -56,7 +69,12 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: Create
       })
     }
   return <div>
-    <Header user={user} setIsLoggedIn={setIsLoggedIn} token={token}/>
+    <Header 
+    user={user} 
+    setIsLoggedIn={setIsLoggedIn} 
+    token={token}
+    potlucks={potlucks}
+    setPotlucks={setPotlucks}/>
      <AttendPotluckForm 
      update={updateForm} 
      submit={submitForm}/>

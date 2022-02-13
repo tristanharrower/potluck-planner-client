@@ -5,6 +5,17 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import AvatarIcon from './AvatarIcon';
 import Notifications from '../notifications/Notifications';
+interface IPotlucks{
+  description: string,
+  event_date: string,
+  event_name: string,
+  event_time: string,
+  location: string,
+  person_id: number,
+  potluck_id: number,
+  role: string,
+  username: string,
+}
 
 interface IHeader{
     user:{
@@ -13,10 +24,12 @@ interface IHeader{
         token:string
       },
       setIsLoggedIn:Function, 
-      token:string | null
+      token:string | null,
+      potlucks:Array<IPotlucks>,
+      setPotlucks:Function,
 }
 
-export default function Header({user, setIsLoggedIn, token}:IHeader) {
+export default function Header({user, setIsLoggedIn, token,potlucks,setPotlucks}:IHeader) {
 
 
   return (
@@ -27,7 +40,11 @@ export default function Header({user, setIsLoggedIn, token}:IHeader) {
           <Typography align='center' variant="h5" component="div" sx={{ flexGrow: 1 }}>
             Potluck Planner
           </Typography>
-          <Notifications user={user} token={token}/>
+          <Notifications 
+          user={user} 
+          token={token}
+          potlucks={potlucks}
+          setPotlucks={setPotlucks}/>
           
         </Toolbar>
       </AppBar>

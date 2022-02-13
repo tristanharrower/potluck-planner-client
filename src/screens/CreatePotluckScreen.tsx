@@ -4,7 +4,17 @@ import CreatePotluckForm from '../components/create-potluck/CreatePotluckForm'
 import request from '../api'
 import { useNavigate } from 'react-router-dom';
 
-
+interface IPotlucks{
+  description: string,
+  event_date: string,
+  event_name: string,
+  event_time: string,
+  location: string,
+  person_id: number,
+  potluck_id: number,
+  role: string,
+  username: string,
+}
 
 interface CreatePotluckProps{
     isLoggedIn:boolean,
@@ -16,7 +26,9 @@ interface CreatePotluckProps{
       username:string,
       token:string
     },
-    token:string | null
+    token:string | null,
+    potlucks:Array<IPotlucks>,
+    setPotlucks:Function
   }
 
     interface IFormValues{
@@ -30,7 +42,7 @@ interface CreatePotluckProps{
         zip:string,
     }
 
-const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: CreatePotluckProps) => {
+const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,setPotlucks}: CreatePotluckProps) => {
     const navigate = useNavigate()
     const [formValues, setFormValues] = useState<IFormValues>({
         event_name: '',
@@ -74,7 +86,12 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: Create
       })
     }
   return <div style={{height:'100vh'}}>
-     <Header user={user} setIsLoggedIn={setIsLoggedIn} token={token}/>
+     <Header 
+     user={user} 
+     setIsLoggedIn={setIsLoggedIn} 
+     token={token}
+     potlucks={potlucks}
+     setPotlucks={setPotlucks}/>
 
      <CreatePotluckForm 
      update={updateForm} 

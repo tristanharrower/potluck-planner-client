@@ -8,6 +8,17 @@ import request from '../../api';
 import MessageReq from './MessageReq';
 import MessageInv from './MessageInv'
 import { Box } from '@mui/material';
+interface IPotlucks{
+  description: string,
+  event_date: string,
+  event_name: string,
+  event_time: string,
+  location: string,
+  person_id: number,
+  potluck_id: number,
+  role: string,
+  username: string,
+}
 
 interface NotificationProps{
     user:{
@@ -16,7 +27,8 @@ interface NotificationProps{
         token:string
       },
       token:string | null,
-
+      potlucks:Array<IPotlucks>,
+      setPotlucks:Function
 }
 
 interface IRequests{
@@ -51,7 +63,7 @@ interface IInvites{
 
 
 
-export default function Notifications({user,token}:NotificationProps) {
+export default function Notifications({user,token,potlucks,setPotlucks}:NotificationProps) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [requests, setRequests] = React.useState<Array<IRequests>>([])
   const [invites, setInvites] = React.useState<Array<IInvites>>([])
@@ -142,7 +154,11 @@ export default function Notifications({user,token}:NotificationProps) {
                                 inv={inv} 
                                 token={token} 
                                 setInvites={setInvites}
-                                invites={invites}/>
+                                invites={invites}
+                                potlucks={potlucks}
+                                setPotlucks={setPotlucks}
+                                user={user}
+                                />
                         </MenuItem> 
                   } else {
                       return null

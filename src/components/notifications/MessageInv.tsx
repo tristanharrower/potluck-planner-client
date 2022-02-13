@@ -2,6 +2,17 @@ import { Button, Container } from '@material-ui/core'
 import { Typography } from '@mui/material'
 import React from 'react'
 import request from '../../api'
+interface IPotlucks{
+  description: string,
+  event_date: string,
+  event_name: string,
+  event_time: string,
+  location: string,
+  person_id: number,
+  potluck_id: number,
+  role: string,
+  username: string,
+}
 
 interface IInvites{
   message_id:number,
@@ -35,11 +46,18 @@ interface MessagesProps{
     }
     token:string | null,
     setInvites:Function,
-    invites:Array<IInvites>
+    invites:Array<IInvites>,
+    potlucks:Array<IPotlucks>,
+    setPotlucks:Function,
+    user:{
+      person_id:number,
+      username:string,
+      token:string
+    }
 }
 
 
-const MessageInv = ({inv, token, setInvites, invites}: MessagesProps) => {
+const MessageInv = ({inv, token, setInvites, invites,setPotlucks,user}: MessagesProps) => {
   
   const handleAccept = (id:number) => {
     const dataTemp = {
@@ -70,12 +88,23 @@ const MessageInv = ({inv, token, setInvites, invites}: MessagesProps) => {
       },
     })
     .then(resp => {
-      setTimeout(()=>{
-        window.location.reload()
-      },1000)
+      
     })
     .catch(err => {
       console.log(err.request.response)
+    })
+
+    request.get('attending-potlucks', {
+      headers: { Authorization: `${token}` },
+      params: {
+        person_id:user.person_id
+      }
+    })
+    .then(resp => {
+        setPotlucks(resp.data)
+    })
+    .catch(err => {
+      
     })
   }
   
