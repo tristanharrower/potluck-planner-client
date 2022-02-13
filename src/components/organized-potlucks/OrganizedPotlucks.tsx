@@ -1,5 +1,5 @@
 import { Button, Container, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import request from '../../api';
 import Potlucks from '../potlucks-card/PotlucksCard';
