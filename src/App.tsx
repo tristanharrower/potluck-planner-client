@@ -143,6 +143,6 @@ function App() {
 
 export default App;
 
-//invite person on card
+//if potlucks or messages = 0, show something else
 // request access on attend potluck page
 // style foods on potluck card

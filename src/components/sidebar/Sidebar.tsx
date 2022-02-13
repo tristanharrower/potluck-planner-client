@@ -1,4 +1,4 @@
-import { Grid, List, ListItem, ListItemIcon } from '@mui/material';
+import { Divider, Grid, List, ListItem, ListItemIcon } from '@mui/material';
 import React from 'react';
 import ListItemText from '@mui/material/ListItemText';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -59,6 +59,7 @@ const Sidebar = ({setIsLoggedIn}:SidebarProps) => {
               </ListItemIcon>
               <ListItemText primary={'Attend Potluck'} />
         </ListItem>
+        <Divider sx={{width:'220px'}}></Divider>
         <ListItem button key={'Logout'} onClick={navigateLogout}>
           <ListItemIcon>
               <LogoutIcon />

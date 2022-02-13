@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import AvatarIcon from './AvatarIcon';
-import Notifications from '../notifications/Notifications';
+import Notifications from '../messages/Messages';
 interface IPotlucks{
   description: string,
   event_date: string,
