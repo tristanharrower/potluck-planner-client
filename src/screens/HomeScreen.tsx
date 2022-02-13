@@ -54,6 +54,8 @@ const HomeScreen = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,se
             user={user}
             setUser={setUser}
             token={token}
+            potlucks={potlucks}
+            setPotlucks={setPotlucks}
             organizedPotlucks={organizedPotlucks}
             setOrganizedPotlucks={setOrganizedPotlucks}
             />

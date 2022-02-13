@@ -19,6 +19,43 @@ import BringFood from '../food/BringFood'
 import AddPerson from './AddPerson'
 import { Container } from '@mui/material';
 
+interface IPotlucks{
+  description: string,
+  event_date: string,
+  event_name: string,
+  event_time: string,
+  location: string,
+  person_id: number,
+  potluck_id: number,
+  role: string,
+  username: string,
+}
+
+interface PotluckCardProps{
+  potluck:{
+      description: string,
+      event_date: string,
+      event_name: string,
+      event_time: string,
+      location: string,
+      person_id: number,
+      potluck_id: number,
+      role: string,
+      username: string,
+  },
+  setPotlucks:Function,
+  user:{
+    person_id:number,
+    email:string,
+    username:string,
+    token:string
+  },
+  token:string | null,
+  setIsLoggedIn:Function,
+  organizedPotlucks:Array<IPotlucks>,
+  setOrganizedPotlucks:Function
+}
+
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -35,42 +72,6 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-interface IPotlucks{
-  description: string,
-  event_date: string,
-  event_name: string,
-  event_time: string,
-  location: string,
-  person_id: number,
-  potluck_id: number,
-  role: string,
-  username: string,
-}
-
-interface OrganizedPotlucksProps{
-  potluck:{
-      description: string,
-      event_date: string,
-      event_name: string,
-      event_time: string,
-      location: string,
-      person_id: number,
-      potluck_id: number,
-      role: string,
-      username: string,
-  },
-  user:{
-    person_id:number,
-    email:string,
-    username:string,
-    token:string
-  },
-  token:string | null,
-  setIsLoggedIn:Function,
-  organizedPotlucks:Array<IPotlucks>,
-  setOrganizedPotlucks:Function
-}
-
 
 const Root = styled('div')(({ theme }) => ({
   padding: theme.spacing(1),
@@ -86,7 +87,9 @@ const Root = styled('div')(({ theme }) => ({
   }
 }));
 
-export default function Potlucks({potluck, user,token,setIsLoggedIn}:OrganizedPotlucksProps) {
+export default function Potlucks({potluck,user,token,
+  setIsLoggedIn,setPotlucks,organizedPotlucks,setOrganizedPotlucks}:PotluckCardProps) {
+
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {

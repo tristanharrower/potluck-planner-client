@@ -2,7 +2,7 @@ import { Button, Container, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import request from '../../api';
-import Potlucks from '../potlucks-card/PotlucksCard';
+import PotluckCard from '../potlucks-card/PotlucksCard';
 
 interface IPotlucks{
   description: string,
@@ -27,13 +27,15 @@ interface HomePageProps{
     token:string
   },
   token:string | null,
+  potlucks:Array<IPotlucks>,
+  setPotlucks:Function,
   organizedPotlucks:Array<IPotlucks>,
   setOrganizedPotlucks:Function,
 }
 
 
 const OrganizedPotlucks = ({isLoggedIn, setIsLoggedIn, 
-  setUser, user, token,organizedPotlucks,setOrganizedPotlucks}: HomePageProps) => {
+  setUser,setPotlucks, user, token,organizedPotlucks,setOrganizedPotlucks}: HomePageProps) => {
 
 
 
@@ -65,9 +67,10 @@ const navigate = useNavigate()
       {
         (organizedPotlucks.length!==0) ?
         organizedPotlucks.map(organizedPotluck => 
-         <Potlucks 
+         <PotluckCard 
           key={organizedPotluck.potluck_id}
           potluck={organizedPotluck} 
+          setPotlucks={setPotlucks}
           user={user}
           setIsLoggedIn={setIsLoggedIn}
           token={token}

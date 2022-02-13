@@ -1,7 +1,7 @@
 import { Button, Container, Typography } from '@mui/material';
 import React, { useEffect} from 'react';
 import request from '../../api';
-import Potlucks from '../potlucks-card/PotlucksCard';
+import PotluckCard from '../potlucks-card/PotlucksCard';
 
 interface IPotlucks{
   description: string,
@@ -60,9 +60,10 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn,
       {
           (potlucks.length!==0) ?
         potlucks.map(potluck => 
-          <Potlucks 
+          <PotluckCard 
           key={potluck.potluck_id}
           potluck={potluck} 
+          setPotlucks={setPotlucks}
           user={user}
           setIsLoggedIn={setIsLoggedIn}
           token={token}
