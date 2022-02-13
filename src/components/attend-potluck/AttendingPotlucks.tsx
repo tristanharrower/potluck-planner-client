@@ -27,9 +27,12 @@ interface AttendingProps{
     },
     token:string|null,
     potlucks:Array<IPotlucks>,
-    setPotlucks:Function
+    setPotlucks:Function,
+    organizedPotlucks:Array<IPotlucks>,
+    setOrganizedPotlucks:Function
   }
-const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,setPotlucks}: AttendingProps) => {
+const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, 
+  setUser, user, token,potlucks,setPotlucks,organizedPotlucks,setOrganizedPotlucks}: AttendingProps) => {
 
   
 
@@ -62,7 +65,10 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potl
           potluck={potluck} 
           user={user}
           setIsLoggedIn={setIsLoggedIn}
-          token={token}/>
+          token={token}
+          organizedPotlucks={organizedPotlucks}
+          setOrganizedPotlucks={setOrganizedPotlucks}
+          />
         )
         : 
         <Button variant='contained'>

@@ -29,11 +29,13 @@ interface ProfileProps{
     }, 
     token:string | null,
     potlucks:Array<IPotlucks>,
-    setPotlucks:Function
+    setPotlucks:Function,
+    organizedPotlucks:Array<IPotlucks>,
+    setOrganizedPotlucks:Function
   }
 
-const HomeScreen = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,setPotlucks}: ProfileProps) => {
-  
+const HomeScreen = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,setPotlucks,organizedPotlucks,setOrganizedPotlucks}: ProfileProps) => {
+ 
 
   return <div>
        <Header 
@@ -52,6 +54,8 @@ const HomeScreen = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,se
             user={user}
             setUser={setUser}
             token={token}
+            organizedPotlucks={organizedPotlucks}
+            setOrganizedPotlucks={setOrganizedPotlucks}
             />
 
           <AttendingPotlucks
@@ -62,6 +66,8 @@ const HomeScreen = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,se
             token={token}
             potlucks={potlucks}
             setPotlucks={setPotlucks}
+            organizedPotlucks={organizedPotlucks}
+            setOrganizedPotlucks={setOrganizedPotlucks}
             />
         </Box>
       </Box>

@@ -4,19 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import request from '../../api';
 import Potlucks from '../potlucks-card/PotlucksCard';
 
-
-interface HomePageProps{
-  isLoggedIn:boolean,
-  setIsLoggedIn:Function,
-  setUser:Function,
-  user:{
-    person_id:number,
-    email:string,
-    username:string,
-    token:string
-  },
-  token:string | null
-}
 interface IPotlucks{
   description: string,
   event_date: string,
@@ -29,9 +16,26 @@ interface IPotlucks{
   username: string,
 }
 
-const OrganizedPotlucks = ({isLoggedIn, setIsLoggedIn, setUser, user, token}: HomePageProps) => {
+interface HomePageProps{
+  isLoggedIn:boolean,
+  setIsLoggedIn:Function,
+  setUser:Function,
+  user:{
+    person_id:number,
+    email:string,
+    username:string,
+    token:string
+  },
+  token:string | null,
+  organizedPotlucks:Array<IPotlucks>,
+  setOrganizedPotlucks:Function,
+}
 
-const [potlucks, setPotlucks] = useState<Array<IPotlucks>>([])
+
+const OrganizedPotlucks = ({isLoggedIn, setIsLoggedIn, 
+  setUser, user, token,organizedPotlucks,setOrganizedPotlucks}: HomePageProps) => {
+
+
 
 const navigate = useNavigate()
 
@@ -44,13 +48,13 @@ const navigate = useNavigate()
         }
       })
       .then((resp) => {
-        setPotlucks(resp.data)
+        setOrganizedPotlucks(resp.data)
       })
       .catch(err => {         
 
       })
 
-  }, [isLoggedIn, navigate, user.person_id, token])
+  }, [isLoggedIn, navigate, user.person_id, token,setOrganizedPotlucks])
 
   return <div>
       
@@ -59,14 +63,16 @@ const navigate = useNavigate()
           Organized Potlucks
         </Typography>
       {
-        (potlucks.length!==0) ?
-        potlucks.map(potluck => 
+        (organizedPotlucks.length!==0) ?
+        organizedPotlucks.map(organizedPotluck => 
          <Potlucks 
-          key={potluck.potluck_id}
-          potluck={potluck} 
+          key={organizedPotluck.potluck_id}
+          potluck={organizedPotluck} 
           user={user}
           setIsLoggedIn={setIsLoggedIn}
-          token={token}/>
+          token={token}
+          organizedPotlucks={organizedPotlucks}
+          setOrganizedPotlucks={setOrganizedPotlucks}/>
         )
         : 
         <Button variant='contained'>

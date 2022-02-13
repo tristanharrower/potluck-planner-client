@@ -51,10 +51,12 @@ const theme = createTheme({
 });
 
 function App() {
+  
   const [user, setUser] = useState<IUser>({person_id:NaN, email:'', username:'', token:''})
   const [attendingPotlucks, setAttendingPotlucks] = useState<Array<IPotlucks>>([])
+  const [organizedPotlucks, setOrganizedPotlucks] = useState<Array<IPotlucks>>([])
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
- 
+
   const potentialToken = localStorage.getItem('token')
   const potentialId = localStorage.getItem('personid')
   const navigate = useNavigate()
@@ -99,6 +101,8 @@ function App() {
           token={potentialToken}
           potlucks={attendingPotlucks}
           setPotlucks={setAttendingPotlucks}
+          organizedPotlucks={organizedPotlucks}
+          setOrganizedPotlucks={setOrganizedPotlucks}
         />}/>
 
 
@@ -143,6 +147,8 @@ function App() {
 
 export default App;
 
-//if potlucks or messages = 0, show something else
+//if potlucks or meessages = 0, show something else
 // request access on attend potluck page
 // style foods on potluck card
+//update potluck
+//delete potluck

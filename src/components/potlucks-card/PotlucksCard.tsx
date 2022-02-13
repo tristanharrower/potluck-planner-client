@@ -35,6 +35,18 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
+interface IPotlucks{
+  description: string,
+  event_date: string,
+  event_name: string,
+  event_time: string,
+  location: string,
+  person_id: number,
+  potluck_id: number,
+  role: string,
+  username: string,
+}
+
 interface OrganizedPotlucksProps{
   potluck:{
       description: string,
@@ -54,8 +66,12 @@ interface OrganizedPotlucksProps{
     token:string
   },
   token:string | null,
-  setIsLoggedIn:Function
+  setIsLoggedIn:Function,
+  organizedPotlucks:Array<IPotlucks>,
+  setOrganizedPotlucks:Function
 }
+
+
 const Root = styled('div')(({ theme }) => ({
   padding: theme.spacing(1),
   [theme.breakpoints.down('sm')]: {
