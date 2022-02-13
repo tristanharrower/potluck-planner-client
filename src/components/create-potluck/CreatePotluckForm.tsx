@@ -5,7 +5,6 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import { Button, Grid } from '@mui/material';
 import  DatePicker from './DatePicker'
@@ -150,9 +149,12 @@ export default function CreatePotluckForm({update, submit, setFormValues, formVa
             <Button
               type="submit"
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, color:'' }}
             >
-              Create
+              <Typography sx={{color:'#FFFF'}}>
+                  Create
+              </Typography>
+              
             </Button>
           </form>
         </Grid>

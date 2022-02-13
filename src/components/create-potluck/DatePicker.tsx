@@ -4,7 +4,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import TimePicker from '@mui/lab/TimePicker';
-import { Container } from '@mui/material';
+import { Grid } from '@mui/material';
 
 interface DatePickerProps{
     setFormValues:Function,
@@ -27,7 +27,7 @@ export default function BasicDatePicker({setFormValues, formValues}:DatePickerPr
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} >
       
-      <Container sx={{display:'flex', border:'solid 2px red'}}>
+      <Grid item xs={12} sx={{mb:2}}>
       <DatePicker
         label="Date"
         value={date}
@@ -37,7 +37,9 @@ export default function BasicDatePicker({setFormValues, formValues}:DatePickerPr
         }}
         renderInput={(params) => <TextField {...params} />}
       />
+      </Grid>
 
+      <Grid item xs={12}>
       <TimePicker
           label="Time"
           value={time}
@@ -47,7 +49,7 @@ export default function BasicDatePicker({setFormValues, formValues}:DatePickerPr
           }}
           renderInput={(params) => <TextField {...params} />}
         />
-      </Container>
+      </Grid>
       
     </LocalizationProvider>
     
