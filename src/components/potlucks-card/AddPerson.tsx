@@ -166,7 +166,7 @@ const handleClick =(user:IUser) => {
         </Button>
         {
           search.map(sing => {
-            return <Card sx={{display:'flex', flexDirection:'row', bgcolor:'secondary.light', m:2, p:3,}}>
+            return <Card key={sing.person_id} sx={{display:'flex', flexDirection:'row', bgcolor:'secondary.light', m:2, p:3,}}>
               <Typography>Username: {sing.username}</Typography>
               <Typography>Email: {sing.email}</Typography>
               <Button variant='contained' size='small' onClick={()=>handleClick(sing)}>+Invite</Button>

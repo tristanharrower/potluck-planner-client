@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Tooltip } from '@material-ui/core';
-
+import Alert from './Alert';
 import { Container } from '@mui/material';
 import request from '../../api';
 
@@ -141,12 +141,12 @@ export default function SearchedPotlucks({potluck,setPotlucks,user,token}:Potluc
         </CardContent>
         <hr></hr>
         <CardActions disableSpacing>
-          <Container>
-        <IconButton aria-label="add to favorites" >
-            <Tooltip title="Request Access" >
-                <LockIcon onClick={()=>handleRequest(potluck.potluck_id)}/>
-            </Tooltip>
-          </IconButton>
+          <Container> 
+          <Tooltip title="Request Access">
+              <Alert handleRequest={handleRequest} potluck_id={potluck.potluck_id}/>
+          </Tooltip>      
+               
+                
           </Container>
           <ExpandMore
             expand={expanded}
