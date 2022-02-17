@@ -15,7 +15,7 @@ import CardContentDropDown from './CardContentDropDown';
 import EditIcon from '@mui/icons-material/Edit';
 import { Tooltip } from '@material-ui/core';
 import BringFood from '../food/BringFood'
-
+import DeletePotluck from './DeletePotluck'
 import AddPerson from './AddPerson'
 import { Container } from '@mui/material';
 
@@ -129,7 +129,7 @@ export default function Potlucks({potluck,user,token,
         </CardContent>
         <hr></hr>
         <CardActions disableSpacing>
-          <Container>
+          <Container sx={{flexWrap:'none'}}>
         <IconButton aria-label="add to favorites">
             {(potluck.role==='guest') ?
             <div></div>
@@ -150,6 +150,18 @@ export default function Potlucks({potluck,user,token,
           <IconButton aria-label="add to favorites">
                 <BringFood user={user} potluck={potluck} 
                 setExpanded={setExpanded} token={token}/>
+          </IconButton>
+          <IconButton aria-label="add to favorites">
+            {(potluck.role==='guest') ?
+            <div></div>
+            :  
+            <DeletePotluck 
+            potluck={potluck} 
+            organizedPotlucks={organizedPotlucks}
+            setOrganizedPotlucks={setOrganizedPotlucks}
+            user={user}
+            token={token}/>
+          }
           </IconButton>
           </Container>
           <ExpandMore
