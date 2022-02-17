@@ -140,16 +140,15 @@ export default function Potlucks({potluck,user,token,
             </Tooltip>
           }
           </IconButton>
-         
+          <IconButton aria-label="add person">
             {(potluck.role==='guest') ?
             <p></p>
             :  
-            <IconButton aria-label="add person">
               <AddPerson potluck={potluck} user={user} 
               setExpanded={setExpanded} token={token}/>
-            </IconButton>
+            
           }
-          
+          </IconButton>
           <IconButton aria-label="bring food">
                 <BringFood user={user} potluck={potluck} 
                 setExpanded={setExpanded} token={token}/>
