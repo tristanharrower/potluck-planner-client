@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import AttendPotluckForm from '../components/attend-potluck/AttendPotluckForm'
 import request from '../api'
-import { useNavigate } from 'react-router-dom';
 import Header from '../components/header/Header';
-import OrganizedPotlucks from '../components/organized-potlucks/OrganizedPotlucks';
 import SearchedPotlucks from '../components/searched-potlucks/SearchedPotlucks';
 import { Container, Typography } from '@mui/material';
 
@@ -42,7 +40,6 @@ interface CreatePotluckProps{
 const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,setPotlucks}: CreatePotluckProps) => {
     const [searchedPotlucks, setSearchedPotlucks] = useState([])
   
-    const navigate = useNavigate()
     const [formValues, setFormValues] = useState<IFormValues>({
       username:user.username,
     })

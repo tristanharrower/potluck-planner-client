@@ -147,8 +147,6 @@ function App() {
 
 export default App;
 
-//if potlucks or meessages = 0, show something else
-// request access on attend potluck page
-// style foods on potluck card
 //update potluck
 //delete potluck
+// style foods on potluck card
