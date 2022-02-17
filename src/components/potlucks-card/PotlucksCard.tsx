@@ -43,6 +43,7 @@ interface PotluckCardProps{
       role: string,
       username: string,
   },
+  potlucks:Array<IPotlucks>,
   setPotlucks:Function,
   user:{
     person_id:number,
@@ -88,7 +89,7 @@ const Root = styled('div')(({ theme }) => ({
 }));
 
 export default function Potlucks({potluck,user,token,
-  setIsLoggedIn,setPotlucks,organizedPotlucks,setOrganizedPotlucks}:PotluckCardProps) {
+  setIsLoggedIn,potlucks,setPotlucks,organizedPotlucks,setOrganizedPotlucks}:PotluckCardProps) {
 
   const [expanded, setExpanded] = React.useState(false);
 
@@ -139,29 +140,29 @@ export default function Potlucks({potluck,user,token,
             </Tooltip>
           }
           </IconButton>
-          <IconButton aria-label="add to favorites">
+         
             {(potluck.role==='guest') ?
-            <div></div>
+            <p></p>
             :  
+            <IconButton aria-label="add person">
               <AddPerson potluck={potluck} user={user} 
               setExpanded={setExpanded} token={token}/>
+            </IconButton>
           }
-          </IconButton>
-          <IconButton aria-label="add to favorites">
+          
+          <IconButton aria-label="bring food">
                 <BringFood user={user} potluck={potluck} 
                 setExpanded={setExpanded} token={token}/>
           </IconButton>
-          <IconButton aria-label="add to favorites">
-            {(potluck.role==='guest') ?
-            <div></div>
-            :  
+          <IconButton aria-label="delete potluck">   
             <DeletePotluck 
             potluck={potluck} 
+            potlucks={potlucks}
+            setPotlucks={setPotlucks}
             organizedPotlucks={organizedPotlucks}
             setOrganizedPotlucks={setOrganizedPotlucks}
             user={user}
             token={token}/>
-          }
           </IconButton>
           </Container>
           <ExpandMore

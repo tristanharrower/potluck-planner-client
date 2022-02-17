@@ -43,6 +43,8 @@ interface DeletePotluckProps{
         role: string,
         username: string,
     },
+    setPotlucks:Function,
+    potlucks:Array<IPotlucks>,
     user:{
       person_id:number,
       email:string,
@@ -54,12 +56,13 @@ interface DeletePotluckProps{
     setOrganizedPotlucks:Function
 }
 
-export default function DeletePotluck({potluck, token, setOrganizedPotlucks,user,organizedPotlucks}:DeletePotluckProps) {
+export default function DeletePotluck({potluck, potlucks,setPotlucks, token, setOrganizedPotlucks,user,organizedPotlucks}:DeletePotluckProps) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
- const handleDelete = (potluckid:number) => {
+ const handleDelete = (potluckid:number,role:string) => {
+     if(role==='organizer'){
         request.delete(`/potlucks/${potluckid}`,{
             headers: { Authorization: `${token}` },
         })
@@ -71,6 +74,27 @@ export default function DeletePotluck({potluck, token, setOrganizedPotlucks,user
         .catch(err => {
             console.log(err)
         })
+     } else {
+
+
+         request.delete(`/attending-potlucks/${potluck.potluck_id}`, {
+            headers: { 
+              Authorization: `${token}`
+            },
+            data:{
+                person_id:user.person_id
+            }
+          })
+        .then(resp => {
+            console.log(resp)
+            setPotlucks(potlucks.filter(item=>item.potluck_id !== potluckid))
+            handleClose()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+     }
+       
   }
 
   
@@ -91,7 +115,7 @@ export default function DeletePotluck({potluck, token, setOrganizedPotlucks,user
             Are you sure you want to delete "{potluck.event_name}" ?
           </Typography>
           <Container sx={{p:1, alignItems:'center', justifyContent:'center'}}>
-                <Button sx={{backgroundColor:'red', m:1}} onClick={()=>handleDelete(potluck.potluck_id)}>
+                <Button sx={{backgroundColor:'red', m:1}} onClick={()=>handleDelete(potluck.potluck_id,potluck.role)}>
                     Delete
                 </Button>
                 <Button sx={{border:'black solid 1px'}} onClick={handleClose}>

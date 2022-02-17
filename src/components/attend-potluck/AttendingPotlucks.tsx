@@ -64,6 +64,7 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn,
           <PotluckCard 
           key={potluck.potluck_id}
           potluck={potluck} 
+          potlucks={potlucks}
           setPotlucks={setPotlucks}
           user={user}
           setIsLoggedIn={setIsLoggedIn}

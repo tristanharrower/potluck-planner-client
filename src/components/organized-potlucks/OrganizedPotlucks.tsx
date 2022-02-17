@@ -35,7 +35,7 @@ interface HomePageProps{
 
 
 const OrganizedPotlucks = ({isLoggedIn, setIsLoggedIn, 
-  setUser,setPotlucks, user, token,organizedPotlucks,setOrganizedPotlucks}: HomePageProps) => {
+  setUser,setPotlucks,potlucks, user, token,organizedPotlucks,setOrganizedPotlucks}: HomePageProps) => {
 
 
 
@@ -70,6 +70,7 @@ const navigate = useNavigate()
          <PotluckCard 
           key={organizedPotluck.potluck_id}
           potluck={organizedPotluck} 
+          potlucks={potlucks}
           setPotlucks={setPotlucks}
           user={user}
           setIsLoggedIn={setIsLoggedIn}

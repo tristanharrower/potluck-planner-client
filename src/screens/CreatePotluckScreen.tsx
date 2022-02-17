@@ -69,7 +69,6 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks
         location:`${formValues.address} ${formValues.city} ${formValues.state} ${formValues.zip}`,
         role:'organizer'
       }
-      console.log(newPotluck)
 
       let data = JSON.stringify(newPotluck)
       request.post('/potlucks', data, {
@@ -82,7 +81,7 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks
         navigate('/')
       })
       .catch(err => {
-        console.log(err.request.response)
+        
       })
     }
   return <div style={{height:'100vh'}}>

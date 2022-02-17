@@ -39,7 +39,7 @@ interface CreatePotluckProps{
 
 const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,setPotlucks}: CreatePotluckProps) => {
     const [searchedPotlucks, setSearchedPotlucks] = useState([])
-  
+    const [errorText, setErrorText] = useState('')
     const [formValues, setFormValues] = useState<IFormValues>({
       username:user.username,
     })
@@ -56,8 +56,13 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks
         }
       })
       .then((resp) => {
-        console.log(resp.data)
-        setSearchedPotlucks(resp.data)
+        if(resp.data.length ===0){
+          setErrorText('No potlucks found')
+        } else {
+          setErrorText('')
+          setSearchedPotlucks(resp.data)
+        }
+        
       })
       .catch(err => {         
 
@@ -75,7 +80,7 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks
      submit={submitForm}/>
 
     
-      <Container sx={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+      <Container sx={{display:'flex', flexDirection:'column', alignItems:'center', minHeight:'100vh'}}>
     {
       searchedPotlucks.length !== 0 
       ? 
@@ -86,18 +91,23 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks
       null
     }
   {
-      searchedPotlucks.map(potluck => {
+    searchedPotlucks.length !== 0 
+    ? 
+     searchedPotlucks.map((potluck:any) => {
         return (
         <SearchedPotlucks 
+        key={potluck.potluck_id}
         user={user}
         potluck={potluck}
         setPotlucks = {setSearchedPotlucks}
         token={token}
         />
         )
-        
-      })
-       
+      })    
+      :
+      <Typography variant='h4'>
+          {errorText}
+    </Typography>
     }
     </Container>
     

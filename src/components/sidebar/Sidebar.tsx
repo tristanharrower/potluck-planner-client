@@ -39,7 +39,7 @@ const Sidebar = ({setIsLoggedIn}:SidebarProps) => {
   }));
 
   return <Root>
-    <Grid container xs={12} sx={{bgcolor:'secondary.light', height:'100vh', width:'220px'}}>
+    <Grid container sx={{bgcolor:'secondary.light', height:'100vh', width:'220px'}}>
       <List >
         <ListItem button key={'Profile'} onClick={navigateProfile} >
               <ListItemIcon>

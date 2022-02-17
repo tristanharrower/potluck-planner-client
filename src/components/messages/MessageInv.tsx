@@ -74,11 +74,11 @@ const MessageInv = ({inv, token, setInvites, invites,setPotlucks,user}: Messages
       },
     })
     .then(resp => {
-      console.log(resp)
+      
       setInvites(invites.filter(item => item.message_id !== id))
     })
     .catch(err => {
-      console.log(err.request.response)
+      
     })
 
     request.delete(`/messages/${inv.message_id}`, {
@@ -91,10 +91,10 @@ const MessageInv = ({inv, token, setInvites, invites,setPotlucks,user}: Messages
       
     })
     .catch(err => {
-      console.log(err.request.response)
+      
     })
 
-    request.get('attending-potlucks', {
+    request.get('/attending-potlucks', {
       headers: { Authorization: `${token}` },
       params: {
         person_id:user.person_id

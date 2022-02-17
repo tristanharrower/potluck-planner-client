@@ -142,7 +142,7 @@ export default function CreatePotluckForm({update, submit, setFormValues, formVa
             onChange={onChange}
           />
         </Grid>
-        <Grid container xs={12} 
+        <Grid container  
         alignItems="center"
         justifyContent="center">
           <form onSubmit={handleSubmit}>

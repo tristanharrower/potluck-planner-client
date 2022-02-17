@@ -102,11 +102,10 @@ export default function SearchedPotlucks({potluck,setPotlucks,user,token}:Potluc
             },
           })
           .then(res =>   {
-            console.log(res)
+          
           })
           .catch(err => {
-          
-            console.log(err.request.response)
+        
           })
   }     
 
