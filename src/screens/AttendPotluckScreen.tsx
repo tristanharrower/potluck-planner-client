@@ -3,6 +3,9 @@ import AttendPotluckForm from '../components/attend-potluck/AttendPotluckForm'
 import request from '../api'
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/header/Header';
+import OrganizedPotlucks from '../components/organized-potlucks/OrganizedPotlucks';
+import SearchedPotlucks from '../components/searched-potlucks/SearchedPotlucks';
+import { Container, Typography } from '@mui/material';
 
 interface IPotlucks{
   description: string,
@@ -33,39 +36,34 @@ interface CreatePotluckProps{
   }
 
     interface IFormValues{
-      potluck_id:number,
-      person_id:number,
       username:string,
-      role:string
     }
 
 const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,setPotlucks}: CreatePotluckProps) => {
+    const [searchedPotlucks, setSearchedPotlucks] = useState([])
+  
     const navigate = useNavigate()
     const [formValues, setFormValues] = useState<IFormValues>({
-      potluck_id:NaN,
-      person_id:user.person_id,
       username:user.username,
-      role:'guest' 
     })
     const updateForm = (inputName:string, inputValue:string) => {
       setFormValues({...formValues, [inputName]:inputValue})
-      console.log(formValues)
     }
 
     const submitForm = () => {
 
-      let data = JSON.stringify(formValues)
-      request.post('/attending-potlucks', data, {
-        headers: { 
-          'Content-Type': 'application/json',
-          Authorization: `${token}`
-        },
+      request.get(`potlucks`,{
+        headers: { Authorization: `${token}` },
+        params: {
+          username:formValues.username
+        }
       })
-      .then(resp => {
-        navigate('/')
+      .then((resp) => {
+        console.log(resp.data)
+        setSearchedPotlucks(resp.data)
       })
-      .catch(err => {
-        console.log(err.request.response)
+      .catch(err => {         
+
       })
     }
   return <div>
@@ -78,6 +76,35 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks
      <AttendPotluckForm 
      update={updateForm} 
      submit={submitForm}/>
+
+    
+      <Container sx={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+    {
+      searchedPotlucks.length !== 0 
+      ? 
+      <Typography variant='h4'>
+        Searched Potlucks
+      </Typography>
+      : 
+      null
+    }
+  {
+      searchedPotlucks.map(potluck => {
+        return (
+        <SearchedPotlucks 
+        user={user}
+        potluck={potluck}
+        setPotlucks = {setSearchedPotlucks}
+        token={token}
+        />
+        )
+        
+      })
+       
+    }
+    </Container>
+    
+    
   </div>;
 };
 

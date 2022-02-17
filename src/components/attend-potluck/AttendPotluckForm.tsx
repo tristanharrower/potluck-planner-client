@@ -32,7 +32,7 @@ export default function CreatePotluckForm({update, submit}:CreatePotluckFormProp
 
 
   return (
-    <div style={{height:'100vh'}}>
+    <div style={{height:'50vh'}}>
       <CssBaseline />
       <AppBar
         position="absolute"
@@ -53,15 +53,15 @@ export default function CreatePotluckForm({update, submit}:CreatePotluckFormProp
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
         <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Enter unique Potluck ID
+        Search by Organizer's Username
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <TextField
             required
-            id="potluck_id"
-            name="potluck_id"
-            label="Potluck ID"
+            id="username"
+            name="username"
+            label="Username"
             fullWidth
             autoComplete="given-name"
             variant="outlined"
@@ -75,9 +75,11 @@ export default function CreatePotluckForm({update, submit}:CreatePotluckFormProp
             <Button
               type="submit"
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2}}
             >
-              Submit
+              <Typography sx={{color:'#FFFF'}}>
+                  Search
+              </Typography>
             </Button>
           </form>
         </Grid>
