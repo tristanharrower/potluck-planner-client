@@ -77,10 +77,15 @@ const navigate = useNavigate()
           organizedPotlucks={organizedPotlucks}
           setOrganizedPotlucks={setOrganizedPotlucks}/>
         )
-        : 
-        <Button variant='contained'>
-          Create Potluck
-        </Button>
+        : <Container sx={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+          <Typography>Nothing yet</Typography>
+            <Button variant='contained'  onClick={()=>navigate('/create')} sx={{m:1,}}>
+              <Typography sx={{color:'#FFFF'}}>
+                Create Potluck
+               </Typography>
+            </Button>
+        </Container>
+        
       }
       </Container>
       

@@ -1,5 +1,6 @@
 import { Button, Container, Typography } from '@mui/material';
 import React, { useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import request from '../../api';
 import PotluckCard from '../potlucks-card/PotlucksCard';
 
@@ -34,7 +35,7 @@ interface AttendingProps{
 const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn, 
   setUser, user, token,potlucks,setPotlucks,organizedPotlucks,setOrganizedPotlucks}: AttendingProps) => {
 
-  
+    const navigate = useNavigate()
 
   useEffect(()=> {
 
@@ -72,9 +73,16 @@ const AttendingPotlucks = ({isLoggedIn, setIsLoggedIn,
           />
         )
         : 
-        <Button variant='contained'>
-          Create Potluck
+        <Container sx={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+          <Typography>
+            Nothing Scheduled
+          </Typography>
+        <Button variant='contained' onClick={()=>navigate('/attend-potluck')}  sx={{m:1,}}>
+          <Typography sx={{color:'#FFFF'}}>
+            Attend Potluck
+           </Typography>
         </Button>
+    </Container>
       }
       </Container>
   
