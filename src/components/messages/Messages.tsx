@@ -116,7 +116,7 @@ export default function Notifications({user,token,potlucks,setPotlucks}:Notifica
         onClick={handleClick}
         sx={{color:'secondary.light important!'}}
       >
-          <Badge badgeContent={requests.length} color="error">
+          <Badge badgeContent={requests.length + invites.length} color="error">
         <NotificationsIcon sx={{color:'white'}}/>
       </Badge>
    
