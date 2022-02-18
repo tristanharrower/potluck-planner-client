@@ -7,7 +7,8 @@ import Menu from '@mui/material/Menu';
 import request from '../../api';
 import MessageReq from './MessageReq';
 import MessageInv from './MessageInv'
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+
 interface IPotlucks{
   description: string,
   event_date: string,
@@ -131,6 +132,9 @@ export default function Notifications({user,token,potlucks,setPotlucks}:Notifica
         }}
       >
         <Box   sx={{ display: 'flex', flexDirection:'column' }}>
+          <Typography sx={{m:1}}>
+            Messages:
+          </Typography>
         {
               requests && requests.map(req => {
                   if(req.type==='request'){
