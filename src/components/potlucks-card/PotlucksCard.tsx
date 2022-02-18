@@ -131,15 +131,6 @@ export default function Potlucks({potluck,user,token,
         <hr></hr>
         <CardActions disableSpacing>
           <Container sx={{flexWrap:'none'}}>
-        <IconButton aria-label="add to favorites">
-            {(potluck.role==='guest') ?
-            <div></div>
-            :  
-            <Tooltip title="Edit Potluck Information" >
-                <EditIcon />
-            </Tooltip>
-          }
-          </IconButton>
           <IconButton aria-label="add person">
             {(potluck.role==='guest') ?
             <p></p>
