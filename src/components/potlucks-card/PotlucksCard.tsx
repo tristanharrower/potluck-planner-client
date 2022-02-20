@@ -12,8 +12,6 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CardContentDropDown from './CardContentDropDown';
-import EditIcon from '@mui/icons-material/Edit';
-import { Tooltip } from '@material-ui/core';
 import BringFood from '../food/BringFood'
 import DeletePotluck from './DeletePotluck'
 import AddPerson from './AddPerson'
@@ -98,6 +96,7 @@ export default function Potlucks({potluck,user,token,
   };
   //border:'red solid 2px',
 
+  const chosenFood = 'food3'
 
   return (
     <Root>
@@ -115,7 +114,7 @@ export default function Potlucks({potluck,user,token,
         <CardMedia
           component="img"
           height="320px"
-          image={require('../../images/food3.jpg')}
+          image={require(`../../images/${chosenFood}.jpg`)}
           alt="Paella dish"
           sx = {{backgroundPosition:'center center', 
           textAlign:'center', m:"auto", backgroundRepeat:'no-repeat', backgroundSize:'cover'}}

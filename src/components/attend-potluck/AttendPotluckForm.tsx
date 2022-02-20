@@ -53,7 +53,7 @@ export default function CreatePotluckForm({update, submit}:CreatePotluckFormProp
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
         <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Search by Organizer's Username
+        Search Potluck by Username
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12}>
