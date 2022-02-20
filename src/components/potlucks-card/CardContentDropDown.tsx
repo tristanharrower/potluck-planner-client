@@ -6,6 +6,8 @@ import Grid from '@material-ui/core/Grid'
 import PeopleIcon from '@mui/icons-material/People';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import Tooltip from '@mui/material/Tooltip';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Container } from '@mui/material';
 
 
 //food_id,potluck_id,username,food_wanted
@@ -22,12 +24,31 @@ interface IGuests{
 
 interface DropDownProps{
     potluckid:number,
-    token:string | null
+    token:string | null,
+    user:{
+      person_id:number,
+      email:string,
+      username:string,
+      token:string
+    }
 }
-const CardContentDropDown = ({potluckid, token}: DropDownProps) => {
-  const [food, setFood] = useState<Array<IFood>>()
-  const [guests, setGuests] = useState<Array<IGuests>>()
+const CardContentDropDown = ({potluckid, token,user}: DropDownProps) => {
+  const [food, setFood] = useState<Array<IFood>>([])
+  const [guests, setGuests] = useState<Array<IGuests>>([])
 
+  const deleteFood = (potluckid:number, foodid:number) => {
+    request.delete(`/potlucks/${potluckid}/foods/${foodid}`, {
+      headers: { 
+        Authorization: `${token}`
+      },
+    })
+  .then(resp => {
+      setFood(food.filter(item=>item.food_id !== foodid))  
+  })
+  .catch(err => {
+      console.log(err)
+  })
+  }
 
   useEffect(()=> {
     request.get(`/potlucks/${potluckid}/foods`,{
@@ -87,7 +108,26 @@ const CardContentDropDown = ({potluckid, token}: DropDownProps) => {
       <Grid container xs={10} direction="column">
       {
             food && food.map(res => {
-              return <Typography key={res.food_id}>{res.food_wanted} : {res.username}</Typography>
+              if(res.username === user.username){
+                return (
+                  <Grid container>
+                  <Grid item xs={9}>
+                    <Typography key={res.food_id}>{res.username} is bringing {res.food_wanted}</Typography>
+                  </Grid>
+                  <Tooltip title="Delete Food">
+                      <DeleteIcon onClick={()=>deleteFood(res.potluck_id,res.food_id)}></DeleteIcon>
+                  </Tooltip>
+                  </Grid>
+                  )
+              } else {
+                return (
+                  <Grid>
+                      <Typography key={res.food_id}>{res.username} is bringing {res.food_wanted}</Typography>
+                  </Grid>
+                 
+                )
+              }
+             
             })
           }
       </Grid>

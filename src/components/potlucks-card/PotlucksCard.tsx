@@ -166,7 +166,8 @@ export default function Potlucks({potluck,user,token,
        
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContentDropDown potluckid={potluck.potluck_id} 
-          token={token}/>
+          token={token}
+          user={user}/>
         </Collapse>
       </Card>
     </Root>
