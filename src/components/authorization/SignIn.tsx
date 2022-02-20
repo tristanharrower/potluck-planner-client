@@ -97,10 +97,6 @@ export default function SignIn({submitForm, update, errorText, setLogin}: SignIn
              <div className='text-center'>
                 <p className='error'>{errorText}</p>
             </div>
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
               type="submit"
               fullWidth
@@ -111,12 +107,7 @@ export default function SignIn({submitForm, update, errorText, setLogin}: SignIn
               Sign-In
               </Typography>
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
+            <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link onClick={()=>setLogin(false)} variant="body2">
                   {"Don't have an account? Sign Up"}
@@ -125,7 +116,6 @@ export default function SignIn({submitForm, update, errorText, setLogin}: SignIn
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
    
   );
