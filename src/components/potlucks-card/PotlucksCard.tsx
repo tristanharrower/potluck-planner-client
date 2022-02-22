@@ -17,6 +17,15 @@ import DeletePotluck from './DeletePotluck'
 import AddPerson from './AddPerson'
 import { Container } from '@mui/material';
 
+
+interface IFood{
+  food_id:number,
+  potluck_id:number,
+  person_id:number,
+  username:string,
+  food_wanted:string
+}
+
 interface IPotlucks{
   description: string,
   event_date: string,
@@ -88,7 +97,7 @@ const Root = styled('div')(({ theme }) => ({
 
 export default function Potlucks({potluck,user,token,
   setIsLoggedIn,potlucks,setPotlucks,organizedPotlucks,setOrganizedPotlucks}:PotluckCardProps) {
-
+  const [food, setFood] = React.useState<Array<IFood>>([])
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -140,8 +149,13 @@ export default function Potlucks({potluck,user,token,
           }
           </IconButton>
           <IconButton aria-label="bring food">
-                <BringFood user={user} potluck={potluck} 
-                setExpanded={setExpanded} token={token}/>
+                <BringFood 
+                user={user} 
+                potluck={potluck} 
+                setExpanded={setExpanded} 
+                token={token}
+                food={food}
+                setFood={setFood}/>
           </IconButton>
           <IconButton aria-label="delete potluck">   
             <DeletePotluck 
@@ -167,7 +181,9 @@ export default function Potlucks({potluck,user,token,
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContentDropDown potluckid={potluck.potluck_id} 
           token={token}
-          user={user}/>
+          user={user}
+          food={food}
+          setFood={setFood}/>
         </Collapse>
       </Card>
     </Root>

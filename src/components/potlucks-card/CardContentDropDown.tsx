@@ -7,7 +7,6 @@ import PeopleIcon from '@mui/icons-material/People';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Container } from '@mui/material';
 
 
 //food_id,potluck_id,username,food_wanted
@@ -30,10 +29,11 @@ interface DropDownProps{
       email:string,
       username:string,
       token:string
-    }
+    },
+    food:Array<IFood>,
+    setFood:Function,
 }
-const CardContentDropDown = ({potluckid, token,user}: DropDownProps) => {
-  const [food, setFood] = useState<Array<IFood>>([])
+const CardContentDropDown = ({potluckid, token,user,food, setFood}: DropDownProps) => {
   const [guests, setGuests] = useState<Array<IGuests>>([])
 
   const deleteFood = (potluckid:number, foodid:number) => {
@@ -80,7 +80,7 @@ const CardContentDropDown = ({potluckid, token,user}: DropDownProps) => {
 
 
 
-  },[potluckid, token])
+  },[potluckid, token,setFood])
 
 
 

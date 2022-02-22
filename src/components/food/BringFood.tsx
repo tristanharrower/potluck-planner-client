@@ -7,6 +7,14 @@ import { Button, Typography } from '@mui/material';
 import request from '../../api';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 
+interface IFood{
+  food_id:number,
+  potluck_id:number,
+  person_id:number,
+  username:string,
+  food_wanted:string
+}
+
 interface BringFoodProps{
     potluck:{
         description: string,
@@ -26,10 +34,12 @@ interface BringFoodProps{
       token:string
     },
     setExpanded:Function,
-    token:string|null
+    token:string|null,
+    food:Array<IFood>,
+    setFood:Function,
   }
 
-  interface IFood{
+  interface IFoodInput{
     food_wanted:string,
     username:string,
     person_id:number
@@ -52,12 +62,12 @@ const style = {
   justifyContent: 'center'
 };
 
-export default function BasicModal({user,potluck, setExpanded,token}:BringFoodProps) {
+export default function BasicModal({user,potluck, setExpanded,token,food,setFood}:BringFoodProps) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [food, setFood] = React.useState<IFood>({
+  const [foodInput, setFoodInput] = React.useState<IFoodInput>({
     food_wanted:'string',
     username:user.username,
     person_id:user.person_id
@@ -67,7 +77,7 @@ export default function BasicModal({user,potluck, setExpanded,token}:BringFoodPr
   const onChange = (evt:any) => {
     const value = evt.target.value;
   
-    setFood({
+    setFoodInput({
       food_wanted:value,
       username:user.username,
       person_id:user.person_id
@@ -79,7 +89,7 @@ export default function BasicModal({user,potluck, setExpanded,token}:BringFoodPr
     event.preventDefault();
     // eslint-disable-next-line no-console
     
-    const data = JSON.stringify(food)
+    const data = JSON.stringify(foodInput)
 
     request.post(`/potlucks/${potluck.potluck_id}/foods`, data, {
       headers: { 
@@ -89,11 +99,25 @@ export default function BasicModal({user,potluck, setExpanded,token}:BringFoodPr
     })
     .then(res =>   {
       handleClose()
-      setExpanded(false)
+
+      request.get(`/potlucks/${potluck.potluck_id}/foods`,{
+        headers: { Authorization: `${token}` },
+        params:{
+          potluck_id:potluck.potluck_id
+        }
+      })
+      .then(resp => {
+        setFood(resp.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  
     })
     .catch(err => {
       console.log(err)
     })
+
     
   }
 
