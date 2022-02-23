@@ -84,7 +84,8 @@ export default function Notifications({user,token,potlucks,setPotlucks}:Notifica
         }
       })
       .then((resp) => {
-        setRequests(resp.data)
+        let tempArr = resp.data.filter((item:any)=> item.type==='request')
+        setRequests(tempArr)
       })
       .catch(err => {         
             
@@ -97,7 +98,8 @@ export default function Notifications({user,token,potlucks,setPotlucks}:Notifica
         }
       })
       .then((resp) => {
-        setInvites(resp.data)
+        let tempArr = resp.data.filter((item:any)=> item.type==='invite')
+        setInvites(tempArr)
       })
       .catch(err => {         
         
@@ -117,7 +119,7 @@ export default function Notifications({user,token,potlucks,setPotlucks}:Notifica
         onClick={handleClick}
         sx={{color:'secondary.light important!'}}
       >
-          <Badge badgeContent={null} color="error">
+          <Badge badgeContent={invites.length + requests.length} color="error">
         <NotificationsIcon sx={{color:'white'}}/>
       </Badge>
    
