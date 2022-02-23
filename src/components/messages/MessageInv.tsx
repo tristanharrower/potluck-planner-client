@@ -74,8 +74,19 @@ const MessageInv = ({inv, token, setInvites, invites,setPotlucks,user}: Messages
       },
     })
     .then(resp => {
-      
       setInvites(invites.filter(item => item.message_id !== id))
+      request.get('/attending-potlucks', {
+        headers: { Authorization: `${token}` },
+        params: {
+          person_id:user.person_id
+        }
+      })
+      .then(resp => {
+          setPotlucks(resp.data)
+      })
+      .catch(err => {
+        
+      })
     })
     .catch(err => {
       
@@ -94,18 +105,7 @@ const MessageInv = ({inv, token, setInvites, invites,setPotlucks,user}: Messages
       
     })
 
-    request.get('/attending-potlucks', {
-      headers: { Authorization: `${token}` },
-      params: {
-        person_id:user.person_id
-      }
-    })
-    .then(resp => {
-        setPotlucks(resp.data)
-    })
-    .catch(err => {
-      
-    })
+
   }
   
   const handleDecline = (id:number) => {
