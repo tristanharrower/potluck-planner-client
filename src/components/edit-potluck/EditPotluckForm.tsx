@@ -9,19 +9,6 @@ import TextField from '@mui/material/TextField';
 import { Button, Grid } from '@mui/material';
 import  EditDatePicker from './EditDatePicker'
 
-interface IPotlucks{
-  description: string,
-  event_date: string,
-  event_name: string,
-  event_time: string,
-  location: string,
-  person_id: number,
-  potluck_id: number,
-  role: string,
-  username: string,
-}
-
-
 interface CreatePotluckFormProps{
    update:Function,
    submit:Function,

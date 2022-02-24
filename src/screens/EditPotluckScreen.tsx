@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Header from '../components/header/Header';
 import EditPotluckForm from '../components/edit-potluck/EditPotluckForm'
 import request from '../api'
