@@ -12,6 +12,7 @@ import CreatePotluck from './screens/CreatePotluckScreen';
 import AttendPotluck from './screens/AttendPotluckScreen'
 import HomeScreen from './screens/HomeScreen';
 import request from './api';
+import EditPotluck from './screens/EditPotluckScreen';
 
 interface IUser{
   person_id:number,
@@ -127,6 +128,17 @@ function App() {
             potlucks={attendingPotlucks}
             setPotlucks={setAttendingPotlucks}
           />}/>
+
+        <Route path="edit-potluck/:potluckid" 
+          element={<EditPotluck
+            isLoggedIn={isLoggedIn} 
+            setIsLoggedIn={setIsLoggedIn}
+            user={user}
+            setUser={setUser}
+            token={potentialToken}
+            potlucks={attendingPotlucks}
+            setPotlucks={setAttendingPotlucks}
+          />}/> 
 
         <Route path="auth" 
         element={<Auth 

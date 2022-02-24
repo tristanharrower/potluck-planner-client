@@ -15,7 +15,9 @@ import CardContentDropDown from './CardContentDropDown';
 import BringFood from '../food/BringFood'
 import DeletePotluck from './DeletePotluck'
 import AddPerson from './AddPerson'
-import { Container } from '@mui/material';
+import { Container, Tooltip } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from 'react-router-dom';
 
 
 interface IFood{
@@ -100,6 +102,8 @@ export default function Potlucks({potluck,user,token,
   const [food, setFood] = React.useState<Array<IFood>>([])
   const [expanded, setExpanded] = React.useState(false);
 
+  const navigate = useNavigate();
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -139,6 +143,17 @@ export default function Potlucks({potluck,user,token,
         <hr></hr>
         <CardActions disableSpacing>
           <Container sx={{flexWrap:'none'}}>
+          <IconButton aria-label="add person" onClick={()=>navigate(`/edit-potluck/${potluck.potluck_id}`)}>
+            {(potluck.role==='guest') ?
+            <p></p>
+            :  
+            <Tooltip title="Edit Potluck">
+                <EditIcon />
+            </Tooltip>
+              
+            
+          }
+          </IconButton>
           <IconButton aria-label="add person">
             {(potluck.role==='guest') ?
             <p></p>
