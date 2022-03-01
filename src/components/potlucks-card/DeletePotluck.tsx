@@ -86,12 +86,11 @@ export default function DeletePotluck({potluck, potlucks,setPotlucks, token, set
             }
           })
         .then(resp => {
-            console.log(resp)
             setPotlucks(potlucks.filter(item=>item.potluck_id !== potluckid))
             handleClose()
         })
         .catch(err => {
-            console.log(err)
+            
         })
      }
        
