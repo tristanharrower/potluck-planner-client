@@ -98,6 +98,8 @@ const Root = styled('div')(({ theme }) => ({
   }
 }));
 
+
+
 export default function Potlucks({potluck,user,token,
   setIsLoggedIn,potlucks,setPotlucks,organizedPotlucks,setOrganizedPotlucks}:PotluckCardProps) {
   const [food, setFood] = React.useState<Array<IFood>>([])

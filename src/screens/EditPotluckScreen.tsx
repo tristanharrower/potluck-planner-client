@@ -14,6 +14,7 @@ interface IPotlucks{
   potluck_id: number,
   role: string,
   username: string,
+  picture:string
 }
 
 interface CreatePotluckProps{
@@ -40,6 +41,7 @@ interface CreatePotluckProps{
         city:string,
         state:string,
         zip:string,
+        picture:string
     }
 
 const EditPotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,setPotlucks}: CreatePotluckProps) => {
@@ -56,6 +58,7 @@ const EditPotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,s
         city:'',
         state:'',
         zip:'',    
+        picture:''
     })
     const updateForm = (inputName:string, inputValue:string) => {
       setFormValues({...formValues, [inputName]:inputValue})
@@ -71,7 +74,8 @@ const EditPotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,s
         event_date:formValues.event_date,
         event_time:formValues.event_time,
         location:`${formValues.address} ${formValues.city} ${formValues.state} ${formValues.zip}`,
-        role:'organizer'
+        role:'organizer',
+        picture:formValues.picture
       }
 
       let data = JSON.stringify(newPotluck)
@@ -88,7 +92,7 @@ const EditPotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks,s
         
       })
     }
-  return <div style={{height:'100vh'}}>
+  return <div style={{height:'180vh'}}>
      <Header 
      user={user} 
      setIsLoggedIn={setIsLoggedIn} 

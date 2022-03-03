@@ -30,6 +30,8 @@ interface CreatePotluckFormProps{
 
 
 export default function CreatePotluckForm({update, submit, setFormValues, formValues}:CreatePotluckFormProps) {
+  const [errorMessage, setErrorMEssage] = React.useState('');
+
 
   const onChange = (evt:any) => {
     const name = evt.target.name;
@@ -42,7 +44,14 @@ export default function CreatePotluckForm({update, submit, setFormValues, formVa
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // eslint-disable-next-line no-console
-    submit()
+
+    if(formValues.picture === ''){
+      setErrorMEssage('Please choose a background picture')
+    }
+    else{
+      submit()
+    }
+    
   }
 
 
@@ -164,6 +173,12 @@ export default function CreatePotluckForm({update, submit, setFormValues, formVa
               
             </Button>
           </form>
+        </Grid>
+        <Grid item alignItems="center"
+        justifyContent="center">
+        <Typography variant="h6" color="red" noWrap>
+            {errorMessage}
+          </Typography>
         </Grid>
       </Grid>
     </React.Fragment>
