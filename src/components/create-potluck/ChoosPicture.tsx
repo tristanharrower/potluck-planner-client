@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import { styled } from '@mui/material/styles';
 
 interface ChoosePictureProps{
     setFormValues:Function,
@@ -17,6 +18,12 @@ interface ChoosePictureProps{
     }
 }
 
+const Root = styled('div')(({ theme }) => ({
+  [theme.breakpoints.up('sm')]: {
+    width: 500, height: 550
+  },
+}));
+
 
 export default function ChoosePicture({formValues, setFormValues}: ChoosePictureProps) {
     const [selectedPicture, setSelectedPicture] = React.useState('')
@@ -31,7 +38,8 @@ export default function ChoosePicture({formValues, setFormValues}: ChoosePicture
     }
   
     return (
-    <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+      <Root>
+       <ImageList cols={3} rowHeight={164}>
         {itemData.map(item => {
             if(item.img === selectedPicture){
             return <ImageListItem key={item.img}>
@@ -57,6 +65,7 @@ export default function ChoosePicture({formValues, setFormValues}: ChoosePicture
            
       )}
     </ImageList>
+    </Root>
   );
 }
 
