@@ -19,8 +19,11 @@ interface ChoosePictureProps{
 }
 
 const Root = styled('div')(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    height:500, width:425,
+  },
   [theme.breakpoints.up('sm')]: {
-    width: 500, height: 550
+    width: 500, height: 500
   },
 }));
 

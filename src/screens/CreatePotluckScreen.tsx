@@ -89,7 +89,7 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks
         
       })
     }
-  return <div style={{height:'160vh'}}>
+  return <div style={{height:'180vh'}}>
      <Header 
      user={user} 
      setIsLoggedIn={setIsLoggedIn} 
