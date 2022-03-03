@@ -102,7 +102,6 @@ export default function Potlucks({potluck,user,token,
   setIsLoggedIn,potlucks,setPotlucks,organizedPotlucks,setOrganizedPotlucks}:PotluckCardProps) {
   const [food, setFood] = React.useState<Array<IFood>>([])
   const [expanded, setExpanded] = React.useState(false);
-console.log(potluck)
   const navigate = useNavigate();
 
   const handleExpandClick = () => {
@@ -110,7 +109,6 @@ console.log(potluck)
   };
   //border:'red solid 2px',
 
-  const chosenFood = 'food3'
 
   return (
     <Root>

@@ -51,7 +51,7 @@ const navigate = useNavigate()
         }
       })
       .then((resp) => {
-        console.log(resp.data)
+        
         setOrganizedPotlucks(resp.data)
       })
       .catch(err => {         

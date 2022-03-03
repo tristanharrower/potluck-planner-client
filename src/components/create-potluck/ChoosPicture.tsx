@@ -27,22 +27,35 @@ export default function ChoosePicture({formValues, setFormValues}: ChoosePicture
             ...formValues,
             picture:picName
         })
-        console.log(formValues)
+       
     }
   
     return (
     <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            src={require(`../../images/${item.img}.jpg`)}
-            alt={item.title}
-            loading="lazy"
-            onClick={()=>clickPicture(item.img)}
-            //style={{opacity:0.4}}
-          />
-        </ImageListItem>
-      ))}
+        {itemData.map(item => {
+            if(item.img === selectedPicture){
+            return <ImageListItem key={item.img}>
+                    <img
+                        src={require(`../../images/${item.img}.jpg`)}
+                        alt={item.title}
+                        loading="lazy"
+                        onClick={()=>clickPicture(item.img)}
+                        style={{opacity:0.4}}
+                />
+                </ImageListItem>
+            } else {
+            return <ImageListItem key={item.img}>
+                    <img
+                        src={require(`../../images/${item.img}.jpg`)}
+                        alt={item.title}
+                        loading="lazy"
+                        onClick={()=>clickPicture(item.img)}
+                />
+                </ImageListItem>
+            }
+        }
+           
+      )}
     </ImageList>
   );
 }
@@ -55,5 +68,33 @@ const itemData = [
   {
     img: 'food3',
     title: 'Breakfast',
-  }
+  },
+  {
+    img: 'food4',
+    title: 'Breakfast',
+  },
+  {
+    img: 'food5',
+    title: 'Breakfast',
+  },
+  {
+    img: 'food6',
+    title: 'Breakfast',
+  },
+  {
+    img: 'food7',
+    title: 'Breakfast',
+  },
+  {
+    img: 'food8',
+    title: 'Breakfast',
+  },
+  {
+    img: 'food9',
+    title: 'Breakfast',
+  },
+  {
+    img: 'food10',
+    title: 'Breakfast',
+  },
 ];

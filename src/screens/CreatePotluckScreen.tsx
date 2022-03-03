@@ -60,7 +60,6 @@ const CreatePotluck = ({isLoggedIn, setIsLoggedIn, setUser, user, token,potlucks
     const updateForm = (inputName:string, inputValue:string) => {
       setFormValues({...formValues, [inputName]:inputValue})
 
-      console.log(formValues)
     }
 
     const submitForm = () => {
