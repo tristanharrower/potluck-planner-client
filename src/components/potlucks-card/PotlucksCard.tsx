@@ -51,6 +51,7 @@ interface PotluckCardProps{
       potluck_id: number,
       role: string,
       username: string,
+      picture:string
   },
   potlucks:Array<IPotlucks>,
   setPotlucks:Function,
@@ -101,7 +102,7 @@ export default function Potlucks({potluck,user,token,
   setIsLoggedIn,potlucks,setPotlucks,organizedPotlucks,setOrganizedPotlucks}:PotluckCardProps) {
   const [food, setFood] = React.useState<Array<IFood>>([])
   const [expanded, setExpanded] = React.useState(false);
-
+console.log(potluck)
   const navigate = useNavigate();
 
   const handleExpandClick = () => {
@@ -127,7 +128,7 @@ export default function Potlucks({potluck,user,token,
         <CardMedia
           component="img"
           height="320px"
-          image={require(`../../images/${chosenFood}.jpg`)}
+          image={require(`../../images/${potluck.picture}.jpg`)}
           alt="Paella dish"
           sx = {{backgroundPosition:'center center', 
           textAlign:'center', m:"auto", backgroundRepeat:'no-repeat', backgroundSize:'cover'}}

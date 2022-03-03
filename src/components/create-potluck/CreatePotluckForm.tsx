@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { Button, Grid } from '@mui/material';
 import  DatePicker from './DatePicker'
+import ChoosePicture from './ChoosPicture';
 
 
 interface CreatePotluckFormProps{
@@ -23,8 +24,10 @@ interface CreatePotluckFormProps{
         city:string,
         state:string,
         zip:string, 
+        picture:string
    }
 }
+
 
 export default function CreatePotluckForm({update, submit, setFormValues, formValues}:CreatePotluckFormProps) {
 
@@ -70,6 +73,10 @@ export default function CreatePotluckForm({update, submit, setFormValues, formVa
       <Grid container spacing={3}>
         <Grid item xs={12}>
         <DatePicker setFormValues={setFormValues} formValues={formValues}/>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography>Choose Background Picture *</Typography>
+            <ChoosePicture setFormValues={setFormValues} formValues={formValues}/>
         </Grid>
         <Grid item xs={12}>
           <TextField

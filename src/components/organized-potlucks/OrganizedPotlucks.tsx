@@ -14,6 +14,7 @@ interface IPotlucks{
   potluck_id: number,
   role: string,
   username: string,
+  picture:string
 }
 
 interface HomePageProps{
@@ -50,6 +51,7 @@ const navigate = useNavigate()
         }
       })
       .then((resp) => {
+        console.log(resp.data)
         setOrganizedPotlucks(resp.data)
       })
       .catch(err => {         

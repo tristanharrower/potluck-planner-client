@@ -30,6 +30,7 @@ interface IPotlucks{
   potluck_id: number,
   role: string,
   username: string,
+  picture:string
 }
 
 
