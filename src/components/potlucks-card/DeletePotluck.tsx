@@ -76,7 +76,6 @@ export default function DeletePotluck({potluck, potlucks,setPotlucks, token, set
         })
      } else {
 
-
          request.delete(`/attending-potlucks/${potluck.potluck_id}`, {
             headers: { 
               Authorization: `${token}`
@@ -96,11 +95,9 @@ export default function DeletePotluck({potluck, potlucks,setPotlucks, token, set
        
   }
 
-  
-
   return (
     <div>
-        <Tooltip title="Delete Potluck">
+        <Tooltip title={potluck.role==='guest' ? "Leave Potluck" : "Delete Potluck"}>
         <DeleteIcon onClick={handleOpen}></DeleteIcon>
         </Tooltip>
       <Modal
@@ -110,18 +107,29 @@ export default function DeletePotluck({potluck, potlucks,setPotlucks, token, set
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="button" >
-            Are you sure you want to delete "{potluck.event_name}" ?
-          </Typography>
+        {potluck.role==='guest' 
+        ? <Typography id="modal-modal-title" variant="button" >
+            Are you sure you want to leave "{potluck.event_name}" ?
+          </Typography> 
+        : 
+        <Typography id="modal-modal-title" variant="button" >
+        Are you sure you want to delete "{potluck.event_name}" ?
+        </Typography>}
           <Container sx={{p:1, alignItems:'center', justifyContent:'center'}}>
-                <Button sx={{backgroundColor:'red', m:1}} onClick={()=>handleDelete(potluck.potluck_id,potluck.role)}>
-                    Delete
-                </Button>
-                <Button sx={{border:'black solid 1px'}} onClick={handleClose}>
-                    Cancel
-                </Button>
+            {potluck.role==='guest' 
+            ? 
+            <Button sx={{backgroundColor:'red', m:1}} onClick={()=>handleDelete(potluck.potluck_id,potluck.role)}>
+                Leave
+            </Button>
+            : 
+            <Button sx={{backgroundColor:'red', m:1}} onClick={()=>handleDelete(potluck.potluck_id,potluck.role)}>
+                Delete
+            </Button>}
+                  
+            <Button sx={{border:'black solid 1px'}} onClick={handleClose}>
+              Cancel
+            </Button>
           </Container>
-          
         </Box>
       </Modal>
     </div>
